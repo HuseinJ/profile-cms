@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  profile-api:
+    build: profile-api
+    restart: always
+    ports:
+      - 8444:8080
+    links:
+      - mongo_db:profile-api-db
+    depends_on:
+      - mongo_db
+  webui:
+    build: webui
+    restart: always
+    ports:
+      - 8445:80
+    depends_on:
+      - profile-api
+  mongo_db:
+    image: "mongo:latest"
+    restart: always
