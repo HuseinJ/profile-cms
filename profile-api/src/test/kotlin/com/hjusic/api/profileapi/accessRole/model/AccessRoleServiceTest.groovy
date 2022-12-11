@@ -15,7 +15,7 @@ class AccessRoleServiceTest extends Specification {
         )
     }
 
-    def "guest role should contain rights"() {
+    def "guest role should contain rights no"() {
         when:
         def guestRole = AccessRoleService.guestRole()
         then:
