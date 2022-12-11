@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa7a6100-8b4c-435e-a9f3-111923097208" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/common/event/EventPublisherTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/UserInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/UserInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/accessRole/model/AccessRoleServiceTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/accessRole/model/AccessRoleServiceTest.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +74,7 @@
       <recent name="com.hjusic.api.profileapi.user.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in profile-api">
+  <component name="RunManager" selected="JUnit.EventPublisherTest">
     <configuration name="AccessRoleInitializerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
@@ -100,6 +98,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EventPublisherTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="profile-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hjusic.api.profileapi.common.event.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.common.event" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.common.event.EventPublisherTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventPublisherTest.should publish a given event" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="profile-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hjusic.api.profileapi.common.event.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.common.event" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.common.event.EventPublisherTest" />
+      <option name="METHOD_NAME" value="should publish a given event" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SignInUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
@@ -111,38 +140,6 @@
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.user.application" />
       <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.user.application.SignInUserTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SignInUserTest.should return user and token when user signs in" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="profile-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hjusic.api.profileapi.user.application.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.user.application" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.user.application.SignInUserTest" />
-      <option name="METHOD_NAME" value="should return user and token when user signs in" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SignUpUserTest.should throw error if password is empty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="profile-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hjusic.api.profileapi.user.application.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.user.application" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.user.application.SignUpUserTest" />
-      <option name="METHOD_NAME" value="should throw error if password is empty" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EventPublisherTest" />
+        <item itemvalue="JUnit.EventPublisherTest.should publish a given event" />
         <item itemvalue="JUnit.All in profile-api" />
         <item itemvalue="JUnit.AccessRoleInitializerTest" />
         <item itemvalue="JUnit.SignInUserTest" />
-        <item itemvalue="JUnit.SignInUserTest.should return user and token when user signs in" />
-        <item itemvalue="JUnit.SignUpUserTest.should throw error if password is empty" />
       </list>
     </recent_temporary>
   </component>
@@ -185,7 +182,7 @@
       <workItem from="1669322668188" duration="2451000" />
       <workItem from="1669627844905" duration="25000" />
       <workItem from="1669628065189" duration="27000" />
-      <workItem from="1670794961587" duration="1223000" />
+      <workItem from="1670794961587" duration="1697000" />
     </task>
     <servers />
   </component>
