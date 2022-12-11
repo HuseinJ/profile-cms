@@ -1,0 +1,79 @@
+package com.hjusic.api.profileapi.user.infrastructure
+
+import com.hjusic.api.profileapi.accessRole.infrastructure.AccessRoleDatabaseService
+import com.hjusic.api.profileapi.common.event.EventPublisher
+import com.hjusic.api.profileapi.user.model.User
+import com.hjusic.api.profileapi.user.model.UserCreated
+import com.hjusic.api.profileapi.user.model.UserEvent
+import com.hjusic.api.profileapi.user.model.Users
+import java.util.*
+import java.util.stream.Collectors
+
+class UserDatabaseService(
+    private val eventPublisher: EventPublisher,
+    private val userDatabaseEntityRepository: UserDatabaseEntityRepository,
+    private val accessRoleDatabaseService: AccessRoleDatabaseService
+) : Users {
+    override fun trigger(userEvent: UserEvent): User {
+        var user = User(UUID.randomUUID(), "test", "test@test.com", setOf())
+
+        when (userEvent) {
+            is UserCreated -> user = handle(userEvent)
+        }
+
+        eventPublisher.publish(userEvent)
+
+        return user
+    }
+
+    override fun findById(userId: UUID): User {
+        var userentity = userDatabaseEntityRepository.findById(userId)
+        if (userentity.isEmpty) {
+            throw NoSuchElementException()
+        }
+        return map(userentity.get())
+    }
+
+    override fun findByName(username: String): User {
+        var userentity = userDatabaseEntityRepository.findByName(username)
+        if (userentity.isEmpty) {
+            throw NoSuchElementException()
+        }
+        return map(userentity.get())
+    }
+
+    override fun existsByName(name: String): Boolean {
+        return userDatabaseEntityRepository.existsByName(name)
+    }
+
+    override fun existsByemail(email: String): Boolean {
+        return userDatabaseEntityRepository.existsByEmail(email)
+    }
+
+    private fun handle(userCreated: UserCreated): User {
+        return map(
+            userDatabaseEntityRepository.save(
+                UserDatabaseEntity(
+                    userCreated.user.id,
+                    userCreated.user.name,
+                    userCreated.user.email,
+                    userCreated.password,
+                    userCreated.user.roles.stream().map { role -> accessRoleDatabaseService.map(role) }.collect(
+                        Collectors.toSet()
+                    )
+                )
+            )
+        )
+    }
+
+    fun map(userDatabaseEntity: UserDatabaseEntity): User {
+        return User(
+            userDatabaseEntity.id,
+            userDatabaseEntity.name,
+            userDatabaseEntity.email,
+            userDatabaseEntity.roles.stream().map { role -> accessRoleDatabaseService.map(role) }.collect(
+                Collectors.toSet()
+            )
+        )
+    }
+}

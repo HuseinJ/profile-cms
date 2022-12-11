@@ -1,0 +1,32 @@
+package com.hjusic.api.profileapi.user.application
+
+import com.hjusic.api.profileapi.common.error.ContextError
+import com.hjusic.api.profileapi.common.error.ValidationError
+import com.hjusic.api.profileapi.common.error.ValidationErrorCode
+import com.hjusic.api.profileapi.common.result.Either
+import com.hjusic.api.profileapi.common.security.service.UserDetailsImpl
+import com.hjusic.api.profileapi.common.security.util.JwtUtils
+import com.hjusic.api.profileapi.user.model.Users
+import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.context.SecurityContextHolder
+
+
+class SignInUser(
+    val authenticationManager: AuthenticationManager,
+    val users: Users,
+    val jwtUtils: JwtUtils
+) {
+
+    fun signInUser(username: String, password: String): Either<ContextError, UserTokenTuple>{
+        try {
+            var authentication = authenticationManager.authenticate(UsernamePasswordAuthenticationToken(username, password))
+            SecurityContextHolder.getContext().authentication = authentication
+            val jwt = jwtUtils.generateJwtToken(authentication)
+            val userDetails = authentication.principal as UserDetailsImpl
+            return Either.wasSuccess(UserTokenTuple(users.findByName(userDetails.username), jwt))
+        }catch (e: java.lang.Exception){
+            return Either.wasFailure(ValidationError(ValidationErrorCode.WRONG_CREDENTIALS))
+        }
+    }
+}
