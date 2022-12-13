@@ -8,6 +8,7 @@ import com.hjusic.api.profileapi.user.model.UserEvent
 import com.hjusic.api.profileapi.user.model.Users
 import java.util.*
 import java.util.stream.Collectors
+import kotlin.streams.toList
 
 class UserDatabaseService(
     private val eventPublisher: EventPublisher,
@@ -32,6 +33,10 @@ class UserDatabaseService(
             throw NoSuchElementException()
         }
         return map(userentity.get())
+    }
+
+    override fun findAll(): MutableList<User> {
+        return userDatabaseEntityRepository.findAll().stream().map { user -> map(user) }.toList();
     }
 
     override fun findByName(username: String): User {
@@ -65,8 +70,7 @@ class UserDatabaseService(
             )
         )
     }
-
-    fun map(userDatabaseEntity: UserDatabaseEntity): User {
+    override fun map(userDatabaseEntity: UserDatabaseEntity): User {
         return User(
             userDatabaseEntity.id,
             userDatabaseEntity.name,

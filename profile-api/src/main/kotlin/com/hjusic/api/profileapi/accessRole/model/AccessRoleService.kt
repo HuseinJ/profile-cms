@@ -4,13 +4,16 @@ class AccessRoleService {
     companion object {
 
         @JvmStatic
-        fun adminRole(): AccessRole{
-            return AccessRole(AccessRoleName.ADMIN, setOf(AccessRight.CREATE_USER, AccessRight.DELETE_USER))
+        fun adminRole(): AccessRole {
+            return AccessRole(
+                AccessRoleName.ROLE_ADMIN,
+                setOf(AccessRight.CREATE_USER, AccessRight.LIST_USER, AccessRight.DELETE_USER)
+            )
         }
 
         @JvmStatic
         fun guestRole(): AccessRole {
-            return AccessRole(AccessRoleName.GUEST, setOf())
+            return AccessRole(AccessRoleName.ROLE_GUEST, setOf())
         }
     }
 

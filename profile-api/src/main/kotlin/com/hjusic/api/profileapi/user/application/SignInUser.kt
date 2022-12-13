@@ -19,6 +19,9 @@ class SignInUser(
 ) {
 
     fun signInUser(username: String, password: String): Either<ContextError, UserTokenTuple>{
+        if(username == "" || password == ""){
+            return Either.wasFailure(ValidationError(ValidationErrorCode.EMPTY_VALUE))
+        }
         try {
             var authentication = authenticationManager.authenticate(UsernamePasswordAuthenticationToken(username, password))
             SecurityContextHolder.getContext().authentication = authentication

@@ -5,11 +5,13 @@ import com.hjusic.api.profileapi.accessRole.model.AccessRoleName
 import com.hjusic.api.profileapi.accessRole.model.AccessRolesInitialized
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.event.EventListener
+import org.springframework.security.crypto.password.PasswordEncoder
 import java.util.*
 
 class UserInitializer(
     val userDatabaseEntityRepository: UserDatabaseEntityRepository,
-    val accessRoleDatabaseEntityRepository: AccessRoleDatabaseEntityRepository
+    val accessRoleDatabaseEntityRepository: AccessRoleDatabaseEntityRepository,
+    val passwordEncoder: PasswordEncoder
 ) {
 
     @Value("\${auth.admin.password}")
@@ -21,7 +23,7 @@ class UserInitializer(
     @EventListener
     fun initializeAdmin(event: AccessRolesInitialized) {
         var potentialUser = userDatabaseEntityRepository.findByName("admin")
-        var potentialAccessRole = accessRoleDatabaseEntityRepository.findById(AccessRoleName.ADMIN)
+        var potentialAccessRole = accessRoleDatabaseEntityRepository.findById(AccessRoleName.ROLE_ADMIN)
 
         if (potentialAccessRole.isEmpty) {
             throw IllegalStateException("AccessRole Admin was not initialized")
@@ -33,7 +35,7 @@ class UserInitializer(
                     UUID.randomUUID(),
                     "admin",
                     adminEmail,
-                    adminPassword,
+                    passwordEncoder.encode(adminPassword),
                     setOf(potentialAccessRole.get())
                 )
             )

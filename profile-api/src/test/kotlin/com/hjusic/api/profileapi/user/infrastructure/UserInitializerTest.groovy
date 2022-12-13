@@ -14,6 +14,6 @@ class UserInitializerTest extends BaseSpringTest {
         def potentialAdmin = userDatabaseEntityRepository.findByName("admin")
         then:
         potentialAdmin.isPresent()
-        potentialAdmin.get().roles.stream().anyMatch({ role -> role.id == AccessRoleName.ADMIN })
+        potentialAdmin.get().roles.stream().anyMatch({ role -> role.id == AccessRoleName.ROLE_ADMIN })
     }
 }

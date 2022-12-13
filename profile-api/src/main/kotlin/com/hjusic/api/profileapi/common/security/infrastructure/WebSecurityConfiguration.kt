@@ -18,8 +18,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableGlobalMethodSecurity(
-    prePostEnabled = true)
-class WebSecurityConfiguration{
+    prePostEnabled = true, securedEnabled = true
+)
+class WebSecurityConfiguration {
 
     @Autowired
     var userDetailsService: UserDetailsServiceImpl? = null
@@ -54,10 +55,9 @@ class WebSecurityConfiguration{
     @Bean
     @Throws(Exception::class)
     fun filterChain(http: HttpSecurity): SecurityFilterChain? {
-        http.cors().and().csrf().disable()
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests().antMatchers("/graphql").permitAll()
+        http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+            .antMatchers("/graphql").permitAll().and().authorizeRequests().antMatchers("/graphiql").permitAll()
             .anyRequest().authenticated()
         http.authenticationProvider(authenticationProvider())
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)

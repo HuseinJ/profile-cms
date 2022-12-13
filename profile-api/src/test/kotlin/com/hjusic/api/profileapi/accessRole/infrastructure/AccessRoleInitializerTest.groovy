@@ -12,7 +12,7 @@ class AccessRoleInitializerTest extends BaseSpringTest {
 
     def "should create roles on server startup"() {
         given:
-        def roleNames = [AccessRoleName.ADMIN, AccessRoleName.GUEST]
+        def roleNames = [AccessRoleName.ROLE_ADMIN, AccessRoleName.ROLE_GUEST]
         when:
         def accessRoles = accessRoleDatabaseEntityRepository.findAll()
         then:

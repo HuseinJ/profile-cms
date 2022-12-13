@@ -50,8 +50,9 @@ class UserConfiguration {
     @Bean
     fun userInitializer(
         userDatabaseEntityRepository: UserDatabaseEntityRepository,
-        accessRoleDatabaseEntityRepository: AccessRoleDatabaseEntityRepository
+        accessRoleDatabaseEntityRepository: AccessRoleDatabaseEntityRepository,
+        passwordEncoder: PasswordEncoder
     ): UserInitializer {
-        return UserInitializer(userDatabaseEntityRepository, accessRoleDatabaseEntityRepository)
+        return UserInitializer(userDatabaseEntityRepository, accessRoleDatabaseEntityRepository, passwordEncoder)
     }
 }

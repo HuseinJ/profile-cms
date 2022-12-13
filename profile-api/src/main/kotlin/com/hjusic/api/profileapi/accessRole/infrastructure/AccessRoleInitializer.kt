@@ -15,10 +15,10 @@ class AccessRoleInitializer(
 
     @EventListener
     fun appReadyAdminRole(event: ApplicationReadyEvent) {
-        if(accessRoleDatabaseEntityRepository.findById(AccessRoleName.ADMIN).isEmpty){
+        if(accessRoleDatabaseEntityRepository.findById(AccessRoleName.ROLE_ADMIN).isEmpty){
             accessRoleDatabaseEntityRepository.save(accessRoleDatabaseService.map(AccessRoleService.adminRole()))
         }
-        if(accessRoleDatabaseEntityRepository.findById(AccessRoleName.GUEST).isEmpty){
+        if(accessRoleDatabaseEntityRepository.findById(AccessRoleName.ROLE_GUEST).isEmpty){
             accessRoleDatabaseEntityRepository.save(accessRoleDatabaseService.map(AccessRoleService.guestRole()))
         }
 

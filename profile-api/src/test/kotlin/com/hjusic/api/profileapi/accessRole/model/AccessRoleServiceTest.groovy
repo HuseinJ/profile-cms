@@ -9,7 +9,7 @@ class AccessRoleServiceTest extends Specification {
         when:
         def adminRole = AccessRoleService.adminRole()
         then:
-        adminRole.accessRoleName == AccessRoleName.ADMIN
+        adminRole.accessRoleName == AccessRoleName.ROLE_ADMIN
         adminRole.accessRights.containsAll(
                 Set.of(AccessRight.CREATE_USER, AccessRight.DELETE_USER)
         )
@@ -19,7 +19,7 @@ class AccessRoleServiceTest extends Specification {
         when:
         def guestRole = AccessRoleService.guestRole()
         then:
-        guestRole.accessRoleName == AccessRoleName.GUEST
+        guestRole.accessRoleName == AccessRoleName.ROLE_GUEST
         guestRole.accessRights.containsAll(
                 Set.of()
         )

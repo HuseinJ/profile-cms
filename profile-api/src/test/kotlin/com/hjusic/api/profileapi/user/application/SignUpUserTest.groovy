@@ -80,6 +80,6 @@ class SignUpUserTest extends BaseSpringTest {
         then:
         def user = result.getSuccess()
         user.roles.size() == 1
-        user.roles.first().accessRoleName == AccessRoleName.GUEST
+        user.roles.first().accessRoleName == AccessRoleName.ROLE_GUEST
     }
 }

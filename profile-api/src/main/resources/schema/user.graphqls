@@ -1,0 +1,16 @@
+
+extend type Mutation {
+    signIn(name: String, password: String): LoggedInUser
+    signUp(name: String,email: String, password: String): LoggedInUser
+}
+
+type LoggedInUser {
+    token: String
+    type: String
+    user: User
+}
+
+type User {
+    name: String
+    email: String
+}
