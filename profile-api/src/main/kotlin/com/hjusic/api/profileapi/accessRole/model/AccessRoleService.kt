@@ -7,7 +7,7 @@ class AccessRoleService {
         fun adminRole(): AccessRole {
             return AccessRole(
                 AccessRoleName.ROLE_ADMIN,
-                setOf(AccessRight.CREATE_USER, AccessRight.LIST_USER, AccessRight.DELETE_USER)
+                setOf(AccessRight.CREATE_USER, AccessRight.LIST_USER, AccessRight.DELETE_USER, AccessRight.CREATE_PAGE)
             )
         }
 

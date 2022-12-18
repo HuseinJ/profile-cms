@@ -1,0 +1,8 @@
+extend type Mutation {
+    createPage(name: String): Page
+}
+
+type Page {
+    id: String,
+    name: String
+}

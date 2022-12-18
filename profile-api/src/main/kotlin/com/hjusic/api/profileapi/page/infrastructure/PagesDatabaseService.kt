@@ -23,6 +23,10 @@ class PagesDatabaseService(
         return page
     }
 
+    override fun findPageById(uuid: UUID): Page {
+        return map(pageDatabaseEntityRepository.findById(uuid).orElseThrow{NoSuchElementException("no page with this id found")})
+    }
+
     private fun handle(pageCreated: PageCreated): Page {
         return map(
             pageDatabaseEntityRepository.save(
