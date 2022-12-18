@@ -3,7 +3,7 @@ package com.hjusic.api.profileapi.page.model
 import java.util.*
 
 class PageCreated private constructor(
-    name: String
+    val name: String
 ): PageEvent(UnpublishedPage(UUID.randomUUID(),name)) {
 
     companion object{

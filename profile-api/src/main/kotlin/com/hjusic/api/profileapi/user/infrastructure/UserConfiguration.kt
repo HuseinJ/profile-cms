@@ -6,6 +6,7 @@ import com.hjusic.api.profileapi.common.event.EventPublisher
 import com.hjusic.api.profileapi.common.security.UserAuthServiceImpl
 import com.hjusic.api.profileapi.common.security.UserAuthServices
 import com.hjusic.api.profileapi.common.security.util.JwtUtils
+import com.hjusic.api.profileapi.user.application.ChangePassword
 import com.hjusic.api.profileapi.user.application.SignInUser
 import com.hjusic.api.profileapi.user.application.SignUpUser
 import com.hjusic.api.profileapi.user.model.SignUpUserService
@@ -54,5 +55,10 @@ class UserConfiguration {
         passwordEncoder: PasswordEncoder
     ): UserInitializer {
         return UserInitializer(userDatabaseEntityRepository, accessRoleDatabaseEntityRepository, passwordEncoder)
+    }
+
+    @Bean
+    fun changePassword(authenticationManager: AuthenticationManager, users: Users, passwordEncoder: PasswordEncoder): ChangePassword {
+        return ChangePassword(authenticationManager, users, passwordEncoder);
     }
 }

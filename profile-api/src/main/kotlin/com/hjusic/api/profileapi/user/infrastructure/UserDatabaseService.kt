@@ -2,10 +2,7 @@ package com.hjusic.api.profileapi.user.infrastructure
 
 import com.hjusic.api.profileapi.accessRole.infrastructure.AccessRoleDatabaseService
 import com.hjusic.api.profileapi.common.event.EventPublisher
-import com.hjusic.api.profileapi.user.model.User
-import com.hjusic.api.profileapi.user.model.UserCreated
-import com.hjusic.api.profileapi.user.model.UserEvent
-import com.hjusic.api.profileapi.user.model.Users
+import com.hjusic.api.profileapi.user.model.*
 import java.util.*
 import java.util.stream.Collectors
 import kotlin.streams.toList
@@ -20,6 +17,7 @@ class UserDatabaseService(
 
         when (userEvent) {
             is UserCreated -> user = handle(userEvent)
+            is PasswordChanged -> user = handle(userEvent)
         }
 
         eventPublisher.publish(userEvent)
@@ -68,6 +66,14 @@ class UserDatabaseService(
                     )
                 )
             )
+        )
+    }
+
+    private fun handle(passwordChanged: PasswordChanged): User {
+        var user = userDatabaseEntityRepository.findById(passwordChanged.user.id).orElseThrow{IllegalStateException("user not in database")}
+        user.password = passwordChanged.newPassword;
+        return map(
+            userDatabaseEntityRepository.save(user)
         )
     }
     override fun map(userDatabaseEntity: UserDatabaseEntity): User {

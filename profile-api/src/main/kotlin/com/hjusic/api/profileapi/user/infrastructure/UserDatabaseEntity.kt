@@ -13,7 +13,7 @@ data class UserDatabaseEntity(
     val id: UUID = UUID.randomUUID(),
     val name: String,
     val email: String,
-    val password: String,
+    var password: String,
     @DBRef
     val roles: Set<AccessRoleDatabaseEntity>,
     val createdDate: Instant = Instant.now(),
@@ -21,4 +21,4 @@ data class UserDatabaseEntity(
 
 
 
-)
+    )

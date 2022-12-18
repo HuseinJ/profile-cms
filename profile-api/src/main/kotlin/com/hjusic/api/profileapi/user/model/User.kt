@@ -10,4 +10,8 @@ class User (
     var roles: Set<AccessRole>
     ) {
 
+    fun changePassword(newEncryptedPassword: String): PasswordChanged{
+        return PasswordChanged.from(this, newEncryptedPassword)
+    }
+
 }
