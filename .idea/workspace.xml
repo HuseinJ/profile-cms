@@ -5,20 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa7a6100-8b4c-435e-a9f3-111923097208" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/application/CreatePage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/graphql/CreatePageGraphQlService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/graphql/PageGraphQlView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/CreatePageService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/PageDomainErrorCode.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/resources/schema/page.graphqls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/graphql/CreatePageGraphQlServiceTest.groovy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/model/CreatePageServiceTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/application/DeletePage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/graphql/DeletePageGraphQlService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/PageDeleted.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/graphql/DeletePageGraphQlServiceTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/accessRole/model/AccessRight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/accessRole/model/AccessRight.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/accessRole/model/AccessRoleService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/accessRole/model/AccessRoleService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/application/CreatePage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/application/CreatePage.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PageConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PageConfiguration.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PagesDatabaseService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PagesDatabaseService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Page.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Page.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/PageDomainErrorCode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/PageDomainErrorCode.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Pages.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Pages.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/resources/schema/page.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/resources/schema/page.graphqls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/model/CreatePageServiceTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/model/CreatePageServiceTest.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,8 +92,8 @@
       <recent name="com.hjusic.api.profileapi.user.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CreatePageGraphQlServiceTest.should return error if name is empty">
-    <configuration name="CreatePageGraphQlServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.DeletePageGraphQlServiceTest">
+    <configuration name="DeletePageGraphQlServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
@@ -103,13 +102,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.CreatePageGraphQlServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreatePageGraphQlServiceTest.should return error if name is empty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeletePageGraphQlServiceTest.should be able to delete a page" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
@@ -118,14 +117,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.CreatePageGraphQlServiceTest" />
-      <option name="METHOD_NAME" value="should return error if name is empty" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
+      <option name="METHOD_NAME" value="should be able to delete a page" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreatePageGraphQlServiceTest.should return error if user does not have access rights" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeletePageGraphQlServiceTest.should throw error if page does not exist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
@@ -134,39 +133,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.CreatePageGraphQlServiceTest" />
-      <option name="METHOD_NAME" value="should return error if user does not have access rights" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
+      <option name="METHOD_NAME" value="should throw error if page does not exist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreatePageServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeletePageGraphQlServiceTest.should throw error if page id is empty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hjusic.api.profileapi.page.model.*" />
+          <option name="PATTERN" value="com.hjusic.api.profileapi.page.graphql.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.model" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.model.CreatePageServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
+      <option name="METHOD_NAME" value="should throw error if page id is empty" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreatePageServiceTest.Should be able to fetch created page from the database" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeletePageGraphQlServiceTest.should throw error if user does not have access right" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hjusic.api.profileapi.page.model.*" />
+          <option name="PATTERN" value="com.hjusic.api.profileapi.page.graphql.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.model" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.model.CreatePageServiceTest" />
-      <option name="METHOD_NAME" value="Should be able to fetch created page from the database" />
+      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
+      <option name="METHOD_NAME" value="should throw error if user does not have access right" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -184,11 +184,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CreatePageGraphQlServiceTest.should return error if name is empty" />
-        <item itemvalue="JUnit.CreatePageGraphQlServiceTest" />
-        <item itemvalue="JUnit.CreatePageGraphQlServiceTest.should return error if user does not have access rights" />
-        <item itemvalue="JUnit.CreatePageServiceTest.Should be able to fetch created page from the database" />
-        <item itemvalue="JUnit.CreatePageServiceTest" />
+        <item itemvalue="JUnit.DeletePageGraphQlServiceTest" />
+        <item itemvalue="JUnit.DeletePageGraphQlServiceTest.should throw error if page does not exist" />
+        <item itemvalue="JUnit.DeletePageGraphQlServiceTest.should throw error if page id is empty" />
+        <item itemvalue="JUnit.DeletePageGraphQlServiceTest.should throw error if user does not have access right" />
+        <item itemvalue="JUnit.DeletePageGraphQlServiceTest.should be able to delete a page" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +211,8 @@
       <workItem from="1669627844905" duration="25000" />
       <workItem from="1669628065189" duration="27000" />
       <workItem from="1670794961587" duration="47675000" />
-      <workItem from="1671387500144" duration="2555000" />
+      <workItem from="1671387500144" duration="4581000" />
+      <workItem from="1671480939126" duration="3067000" />
     </task>
     <servers />
   </component>
@@ -267,11 +268,6 @@
           <line>25</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/model/CreatePageServiceTest.groovy</url>
-          <line>59</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/application/SignInUser.kt</url>
           <line>31</line>
@@ -291,11 +287,6 @@
           <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/graphql/LoggedInUserGraphQlService.kt</url>
           <line>18</line>
           <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/graphql/CreatePageGraphQlService.kt</url>
-          <line>18</line>
-          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

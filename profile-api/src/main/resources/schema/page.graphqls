@@ -1,5 +1,6 @@
 extend type Mutation {
     createPage(name: String): Page
+    deletePage(id: String): Page
 }
 
 type Page {

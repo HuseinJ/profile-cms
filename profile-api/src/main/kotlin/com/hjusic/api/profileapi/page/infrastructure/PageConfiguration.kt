@@ -3,6 +3,7 @@ package com.hjusic.api.profileapi.page.infrastructure
 import com.hjusic.api.profileapi.common.event.EventPublisher
 import com.hjusic.api.profileapi.common.security.UserAuthServices
 import com.hjusic.api.profileapi.page.application.CreatePage
+import com.hjusic.api.profileapi.page.application.DeletePage
 import com.hjusic.api.profileapi.page.model.CreatePageService
 import com.hjusic.api.profileapi.page.model.Pages
 import org.springframework.context.annotation.Bean
@@ -22,7 +23,12 @@ class PageConfiguration {
     }
 
     @Bean
-    fun createPage(pages: Pages, createPageService: CreatePageService, userAuthServices: UserAuthServices): CreatePage {
-        return CreatePage(pages, createPageService, userAuthServices);
+    fun createPage(pages: Pages, createPageService: CreatePageService): CreatePage {
+        return CreatePage(pages, createPageService);
+    }
+
+    @Bean
+    fun deletePage(pages: Pages): DeletePage {
+        return DeletePage(pages)
     }
 }

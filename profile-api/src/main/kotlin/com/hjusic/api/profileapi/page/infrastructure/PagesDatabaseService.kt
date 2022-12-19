@@ -13,6 +13,7 @@ class PagesDatabaseService(
 
         when (pageEvent) {
             is PageCreated -> page = handle(pageEvent)
+            is PageDeleted -> page = handle(pageEvent)
             else -> {
                 throw java.lang.IllegalArgumentException("Unsupported argument")
             }
@@ -23,8 +24,13 @@ class PagesDatabaseService(
         return page
     }
 
-    override fun findPageById(uuid: UUID): Page {
-        return map(pageDatabaseEntityRepository.findById(uuid).orElseThrow{NoSuchElementException("no page with this id found")})
+    override fun findPageById(uuid: UUID): Optional<Page> {
+        var page = pageDatabaseEntityRepository.findById(uuid);
+
+        if(page.isEmpty){
+            return Optional.empty()
+        }
+        return Optional.of(map(page.get()))
     }
 
     private fun handle(pageCreated: PageCreated): Page {
@@ -36,6 +42,12 @@ class PagesDatabaseService(
             )
         )
 
+    }
+
+    private fun handle(pageDeleted: PageDeleted): Page {
+        pageDatabaseEntityRepository.deleteById(pageDeleted.page.id)
+
+        return pageDeleted.page
     }
 
     fun map(pageDatabaseEntity: PageDatabaseEntity): Page {

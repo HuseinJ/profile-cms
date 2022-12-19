@@ -55,7 +55,7 @@ class CreatePageServiceTest extends BaseSpringTest{
         when:
         def createdPage = pages.trigger(createPageService.createPage(callingUser, pageName).getSuccess())
         then:
-        def dbpage = pages.findPageById(createdPage.id)
+        def dbpage = pages.findPageById(createdPage.id).get()
         dbpage.id == createdPage.id;
         dbpage.name == createdPage.name
         dbpage instanceof UnpublishedPage
