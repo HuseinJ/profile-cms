@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa7a6100-8b4c-435e-a9f3-111923097208" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/application/DeletePage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/graphql/DeletePageGraphQlService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/PageDeleted.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/graphql/DeletePageGraphQlServiceTest.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/application/CreatePage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/application/CreatePage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PageConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PageConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PagesDatabaseService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PagesDatabaseService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Page.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Page.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/PageDomainErrorCode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/PageDomainErrorCode.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Pages.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Pages.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/resources/schema/page.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/resources/schema/page.graphqls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/model/CreatePageServiceTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/model/CreatePageServiceTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,39 +36,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;Spock&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Spock&quot;: &quot;spock.lang.Specification&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/husein/Documents/profile-cms&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;copyright&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;a1bcc191fb22e3009042f571c9cf8e20&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/husein/Documents/profile-cms/webui/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "Spock",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Spock": "spock.lang.Specification",
+    "jdk.selected.JAVA_MODULE": "openjdk-18",
+    "last_opened_file_path": "/Users/husein/Documents/profile-cms",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "yarn",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "copyright",
+    "spring.configuration.checksum": "a1bcc191fb22e3009042f571c9cf8e20",
+    "ts.external.directory.path": "/Users/husein/Documents/profile-cms/webui/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="spock.lang.Specification" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/adminUi" />
+      <recent name="$PROJECT_DIR$/profile-api" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.hjusic.api.profileapi.page.model" />
@@ -212,7 +205,7 @@
       <workItem from="1669628065189" duration="27000" />
       <workItem from="1670794961587" duration="47675000" />
       <workItem from="1671387500144" duration="4581000" />
-      <workItem from="1671480939126" duration="3067000" />
+      <workItem from="1671480939126" duration="3549000" />
     </task>
     <servers />
   </component>
