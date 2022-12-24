@@ -36,7 +36,7 @@ onError(() => {
       <va-form
           style="width: 300px;"
           tag="form"
-          @submit.prevent="handleSubmit"
+          @submit.prevent=""
       >
         <va-input
             label="Username"

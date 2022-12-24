@@ -13,6 +13,7 @@
           v-for="item in items"
           :key="item.title"
           :active="item.active"
+          @click="toggleMenu"
       >
         <router-link class="nav-link" :to="item.location">
           <va-sidebar-item-content>
@@ -40,7 +41,6 @@
 </template>
 
 <script>
-import router from "@/router";
 import BreakpointsMixin from "@/util/BreakpointsMixin";
 
 export default {
@@ -50,6 +50,8 @@ export default {
     return {
       items: [
         {title: 'Home', icon: 'house', location: "/"},
+        {title: 'Pages', icon: 'note', location: "pages"},
+        {title: 'Account', icon: 'account_circle', location: "profile"},
       ],
       sidebarOpen: false,
     }

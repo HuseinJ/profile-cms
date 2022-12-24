@@ -3,6 +3,6 @@
 
 <template>
   <main>
-    awdwdwd
+    Pages Dashboard
   </main>
 </template>

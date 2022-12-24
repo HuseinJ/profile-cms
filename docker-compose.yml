@@ -9,11 +9,11 @@ services:
       - mongo_db:profile-api-db
     depends_on:
       - mongo_db
-  webui:
-    build: webui
+  amdin-ui:
+    build: admin-ui
     restart: always
     ports:
-      - 8445:80
+      - 80:80
     depends_on:
       - profile-api
   mongo_db:

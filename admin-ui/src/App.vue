@@ -7,13 +7,13 @@ import {watch} from "vue";
 
 const router = useRouter()
 const { result, loading, error } = useQuery(LOGGED_IN_USER, null, {
-  fetchPolicy: 'network-only'
+  fetchPolicy: 'cache-first'
 })
 
 watch(error, value => {
-  router.push({
-    name: "login"
-  });
+  // router.push({
+  //   name: "login"
+  // });
 })
 
 </script>
