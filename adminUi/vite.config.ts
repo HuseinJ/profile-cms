@@ -6,6 +6,19 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/assets/variables.scss";`
+      }
+    }
+  },
+  optimizeDeps: {
+    include: [
+      '@apollo/client/core',
+      '@apollo/client/cache'
+    ]
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
