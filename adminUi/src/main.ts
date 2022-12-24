@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 import './assets/main.scss'
-import { createVuesticEssential, VaButton, VaSidebar, VaSidebarItem, VaSidebarItemContent, VaSidebarItemTitle, VaIcon } from 'vuestic-ui'
+import { createVuesticEssential, VaButton, VaSidebar, VaSidebarItem, VaSidebarItemContent, VaSidebarItemTitle, VaIcon, VaConfig } from 'vuestic-ui'
 import 'vuestic-ui/styles/essential.css'
 
 import { ApolloClient } from 'apollo-client'
@@ -42,9 +42,6 @@ const apolloProvider = new VueApollo({
     defaultClient: apolloClient,
 })
 
-const app = createApp(App)
-    .provide(DefaultApolloClient, apolloClient)
-
-app.use(router)
-app.use(createVuesticEssential({ components: {VaButton, VaSidebar, VaSidebarItem, VaSidebarItemContent, VaSidebarItemTitle, VaIcon} }));
+const app = createApp(App).provide(DefaultApolloClient, apolloClient).use(router)
+    .use(createVuesticEssential({ components: {VaButton, VaSidebar, VaSidebarItem, VaSidebarItemContent, VaSidebarItemTitle, VaIcon, VaConfig} }));
 app.mount('#app')

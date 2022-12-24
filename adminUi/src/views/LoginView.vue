@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import {useMutation} from "@vue/apollo-composable";
 import {LOGGED_IN_USER, LOGIN_MUTATION} from "@/queries/auth/login";
+import {useRouter} from "vue-router";
+const router = useRouter();
 
 const {mutate: login, onDone, onError} = useMutation(LOGIN_MUTATION,
     () => ({
@@ -13,6 +15,7 @@ const {mutate: login, onDone, onError} = useMutation(LOGIN_MUTATION,
 
 onDone(() => {
   console.log("done")
+  router.push({name: "home"});
 })
 
 onError(() => {

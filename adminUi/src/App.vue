@@ -6,7 +6,9 @@ import {useQuery} from "@vue/apollo-composable";
 import {watch} from "vue";
 
 const router = useRouter()
-const { result, loading, error } = useQuery(LOGGED_IN_USER)
+const { result, loading, error } = useQuery(LOGGED_IN_USER, null, {
+  fetchPolicy: 'cache-first'
+})
 
 watch(error, value => {
   router.push({
