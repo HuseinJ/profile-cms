@@ -7,7 +7,7 @@ import {watch} from "vue";
 
 const router = useRouter()
 const { result, loading, error } = useQuery(LOGGED_IN_USER, null, {
-  fetchPolicy: 'cache-first'
+  fetchPolicy: 'network-only'
 })
 
 watch(error, value => {
@@ -19,8 +19,6 @@ watch(error, value => {
 </script>
 
 <template>
-  <div v-if="loading">Loading...</div>
-  <div v-else-if="error">Error: {{ error.message }}</div>
   <div class="main-container">
     <header>
       <Navbar></Navbar>
@@ -34,8 +32,16 @@ watch(error, value => {
 <style lang="scss">
   .main-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
+  }
+
+  @media only screen and (min-width: $sm) {
+    .main-container{
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+    }
   }
 
 </style>
