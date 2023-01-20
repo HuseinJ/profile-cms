@@ -3,6 +3,11 @@ extend type Mutation {
     deletePage(id: String): Page
 }
 
+extend type Query {
+    page(uuid: String): Page
+    pages: [Page]
+}
+
 type Page {
     id: String,
     name: String

@@ -20,12 +20,11 @@ const {mutate: login, onDone, onError} = useMutation(LOGIN_MUTATION,
     }))
 
 onDone(() => {
-  console.log("done")
   router.push({name: "home"});
 })
 
 onError(() => {
-  console.log("error")
+  //TODO:: validate inputs
 })
 </script>
 

@@ -4,18 +4,32 @@ services:
     build: profile-api
     restart: always
     ports:
-      - 8444:8080
+      - ${API_PORT}:8080
     links:
       - mongo_db:profile-api-db
     depends_on:
       - mongo_db
+    environment:
+      - SERVER_PORT=8080
+      - SPRING_DATA_MONGODB_HOST=mongo_db
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=${MONGO_INIT_DB}
+    networks:
+      - main-back-end
   amdin-ui:
     build: admin-ui
-    restart: always
+    restart: unless-stopped
     ports:
-      - 80:80
+      - ${ADMIN_UI_PORT}:80
     depends_on:
       - profile-api
   mongo_db:
     image: "mongo:latest"
     restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGO_INIT_DB}
+    networks:
+      - main-back-end
+networks:
+  main-back-end:
+    name: ${NETWORK_NAME}

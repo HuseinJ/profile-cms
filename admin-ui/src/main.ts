@@ -12,9 +12,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
 import {DefaultApolloClient} from "@vue/apollo-composable";
 
+console.log("port:", import.meta.env.VITE_BASE_GRAPHQL_API_PORT)
+
 const httpLink = createHttpLink({
-    //TODO: You should use an absolute URL here
-    uri: 'http://localhost:8080/graphql',
+    uri: import.meta.env.VITE_BASE_API_URL + ":" + import.meta.env.VITE_BASE_GRAPHQL_API_PORT + import.meta.env.VITE_BASE_GRAPHQL_PATH,
     fetch: (uri: RequestInfo, options: RequestInit) => {
         options.headers = getHeaders();
         return fetch(uri, options);

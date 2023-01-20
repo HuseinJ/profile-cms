@@ -1,6 +1,6 @@
 {
   "files": [],
-
+  "lib": ["WebWorker"],
   "references": [
     {
       "path": "./tsconfig.config.json"

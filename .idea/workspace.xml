@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa7a6100-8b4c-435e-a9f3-111923097208" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-ui/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/application/GetPage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/graphql/PageGraphQlService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/graphql/PageGraphQlServiceTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-ui/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin-ui/env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-ui/src/components/organisms/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/admin-ui/src/components/organisms/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-ui/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/admin-ui/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-ui/src/views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/admin-ui/src/views/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-ui/src/views/PagesView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/admin-ui/src/views/PagesView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-ui/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-ui/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profile-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/common/error/ValidationErrorCode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/common/error/ValidationErrorCode.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PageConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PageConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PagesDatabaseService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/infrastructure/PagesDatabaseService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Pages.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/model/Pages.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/resources/schema/page.graphqls" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/resources/schema/page.graphqls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +34,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Sealed Class" />
-        <option value="Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Enum" />
+        <option value="Vue Single File Component" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -36,33 +54,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "Spock",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Spock": "spock.lang.Specification",
-    "jdk.selected.JAVA_MODULE": "openjdk-18",
-    "last_opened_file_path": "/Users/husein/Documents/profile-cms",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "yarn",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "copyright",
-    "spring.configuration.checksum": "a1bcc191fb22e3009042f571c9cf8e20",
-    "ts.external.directory.path": "/Users/husein/Documents/profile-cms/webui/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;Spock&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Spock&quot;: &quot;spock.lang.Specification&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/husein/Documents/profile-cms&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;copyright&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;a1bcc191fb22e3009042f571c9cf8e20&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/husein/Documents/profile-cms/admin-ui/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -71,6 +89,8 @@
       <recent name="spock.lang.Specification" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/adminUi" />
       <recent name="$PROJECT_DIR$/profile-api" />
     </key>
@@ -85,8 +105,8 @@
       <recent name="com.hjusic.api.profileapi.user.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DeletePageGraphQlServiceTest">
-    <configuration name="DeletePageGraphQlServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PageGraphQlServiceTest.should be able to get all pages">
+    <configuration name="PageGraphQlServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
@@ -95,13 +115,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.PageGraphQlServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeletePageGraphQlServiceTest.should be able to delete a page" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PageGraphQlServiceTest.should be able to get all pages" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
@@ -110,14 +130,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
-      <option name="METHOD_NAME" value="should be able to delete a page" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.PageGraphQlServiceTest" />
+      <option name="METHOD_NAME" value="should be able to get all pages" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeletePageGraphQlServiceTest.should throw error if page does not exist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PageGraphQlServiceTest.should be able to get page by id" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
@@ -126,14 +146,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
-      <option name="METHOD_NAME" value="should throw error if page does not exist" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.PageGraphQlServiceTest" />
+      <option name="METHOD_NAME" value="should be able to get page by id" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeletePageGraphQlServiceTest.should throw error if page id is empty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PageGraphQlServiceTest.should throw error if id is not valid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
         <pattern>
@@ -142,24 +162,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
-      <option name="METHOD_NAME" value="should throw error if page id is empty" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DeletePageGraphQlServiceTest.should throw error if user does not have access right" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="profile-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hjusic.api.profileapi.page.graphql.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.DeletePageGraphQlServiceTest" />
-      <option name="METHOD_NAME" value="should throw error if user does not have access right" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.PageGraphQlServiceTest" />
+      <option name="METHOD_NAME" value="should throw error if id is not valid" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -168,7 +172,7 @@
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:8080">
       <method v="2" />
     </configuration>
-    <configuration name="ProfileApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="ProfileApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
       <module name="profile-api" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hjusic.api.profileapi.ProfileApiApplication" />
       <method v="2">
@@ -177,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DeletePageGraphQlServiceTest" />
-        <item itemvalue="JUnit.DeletePageGraphQlServiceTest.should throw error if page does not exist" />
-        <item itemvalue="JUnit.DeletePageGraphQlServiceTest.should throw error if page id is empty" />
-        <item itemvalue="JUnit.DeletePageGraphQlServiceTest.should throw error if user does not have access right" />
-        <item itemvalue="JUnit.DeletePageGraphQlServiceTest.should be able to delete a page" />
+        <item itemvalue="JUnit.PageGraphQlServiceTest.should be able to get all pages" />
+        <item itemvalue="JUnit.PageGraphQlServiceTest" />
+        <item itemvalue="JUnit.PageGraphQlServiceTest.should be able to get page by id" />
+        <item itemvalue="JUnit.PageGraphQlServiceTest.should throw error if id is not valid" />
+        <item itemvalue="Spring Boot.ProfileApiApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +209,13 @@
       <workItem from="1669628065189" duration="27000" />
       <workItem from="1670794961587" duration="47675000" />
       <workItem from="1671387500144" duration="4581000" />
-      <workItem from="1671480939126" duration="3549000" />
+      <workItem from="1671480939126" duration="7545000" />
+      <workItem from="1671892925964" duration="17032000" />
+      <workItem from="1672152618728" duration="270000" />
+      <workItem from="1672153142717" duration="11997000" />
+      <workItem from="1673030729640" duration="185000" />
+      <workItem from="1673256652294" duration="26000" />
+      <workItem from="1674082645655" duration="4548000" />
     </task>
     <servers />
   </component>
@@ -261,6 +271,11 @@
           <line>25</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/graphql/PageGraphQlServiceTest.groovy</url>
+          <line>97</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/application/SignInUser.kt</url>
           <line>31</line>
@@ -280,6 +295,11 @@
           <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/graphql/LoggedInUserGraphQlService.kt</url>
           <line>18</line>
           <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/page/graphql/PageGraphQlService.kt</url>
+          <line>29</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

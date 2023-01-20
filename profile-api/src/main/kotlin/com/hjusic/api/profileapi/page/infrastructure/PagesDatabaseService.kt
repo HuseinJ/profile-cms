@@ -33,6 +33,10 @@ class PagesDatabaseService(
         return Optional.of(map(page.get()))
     }
 
+    override fun findAll(): Collection<Page> {
+        return pageDatabaseEntityRepository.findAll().stream().map { page -> map(page) }.toList();
+    }
+
     private fun handle(pageCreated: PageCreated): Page {
         return map(
             pageDatabaseEntityRepository.save(

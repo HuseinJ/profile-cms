@@ -65,7 +65,6 @@ export default {
   methods: {
     logout() {
       localStorage.clear()
-      console.log(this.$router);
       this.$router.push({name: "login"})
     },
     toggleMenu() {
