@@ -56,8 +56,13 @@ class UserConfiguration {
     }
 
     @Bean
-    fun signInUser(authenticationManager: AuthenticationManager, users: Users, jwtUtils: JwtUtils): SignInUser {
-        return SignInUser(authenticationManager, users, jwtUtils)
+    fun signInUser(
+        authenticationManager: AuthenticationManager,
+        refreshTokenOfUser: RefreshTokenOfUser,
+        users: Users,
+        jwtUtils: JwtUtils
+    ): SignInUser {
+        return SignInUser(authenticationManager, refreshTokenOfUser, users, jwtUtils)
     }
 
     @Bean
@@ -76,9 +81,7 @@ class UserConfiguration {
 
     @Bean
     fun changePassword(
-        authenticationManager: AuthenticationManager,
-        users: Users,
-        passwordEncoder: PasswordEncoder
+        authenticationManager: AuthenticationManager, users: Users, passwordEncoder: PasswordEncoder
     ): ChangePassword {
         return ChangePassword(authenticationManager, users, passwordEncoder)
     }

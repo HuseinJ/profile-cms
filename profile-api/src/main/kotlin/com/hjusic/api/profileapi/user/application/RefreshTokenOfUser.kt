@@ -45,7 +45,7 @@ class RefreshTokenOfUser(
         }
 
         val jwt = jwtUtils.generateJwtToken(SecurityContextHolder.getContext().authentication)
-        return Either.wasSuccess(UserTokenTuple(authenticatedUser, jwt))
+        return Either.wasSuccess(UserTokenTuple(authenticatedUser, jwt, refreshTokenofUser.token))
 
     }
 

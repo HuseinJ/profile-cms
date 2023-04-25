@@ -16,12 +16,13 @@ class UserDatabaseService(
 ) : Users {
 
     override fun trigger(userEvent: UserEvent): User {
-        var user = User(UUID.randomUUID(), "test", "test@test.com", setOf())
-
-        when (userEvent) {
-            is UserCreated -> user = handle(userEvent)
-            is PasswordChanged -> user = handle(userEvent)
-            is RefreshTokenCreated -> user = handle(userEvent)
+        var user =  when (userEvent) {
+            is UserCreated -> handle(userEvent)
+            is PasswordChanged -> handle(userEvent)
+            is RefreshTokenCreated -> handle(userEvent)
+            else -> {
+                throw UnsupportedOperationException("This Event can not be handled")
+            }
         }
 
         eventPublisher.publish(userEvent)
@@ -119,13 +120,24 @@ class UserDatabaseService(
     }
 
     override fun map(userDatabaseEntity: UserDatabaseEntity): User {
+        val refreshToken = if (userDatabaseEntity.refreshTokenDatabaseEntity != null) {
+            RefreshToken(
+                userDatabaseEntity.refreshTokenDatabaseEntity!!.id,
+                userDatabaseEntity.refreshTokenDatabaseEntity!!.token,
+                userDatabaseEntity.refreshTokenDatabaseEntity!!.expiryDate
+            )
+        } else {
+            null
+        }
+
         return User(
             userDatabaseEntity.id,
             userDatabaseEntity.name,
             userDatabaseEntity.email,
             userDatabaseEntity.roles.stream().map { role -> accessRoleDatabaseService.map(role) }.collect(
                 Collectors.toSet()
-            )
+            ),
+            refreshToken
         )
     }
 }

@@ -10,6 +10,8 @@ import com.hjusic.api.profileapi.user.model.Users
 import io.restassured.RestAssured
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.emptyOrNullString;
 
 import java.time.Instant
 
@@ -32,13 +34,14 @@ class SingInUserGraphQlTest extends BaseSpringTest {
         given:
         def password = "password1"
         def name = "user" + Instant.now().toEpochMilli()
-        def user1 = users.trigger(new UserCreated(new User(UUID.randomUUID(), name, "user1@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(password)))
+        def user1 = users.trigger(new UserCreated(new User(UUID.randomUUID(), name, "user1@mail.com", new HashSet<AccessRole>(), null), passwordEncoder.encode(password)))
         and:
         def query = """
                 mutation{
                     signIn(name: "${user1.name}", password: "${password}"){
                         token
                         type
+                        refreshToken
                         user {
                             name
                             email
@@ -59,6 +62,7 @@ class SingInUserGraphQlTest extends BaseSpringTest {
                 .body("data.signIn.type", equalTo("Bearer"))
                 .body("data.signIn.user.name", equalTo(user1.name))
                 .body("data.signIn.user.email", equalTo(user1.email))
+                .body("data.signIn.refreshToken", not(emptyOrNullString()))
     }
 
     def "should get validation error if name is empty"() {
@@ -114,7 +118,7 @@ class SingInUserGraphQlTest extends BaseSpringTest {
     def "should return error if user tries to signIn with wrong credentials"() {
         given:
         def password = "password1"
-        def user1 = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(password)))
+        def user1 = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>(), null), passwordEncoder.encode(password)))
         and:
         def query = """
                 mutation{
