@@ -10,6 +10,9 @@ import com.hjusic.api.profileapi.user.model.Users
 import io.restassured.RestAssured
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
+
+import java.time.Instant
+
 import static org.hamcrest.Matchers.containsString
 import static org.hamcrest.Matchers.equalTo
 import static org.hamcrest.Matchers.notNullValue
@@ -28,7 +31,8 @@ class SingInUserGraphQlTest extends BaseSpringTest {
     def "User should be able to sign in"() {
         given:
         def password = "password1"
-        def user1 = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(password)))
+        def name = "user" + Instant.now().toEpochMilli()
+        def user1 = users.trigger(new UserCreated(new User(UUID.randomUUID(), name, "user1@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(password)))
         and:
         def query = """
                 mutation{

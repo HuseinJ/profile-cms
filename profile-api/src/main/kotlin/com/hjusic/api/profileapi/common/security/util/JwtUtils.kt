@@ -34,8 +34,12 @@ class JwtUtils {
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken)
             return true
-        } catch (e: Exception) {
-
+        } catch (e: SignatureException) {
+            //TODO: implement logging errors
+        } catch (e: MalformedJwtException) {
+        } catch (e: ExpiredJwtException) {
+        } catch (e: UnsupportedJwtException) {
+        } catch (e: IllegalArgumentException) {
         }
         return false
     }

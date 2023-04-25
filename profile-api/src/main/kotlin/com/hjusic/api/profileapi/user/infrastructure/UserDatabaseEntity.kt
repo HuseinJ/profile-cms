@@ -16,9 +16,8 @@ data class UserDatabaseEntity(
     var password: String,
     @DBRef
     val roles: Set<AccessRoleDatabaseEntity>,
+    @DBRef
+    var refreshTokenDatabaseEntity: RefreshTokenDatabaseEntity?,
     val createdDate: Instant = Instant.now(),
     val modifiedDate: Instant = Instant.now(),
-
-
-
     )

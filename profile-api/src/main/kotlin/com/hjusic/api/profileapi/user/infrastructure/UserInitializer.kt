@@ -6,6 +6,7 @@ import com.hjusic.api.profileapi.accessRole.model.AccessRolesInitialized
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.event.EventListener
 import org.springframework.security.crypto.password.PasswordEncoder
+import java.time.Instant
 import java.util.*
 
 class UserInitializer(
@@ -36,7 +37,8 @@ class UserInitializer(
                     "admin",
                     adminEmail,
                     passwordEncoder.encode(adminPassword),
-                    setOf(potentialAccessRole.get())
+                    setOf(potentialAccessRole.get()),
+                    RefreshTokenDatabaseEntity(UUID.randomUUID(), "", Instant.now())
                 )
             )
         }

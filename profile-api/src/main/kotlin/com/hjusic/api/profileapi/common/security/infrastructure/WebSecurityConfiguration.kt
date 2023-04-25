@@ -19,10 +19,6 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry
 
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
-
-
-
-
 @Configuration
 @EnableGlobalMethodSecurity(
     prePostEnabled = true, securedEnabled = true

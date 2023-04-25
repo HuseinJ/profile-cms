@@ -7,6 +7,7 @@ import com.hjusic.api.profileapi.common.security.UserAuthServiceImpl
 import com.hjusic.api.profileapi.common.security.UserAuthServices
 import com.hjusic.api.profileapi.common.security.util.JwtUtils
 import com.hjusic.api.profileapi.user.application.ChangePassword
+import com.hjusic.api.profileapi.user.application.RefreshTokenOfUser
 import com.hjusic.api.profileapi.user.application.SignInUser
 import com.hjusic.api.profileapi.user.application.SignUpUser
 import com.hjusic.api.profileapi.user.model.SignUpUserService
@@ -23,9 +24,15 @@ class UserConfiguration {
     fun userDatabaseService(
         eventPublisher: EventPublisher,
         userDatabaseEntityRepository: UserDatabaseEntityRepository,
+        refreshTokenDatabaseEntityRepository: RefreshTokenDatabaseEntityRepository,
         accessRoleDatabaseService: AccessRoleDatabaseService
     ): Users {
-        return UserDatabaseService(eventPublisher, userDatabaseEntityRepository, accessRoleDatabaseService)
+        return UserDatabaseService(
+            eventPublisher,
+            userDatabaseEntityRepository,
+            refreshTokenDatabaseEntityRepository,
+            accessRoleDatabaseService
+        )
     }
 
     @Bean
@@ -34,18 +41,28 @@ class UserConfiguration {
     }
 
     @Bean
-    fun userAuthServices(): UserAuthServices{
+    fun userAuthServices(): UserAuthServices {
         return UserAuthServiceImpl()
     }
 
     @Bean
-    fun signUpUser(users: Users, signUpUserService: SignUpUserService, userAuthServices: UserAuthServices, passwordEncoder: PasswordEncoder): SignUpUser {
+    fun signUpUser(
+        users: Users,
+        signUpUserService: SignUpUserService,
+        userAuthServices: UserAuthServices,
+        passwordEncoder: PasswordEncoder
+    ): SignUpUser {
         return SignUpUser(signUpUserService, users, userAuthServices, passwordEncoder)
     }
 
     @Bean
     fun signInUser(authenticationManager: AuthenticationManager, users: Users, jwtUtils: JwtUtils): SignInUser {
         return SignInUser(authenticationManager, users, jwtUtils)
+    }
+
+    @Bean
+    fun refreshTokenOfUser(users: Users, jwtUtils: JwtUtils): RefreshTokenOfUser {
+        return RefreshTokenOfUser(users, jwtUtils)
     }
 
     @Bean
@@ -58,7 +75,11 @@ class UserConfiguration {
     }
 
     @Bean
-    fun changePassword(authenticationManager: AuthenticationManager, users: Users, passwordEncoder: PasswordEncoder): ChangePassword {
-        return ChangePassword(authenticationManager, users, passwordEncoder);
+    fun changePassword(
+        authenticationManager: AuthenticationManager,
+        users: Users,
+        passwordEncoder: PasswordEncoder
+    ): ChangePassword {
+        return ChangePassword(authenticationManager, users, passwordEncoder)
     }
 }

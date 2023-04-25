@@ -11,5 +11,7 @@ interface Users {
     fun existsByName(name: String): Boolean
     fun existsByemail(email: String): Boolean
 
+    fun findRefreshTokenOfUser(user: User): RefreshToken?
+
     fun map(user: UserDatabaseEntity): User
 }

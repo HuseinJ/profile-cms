@@ -12,6 +12,7 @@ import com.hjusic.api.profileapi.user.model.UserCreated
 import com.hjusic.api.profileapi.user.model.Users
 import io.restassured.RestAssured
 import io.restassured.http.Header
+import static org.hamcrest.Matchers.hasItems;
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
 
@@ -19,6 +20,7 @@ import java.time.Instant
 
 import static org.hamcrest.Matchers.containsString
 import static org.hamcrest.Matchers.equalTo
+import static org.hamcrest.Matchers.hasItemInArray
 import static org.hamcrest.Matchers.hasSize
 
 class PageGraphQlServiceTest extends BaseSpringTest{
@@ -127,6 +129,6 @@ class PageGraphQlServiceTest extends BaseSpringTest{
         result.then()
                 .statusCode(200)
                 .body("errors", equalTo(null))
-                .body("data.pages", hasSize(2))
+                .body("data.pages.name", hasItems(page.name, page2.name));
     }
 }
