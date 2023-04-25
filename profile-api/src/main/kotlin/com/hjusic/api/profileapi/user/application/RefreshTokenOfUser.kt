@@ -58,18 +58,4 @@ class RefreshTokenOfUser(
     private fun isTokenExpired(token: RefreshToken): Boolean {
         return token.expirationDate < Instant.now()
     }
-
-    /*
-    String requestRefreshToken = request.getRefreshToken();
-
-    return refreshTokenService.findByToken(requestRefreshToken)
-        .map(refreshTokenService::verifyExpiration)
-        .map(RefreshToken::getUser)
-        .map(user -> {
-          String token = jwtUtils.generateTokenFromUsername(user.getUsername());
-          return ResponseEntity.ok(new TokenRefreshResponse(token, requestRefreshToken));
-        })
-        .orElseThrow(() -> new TokenRefreshException(requestRefreshToken,
-            "Refresh token is not in database!"));
-     */
 }
