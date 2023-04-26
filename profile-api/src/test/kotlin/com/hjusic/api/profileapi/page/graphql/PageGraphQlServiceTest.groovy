@@ -44,7 +44,7 @@ class PageGraphQlServiceTest extends BaseSpringTest{
         def roles = new HashSet<AccessRole>();
         roles.add(AccessRoleService.adminRole());
         def password = "supersecrettestpassword"
-        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", roles), passwordEncoder.encode(password)))
+        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", roles, null), passwordEncoder.encode(password)))
         def userTokenTuple = signInUser.signInUser(user.name, password).getSuccess();
         and:
         userAuthServices.callingUser() >> user
@@ -75,7 +75,7 @@ class PageGraphQlServiceTest extends BaseSpringTest{
         def roles = new HashSet<AccessRole>();
         roles.add(AccessRoleService.adminRole());
         def password = "supersecrettestpassword"
-        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", roles), passwordEncoder.encode(password)))
+        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", roles, null), passwordEncoder.encode(password)))
         def userTokenTuple = signInUser.signInUser(user.name, password).getSuccess();
         and:
         userAuthServices.callingUser() >> user
@@ -107,7 +107,7 @@ class PageGraphQlServiceTest extends BaseSpringTest{
         def roles = new HashSet<AccessRole>();
         roles.add(AccessRoleService.adminRole());
         def password = "supersecrettestpassword"
-        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", roles), passwordEncoder.encode(password)))
+        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", roles, null), passwordEncoder.encode(password)))
         def userTokenTuple = signInUser.signInUser(user.name, password).getSuccess();
         and:
         userAuthServices.callingUser() >> user

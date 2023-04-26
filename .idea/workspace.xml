@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa7a6100-8b4c-435e-a9f3-111923097208" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/user/graphql/RefreshTokenGraphQlTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/application/RefreshTokenOfUser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/application/RefreshTokenOfUser.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/graphql/RefreshTokenGraphQlService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/graphql/RefreshTokenGraphQlService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/RefreshTokenDatabaseEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/RefreshTokenDatabaseEntity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/RefreshTokenDatabaseEntityRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/RefreshTokenDatabaseEntityRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/UserDatabaseEntityRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/UserDatabaseEntityRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/UserDatabaseService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/UserDatabaseService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/UserInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/infrastructure/UserInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/model/RefreshToken.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/model/RefreshToken.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/model/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/model/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/model/Users.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/model/Users.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/user/application/RefreshTokenOfUserTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/user/application/RefreshTokenOfUserTest.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/user/model/RefreshTokenTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/user/model/RefreshTokenTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/common/security/util/JwtUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/common/security/util/JwtUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/graphql/PageGraphQlServiceTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/graphql/PageGraphQlServiceTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/model/CreatePageServiceTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/page/model/CreatePageServiceTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/user/graphql/RefreshTokenGraphQlTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/user/graphql/RefreshTokenGraphQlTest.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +92,46 @@
       <recent name="com.hjusic.api.profileapi.user.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RefreshTokenOfUserTest">
+  <component name="RunManager" selected="JUnit.All in profile-api">
+    <configuration name="All in profile-api" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="profile-api" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PageGraphQlServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="profile-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hjusic.api.profileapi.page.graphql.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.page.graphql" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.page.graphql.PageGraphQlServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RefreshTokenGraphQlTest.should return an error if jwt token of user expires" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="profile-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hjusic.api.profileapi.user.graphql.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.user.graphql" />
+      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.user.graphql.RefreshTokenGraphQlTest" />
+      <option name="METHOD_NAME" value="should return an error if jwt token of user expires" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RefreshTokenOfUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="profile-api" />
       <extension name="coverage">
@@ -113,22 +143,6 @@
       <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.user.application" />
       <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.user.application.RefreshTokenOfUserTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RefreshTokenOfUserTest.should create refresh token for user" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="profile-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hjusic.api.profileapi.user.application.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.user.application" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.user.application.RefreshTokenOfUserTest" />
-      <option name="METHOD_NAME" value="should create refresh token for user" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,48 +162,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RefreshTokenTest.should create Refresh Token for user" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="profile-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hjusic.api.profileapi.user.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.user.model" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.user.model.RefreshTokenTest" />
-      <option name="METHOD_NAME" value="should create Refresh Token for user" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RefreshTokenTest.should find User by given refresh token" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="profile-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hjusic.api.profileapi.user.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.hjusic.api.profileapi.user.model" />
-      <option name="MAIN_CLASS_NAME" value="com.hjusic.api.profileapi.user.model.RefreshTokenTest" />
-      <option name="METHOD_NAME" value="should find User by given refresh token" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:8080">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in profile-api" />
+        <item itemvalue="JUnit.RefreshTokenGraphQlTest.should return an error if jwt token of user expires" />
+        <item itemvalue="JUnit.PageGraphQlServiceTest" />
         <item itemvalue="JUnit.RefreshTokenOfUserTest" />
         <item itemvalue="JUnit.RefreshTokenTest" />
-        <item itemvalue="JUnit.RefreshTokenTest.should find User by given refresh token" />
-        <item itemvalue="JUnit.RefreshTokenTest.should create Refresh Token for user" />
-        <item itemvalue="JUnit.RefreshTokenOfUserTest.should create refresh token for user" />
       </list>
     </recent_temporary>
   </component>
@@ -225,7 +207,7 @@
       <workItem from="1679701660539" duration="1969000" />
       <workItem from="1682211020748" duration="2397000" />
       <workItem from="1682327310738" duration="538000" />
-      <workItem from="1682458794468" duration="9952000" />
+      <workItem from="1682458794468" duration="11493000" />
     </task>
     <servers />
   </component>
@@ -281,6 +263,11 @@
           <line>25</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/profile-api/src/test/kotlin/com/hjusic/api/profileapi/user/graphql/RefreshTokenGraphQlTest.groovy</url>
+          <line>50</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/application/SignInUser.kt</url>
           <line>33</line>
@@ -288,7 +275,7 @@
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/common/security/util/JwtUtils.kt</url>
-          <line>24</line>
+          <line>23</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
@@ -315,6 +302,11 @@
           <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/graphql/LoggedInUserGraphQlView.kt</url>
           <line>12</line>
           <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/profile-api/src/main/kotlin/com/hjusic/api/profileapi/user/application/SignInUser.kt</url>
+          <line>25</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -31,7 +31,7 @@ class UsersGraphQlTest extends BaseSpringTest {
     def "should return an error if the caller is logged in but does not have the correct accessrole"() {
         given:
         def password = "password1"
-        def user1 = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(password)))
+        def user1 = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", new HashSet<AccessRole>(), null), passwordEncoder.encode(password)))
         def userTokenTuple = signInUser.signInUser(user1.name, password).getSuccess();
         and:
         def query = """
@@ -59,7 +59,7 @@ class UsersGraphQlTest extends BaseSpringTest {
         def accessRoleAdminSet = new HashSet<AccessRole>()
         accessRoleAdminSet.add(AccessRoleService.adminRole())
 
-        def admin = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user2", "user2@mail.com", accessRoleAdminSet), passwordEncoder.encode(password)))
+        def admin = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user2", "user2@mail.com", accessRoleAdminSet, null), passwordEncoder.encode(password)))
         def adminTokenTuple = signInUser.signInUser(admin.name, password).getSuccess()
 
         and:

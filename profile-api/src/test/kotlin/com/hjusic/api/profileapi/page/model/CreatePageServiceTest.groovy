@@ -8,36 +8,36 @@ import org.springframework.beans.factory.annotation.Autowired
 
 import java.time.Instant
 
-class CreatePageServiceTest extends BaseSpringTest{
+class CreatePageServiceTest extends BaseSpringTest {
 
     @Autowired
-    CreatePageService createPageService;
+    CreatePageService createPageService
 
     @Autowired
-    Pages pages;
+    Pages pages
 
     def "should return create Page event"() {
         given:
-            def pageName = "page-" + Instant.now().toEpochMilli()
+        def pageName = "page-" + Instant.now().toEpochMilli()
         and:
-            def roles = new HashSet<AccessRole>();
-            roles.add(AccessRoleService.adminRole());
+        def roles = new HashSet<AccessRole>()
+        roles.add(AccessRoleService.adminRole())
         and:
-            def callingUser = new User(UUID.randomUUID(), pageName, pageName + "@mail.com", roles)
+        def callingUser = new User(UUID.randomUUID(), pageName, pageName + "@mail.com", roles, null)
         when:
-            def result = createPageService.createPage(callingUser, pageName)
+        def result = createPageService.createPage(callingUser, pageName)
         then:
-            result.wasSuccess()
+        result.wasSuccess()
     }
 
     def "should return error is user does not have create Page rights"() {
         given:
         def pageName = "page-" + Instant.now().toEpochMilli()
         and:
-        def roles = new HashSet<AccessRole>();
-        roles.add(AccessRoleService.guestRole());
+        def roles = new HashSet<AccessRole>()
+        roles.add(AccessRoleService.guestRole())
         and:
-        def callingUser = new User(UUID.randomUUID(), pageName, pageName + "@mail.com", roles)
+        def callingUser = new User(UUID.randomUUID(), pageName, pageName + "@mail.com", roles, null)
         when:
         def result = createPageService.createPage(callingUser, pageName)
         then:
@@ -48,15 +48,15 @@ class CreatePageServiceTest extends BaseSpringTest{
         given:
         def pageName = "page-" + Instant.now().toEpochMilli()
         and:
-        def roles = new HashSet<AccessRole>();
-        roles.add(AccessRoleService.adminRole());
+        def roles = new HashSet<AccessRole>()
+        roles.add(AccessRoleService.adminRole())
         and:
-        def callingUser = new User(UUID.randomUUID(), pageName, pageName + "@mail.com", roles)
+        def callingUser = new User(UUID.randomUUID(), pageName, pageName + "@mail.com", roles, null)
         when:
         def createdPage = pages.trigger(createPageService.createPage(callingUser, pageName).getSuccess())
         then:
         def dbpage = pages.findPageById(createdPage.id).get()
-        dbpage.id == createdPage.id;
+        dbpage.id == createdPage.id
         dbpage.name == createdPage.name
         dbpage instanceof UnpublishedPage
     }

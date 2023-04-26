@@ -31,7 +31,7 @@ class SignInUserTest extends BaseSpringTest {
         and:
         users.trigger(signUpUserService.createUserWithNameAndMail(username, passwordEncoder.encode(password), "test@mail.com",
                 new User(UUID.randomUUID(), "admin", "email@amdin.com",
-                        new HashSet<AccessRole>([AccessRoleService.adminRole()]))).success)
+                        new HashSet<AccessRole>([AccessRoleService.adminRole()]), null)).success)
         when:
         def result = signInUser.signInUser(username, password)
         then:
@@ -49,7 +49,7 @@ class SignInUserTest extends BaseSpringTest {
         and:
         users.trigger(signUpUserService.createUserWithNameAndMail(username, passwordEncoder.encode(password), "te22st@mail.com",
                 new User(UUID.randomUUID(), "admin", "ema22il@amdin.com",
-                        new HashSet<AccessRole>([AccessRoleService.adminRole()]))).success)
+                        new HashSet<AccessRole>([AccessRoleService.adminRole()]), null)).success)
         when:
         def result = signInUser.signInUser(username, "falsePassword")
         then:

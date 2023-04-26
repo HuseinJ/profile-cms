@@ -10,20 +10,18 @@ import java.util.*
 @Component
 class JwtUtils {
 
+
     @Value("\${auth.jwtSecret}")
-    private val jwtSecret: String? = null;
+    private val jwtSecret: String? = null
 
     @Value("\${auth.jwtExpirationMs}")
-    private val jwtExpirationMs: Int = 0;
+    private val jwtExpirationMs: Int = 0
+
 
     fun generateJwtToken(authentication: Authentication): String {
         val userPrincipal = authentication.principal as UserDetailsImpl
-        return Jwts.builder()
-            .setSubject(userPrincipal.username)
-            .setIssuedAt(Date())
-            .setExpiration(Date(Date().time + jwtExpirationMs))
-            .signWith(SignatureAlgorithm.HS512, jwtSecret)
-            .compact()
+        return Jwts.builder().setSubject(userPrincipal.username).setIssuedAt(Date())
+            .setExpiration(Date(Date().time + jwtExpirationMs)).signWith(SignatureAlgorithm.HS512, jwtSecret).compact()
     }
 
     fun getUserNameFromJwtToken(token: String): String {

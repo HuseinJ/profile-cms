@@ -44,7 +44,7 @@ class SignUpUserTest extends BaseSpringTest {
         def password = "thisIsClearText"
         def email = "testlmsef@mail.com"
         and:
-        userAuthServices.callingUser() >> new User(UUID.randomUUID(), name, email, new HashSet<AccessRole>([AccessRoleService.adminRole()]))
+        userAuthServices.callingUser() >> new User(UUID.randomUUID(), name, email, new HashSet<AccessRole>([AccessRoleService.adminRole()]), null)
         when:
         def result = createUser.createUserWithNameAndMail(name, password,email)
         then:
@@ -60,7 +60,7 @@ class SignUpUserTest extends BaseSpringTest {
         def name = "naeeeefeme"
         def email = "test@test.com"
         and:
-        userAuthServices.callingUser() >> new User(UUID.randomUUID(), name, email, new HashSet<AccessRole>([AccessRoleService.adminRole()]))
+        userAuthServices.callingUser() >> new User(UUID.randomUUID(), name, email, new HashSet<AccessRole>([AccessRoleService.adminRole()]), null)
         when:
         def result = createUser.createUserWithNameAndMail(name, "sef" ,email)
         then:
@@ -74,7 +74,7 @@ class SignUpUserTest extends BaseSpringTest {
         def name = "namffee1"
         def email = "test1@test.com"
         and:
-        userAuthServices.callingUser() >> new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]))
+        userAuthServices.callingUser() >> new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]),null)
         when:
         def result = createUser.createUserWithNameAndMail(name, "ffef",email)
         then:

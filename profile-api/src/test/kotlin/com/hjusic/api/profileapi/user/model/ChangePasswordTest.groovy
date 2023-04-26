@@ -7,7 +7,7 @@ class ChangePasswordTest extends Specification{
 
     def "should return change Password event"() {
         given:
-        def user = new User(UUID.randomUUID(), "name", "mail", new HashSet<AccessRole>());
+        def user = new User(UUID.randomUUID(), "name", "mail", new HashSet<AccessRole>(), null);
         and:
         def newPassword = "newPassword";
         when:
