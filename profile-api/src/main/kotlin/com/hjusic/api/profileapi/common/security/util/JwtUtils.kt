@@ -5,6 +5,7 @@ import io.jsonwebtoken.*
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Component
+import java.time.Instant
 import java.util.*
 
 @Component
@@ -15,13 +16,14 @@ class JwtUtils {
     private val jwtSecret: String? = null
 
     @Value("\${auth.jwtExpirationMs}")
-    private val jwtExpirationMs: Int = 0
+    private val jwtExpirationMs: Long = 0
 
 
     fun generateJwtToken(authentication: Authentication): String {
         val userPrincipal = authentication.principal as UserDetailsImpl
-        return Jwts.builder().setSubject(userPrincipal.username).setIssuedAt(Date())
-            .setExpiration(Date(Date().time + jwtExpirationMs)).signWith(SignatureAlgorithm.HS512, jwtSecret).compact()
+        return Jwts.builder().setSubject(userPrincipal.username).setIssuedAt(Date.from(Instant.now()))
+            .setExpiration(Date.from(Instant.now().plusMillis(jwtExpirationMs)))
+            .signWith(SignatureAlgorithm.HS512, jwtSecret).compact()
     }
 
     fun getUserNameFromJwtToken(token: String): String {
@@ -35,9 +37,13 @@ class JwtUtils {
         } catch (e: SignatureException) {
             //TODO: implement logging errors
         } catch (e: MalformedJwtException) {
+            throw SecurityException("JWT-Token is not valid");
         } catch (e: ExpiredJwtException) {
+            throw SecurityException("JWT-Token is expired");
         } catch (e: UnsupportedJwtException) {
+            throw SecurityException("JWT-Token is not valid");
         } catch (e: IllegalArgumentException) {
+            throw SecurityException("JWT-Token is not valid");
         }
         return false
     }

@@ -15,6 +15,7 @@ import com.hjusic.api.profileapi.user.model.Users
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.password.PasswordEncoder
 
 @Configuration
@@ -66,8 +67,8 @@ class UserConfiguration {
     }
 
     @Bean
-    fun refreshTokenOfUser(users: Users, jwtUtils: JwtUtils): RefreshTokenOfUser {
-        return RefreshTokenOfUser(users, jwtUtils)
+    fun refreshTokenOfUser(users: Users, jwtUtils: JwtUtils, userDetailsService: UserDetailsService): RefreshTokenOfUser {
+        return RefreshTokenOfUser(users, jwtUtils, userDetailsService)
     }
 
     @Bean
