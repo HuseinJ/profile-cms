@@ -7,9 +7,8 @@ import com.hjusic.api.profileapi.user.model.RefreshToken
 import com.hjusic.api.profileapi.user.model.RefreshTokenCreated
 import com.hjusic.api.profileapi.user.model.User
 import com.hjusic.api.profileapi.user.model.Users
-import org.springframework.security.core.Authentication
-import org.springframework.security.core.context.SecurityContext
-import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
 import spock.lang.Specification
 
 import java.time.Instant
@@ -18,10 +17,12 @@ class RefreshTokenOfUserTest extends Specification{
 
     Users users = Mock()
     JwtUtils jwtUtils = Mock()
+    UserDetailsService userDetailsService = Mock()
+
 
     def "should return error if empty value is passed in"() {
         given:
-        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
+        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils, userDetailsService)
         when:
         def result = refreshTokeOfUser.refreshTokenOfUser("")
         then:
@@ -31,7 +32,7 @@ class RefreshTokenOfUserTest extends Specification{
 
     def "should return wrong credentials if refresh token is expired"() {
         given:
-        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
+        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils, userDetailsService)
         and:
         def token = "someToken"
         and:
@@ -47,7 +48,7 @@ class RefreshTokenOfUserTest extends Specification{
 
     def "should generate new jwt token if jwt token is valid and not expired"() {
         given:
-        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
+        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils, userDetailsService)
         and:
         def token = "someToken"
         and:
@@ -55,9 +56,7 @@ class RefreshTokenOfUserTest extends Specification{
         and:
         users.findUserByRefreshToken(token)>> user
         and:
-        def contextMock = Mock(SecurityContext.class) as SecurityContext
-        contextMock.getAuthentication() >> Mock(Authentication.class)
-        SecurityContextHolder.setContext(contextMock)
+        userDetailsService.loadUserByUsername(_ as String) >> Mock(UserDetails.class)
         when:
         def result = refreshTokeOfUser.refreshTokenOfUser(token)
         then:
@@ -69,7 +68,7 @@ class RefreshTokenOfUserTest extends Specification{
 
     def "should create refresh token for user"() {
         given:
-        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
+        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils, userDetailsService)
         and:
         def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>(), null)
         when:
