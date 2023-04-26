@@ -17,7 +17,7 @@ class User (
     }
 
     fun createRefreshToken(token: String, expirationDate: Instant): RefreshTokenCreated{
-        return RefreshTokenCreated(this, RefreshToken(UUID.randomUUID(), token, expirationDate))
+        return RefreshTokenCreated(this, RefreshToken(token, expirationDate))
     }
 
 }

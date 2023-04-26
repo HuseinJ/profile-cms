@@ -8,7 +8,6 @@ import java.util.*
 @Document
 class RefreshTokenDatabaseEntity(
     @Id
-    val id: UUID,
     val token: String,
     val expiryDate: Instant
 )

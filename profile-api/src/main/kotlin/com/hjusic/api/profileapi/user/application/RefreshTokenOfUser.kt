@@ -27,25 +27,21 @@ class RefreshTokenOfUser(
     }
 
 
-    fun refreshTokenOfUser(refreshToken: String, authenticatedUser: User): Either<ContextError, UserTokenTuple> {
+    fun refreshTokenOfUser(refreshToken: String): Either<ContextError, UserTokenTuple> {
         if (refreshToken == "") {
             return Either.wasFailure(ValidationError(ValidationErrorCode.EMPTY_VALUE))
         }
 
-        var refreshTokenofUser = users.findRefreshTokenOfUser(authenticatedUser)
+        var userForToken = users.findUserByRefreshToken(refreshToken)
             ?: return Either.wasFailure(ValidationError(ValidationErrorCode.WRONG_CREDENTIALS))
 
-        if(refreshToken != refreshTokenofUser.token) {
-            return Either.wasFailure(ValidationError(ValidationErrorCode.WRONG_CREDENTIALS))
-        }
-
-        if(isTokenExpired(refreshTokenofUser)){
+        if(isTokenExpired(userForToken.refreshToken!!)){
             //TODO: DELETE OLD REFRESH TOKEN OF USER
             return Either.wasFailure(ValidationError(ValidationErrorCode.EXPIRED_CREDENTIALS))
         }
 
         val jwt = jwtUtils.generateJwtToken(SecurityContextHolder.getContext().authentication)
-        return Either.wasSuccess(UserTokenTuple(authenticatedUser, jwt, refreshTokenofUser.token))
+        return Either.wasSuccess(UserTokenTuple(userForToken, jwt, userForToken.refreshToken!!.token))
 
     }
 

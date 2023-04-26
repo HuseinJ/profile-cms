@@ -38,7 +38,7 @@ class UserInitializer(
                     adminEmail,
                     passwordEncoder.encode(adminPassword),
                     setOf(potentialAccessRole.get()),
-                    RefreshTokenDatabaseEntity(UUID.randomUUID(), "", Instant.now())
+                    RefreshTokenDatabaseEntity("", Instant.now())
                 )
             )
         }
