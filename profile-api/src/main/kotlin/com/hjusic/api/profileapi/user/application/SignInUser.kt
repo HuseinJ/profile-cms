@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 
 class SignInUser(
     val authenticationManager: AuthenticationManager,
+    val refreshTokenOfUser: RefreshTokenOfUser,
     val users: Users,
     val jwtUtils: JwtUtils
 ) {
@@ -26,7 +27,9 @@ class SignInUser(
             SecurityContextHolder.getContext().authentication = authentication
             val jwt = jwtUtils.generateJwtToken(authentication)
             val userDetails = authentication.principal as UserDetailsImpl
-            return Either.wasSuccess(UserTokenTuple(users.findByName(userDetails.username), jwt))
+            var user = users.findByName(userDetails.username)
+            user = refreshTokenOfUser.createRefreshTokenForUser(user)
+            return Either.wasSuccess(UserTokenTuple(user, jwt, user.refreshToken?.token))
         }catch (e: java.lang.Exception){
             return Either.wasFailure(ValidationError(ValidationErrorCode.WRONG_CREDENTIALS))
         }

@@ -11,42 +11,46 @@ import com.hjusic.api.profileapi.user.model.Users
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
 import java.time.Instant
 import java.util.*
 
 
 class RefreshTokenOfUser(
     val users: Users,
-    val jwtUtils: JwtUtils
+    val jwtUtils: JwtUtils,
+    val userDetailsService: UserDetailsService
 ) {
 
-    companion object {
-        @Value("\${auth.jwtRefreshExpirationMs}")
-        private val refreshTokenDurationMs: Long = 1L
-    }
+    @Value("\${auth.jwtRefreshExpirationMs}")
+    private val refreshTokenDurationMs: Long = 1L
 
-
-    fun refreshTokenOfUser(refreshToken: String, authenticatedUser: User): Either<ContextError, UserTokenTuple> {
+    fun refreshTokenOfUser(refreshToken: String): Either<ContextError, UserTokenTuple> {
         if (refreshToken == "") {
             return Either.wasFailure(ValidationError(ValidationErrorCode.EMPTY_VALUE))
         }
 
-        var refreshTokenofUser = users.findRefreshTokenOfUser(authenticatedUser)
+        var userForToken = users.findUserByRefreshToken(refreshToken)
             ?: return Either.wasFailure(ValidationError(ValidationErrorCode.WRONG_CREDENTIALS))
 
-        if(refreshToken != refreshTokenofUser.token) {
-            return Either.wasFailure(ValidationError(ValidationErrorCode.WRONG_CREDENTIALS))
-        }
-
-        if(isTokenExpired(refreshTokenofUser)){
+        if(isTokenExpired(userForToken.refreshToken!!)){
             //TODO: DELETE OLD REFRESH TOKEN OF USER
             return Either.wasFailure(ValidationError(ValidationErrorCode.EXPIRED_CREDENTIALS))
         }
 
-        val jwt = jwtUtils.generateJwtToken(SecurityContextHolder.getContext().authentication)
-        return Either.wasSuccess(UserTokenTuple(authenticatedUser, jwt))
+        val jwt = jwtUtils.generateJwtToken(getAuthenticationByUser(userForToken))
+        return Either.wasSuccess(UserTokenTuple(userForToken, jwt, userForToken.refreshToken!!.token))
+    }
 
+    private fun getAuthenticationByUser(user: User): Authentication {
+        val userDetails: UserDetails = userDetailsService.loadUserByUsername(user.name)!!
+        return UsernamePasswordAuthenticationToken(
+            userDetails, null,
+            userDetails.authorities
+        )
     }
 
     fun createRefreshTokenForUser(authenticatedUser: User): User {

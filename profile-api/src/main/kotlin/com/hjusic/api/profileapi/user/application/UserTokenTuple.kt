@@ -4,6 +4,7 @@ import com.hjusic.api.profileapi.user.model.User
 
 class UserTokenTuple(
     val user: User,
-    val token: String
+    val token: String,
+    val refreshToken: String?,
 ) {
 }

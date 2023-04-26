@@ -5,6 +5,8 @@ import java.util.*
 
 interface UserDatabaseEntityRepository: MongoRepository<UserDatabaseEntity, UUID> {
     fun findByName(name: String): Optional<UserDatabaseEntity>
+
+    fun findByRefreshTokenDatabaseEntityToken(token: String): Optional<UserDatabaseEntity>
     fun existsByName(username: String?): Boolean
     fun existsByEmail(email: String?): Boolean
 }

@@ -13,5 +13,7 @@ interface Users {
 
     fun findRefreshTokenOfUser(user: User): RefreshToken?
 
+    fun findUserByRefreshToken(refreshToken: String): User?
+
     fun map(user: UserDatabaseEntity): User
 }

@@ -34,7 +34,8 @@ class SignUpUserService(var users: Users)
                     UUID.randomUUID(),
                     name,
                     email,
-                    setOf(AccessRoleService.guestRole())
+                    setOf(AccessRoleService.guestRole()),
+                    null
                 ), password
             )
         )

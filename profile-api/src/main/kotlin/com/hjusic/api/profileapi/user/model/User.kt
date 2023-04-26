@@ -8,7 +8,8 @@ class User (
     var id: UUID,
     var name: String,
     var email: String,
-    var roles: Set<AccessRole>
+    var roles: Set<AccessRole>,
+    var refreshToken: RefreshToken?
     ) {
 
     fun changePassword(newEncryptedPassword: String): PasswordChanged{
@@ -16,7 +17,7 @@ class User (
     }
 
     fun createRefreshToken(token: String, expirationDate: Instant): RefreshTokenCreated{
-        return RefreshTokenCreated(this, RefreshToken(UUID.randomUUID(), token, expirationDate))
+        return RefreshTokenCreated(this, RefreshToken(token, expirationDate))
     }
 
 }

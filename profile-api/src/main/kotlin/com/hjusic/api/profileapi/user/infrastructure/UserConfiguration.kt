@@ -15,6 +15,7 @@ import com.hjusic.api.profileapi.user.model.Users
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.password.PasswordEncoder
 
 @Configuration
@@ -56,13 +57,18 @@ class UserConfiguration {
     }
 
     @Bean
-    fun signInUser(authenticationManager: AuthenticationManager, users: Users, jwtUtils: JwtUtils): SignInUser {
-        return SignInUser(authenticationManager, users, jwtUtils)
+    fun signInUser(
+        authenticationManager: AuthenticationManager,
+        refreshTokenOfUser: RefreshTokenOfUser,
+        users: Users,
+        jwtUtils: JwtUtils
+    ): SignInUser {
+        return SignInUser(authenticationManager, refreshTokenOfUser, users, jwtUtils)
     }
 
     @Bean
-    fun refreshTokenOfUser(users: Users, jwtUtils: JwtUtils): RefreshTokenOfUser {
-        return RefreshTokenOfUser(users, jwtUtils)
+    fun refreshTokenOfUser(users: Users, jwtUtils: JwtUtils, userDetailsService: UserDetailsService): RefreshTokenOfUser {
+        return RefreshTokenOfUser(users, jwtUtils, userDetailsService)
     }
 
     @Bean
@@ -76,9 +82,7 @@ class UserConfiguration {
 
     @Bean
     fun changePassword(
-        authenticationManager: AuthenticationManager,
-        users: Users,
-        passwordEncoder: PasswordEncoder
+        authenticationManager: AuthenticationManager, users: Users, passwordEncoder: PasswordEncoder
     ): ChangePassword {
         return ChangePassword(authenticationManager, users, passwordEncoder)
     }

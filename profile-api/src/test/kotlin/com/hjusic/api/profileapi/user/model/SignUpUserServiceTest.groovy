@@ -19,7 +19,7 @@ class SignUpUserServiceTest extends BaseSpringTest {
         def name = "somerandomNsefsefffefefame"
         def email = "some@mail.com"
         and:
-        def callingUser = new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]))
+        def callingUser = new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]), null)
         when:
         def userCreated = createUserService.createUserWithNameAndMail(name, "",email, callingUser);
         then:
@@ -33,7 +33,7 @@ class SignUpUserServiceTest extends BaseSpringTest {
         def name = "somerandomName"
         def email = "some@mail.com"
         and:
-        def callingUser = new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]))
+        def callingUser = new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]), null)
         and:
         def userCreated = createUserService.createUserWithNameAndMail(name, "",email, callingUser);
         when:
@@ -49,7 +49,7 @@ class SignUpUserServiceTest extends BaseSpringTest {
         def name = "somerandomName1"
         def email = "some@mail1.com"
         and:
-        def callingUser = new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]))
+        def callingUser = new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]), null)
         and:
         def userCreated = createUserService.createUserWithNameAndMail(name, "",email, callingUser);
         when:
@@ -67,7 +67,7 @@ class SignUpUserServiceTest extends BaseSpringTest {
         def name = "somerandomNamsefsefe"
         def email = "some@mail.com"
         and:
-        def callingUser = new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]))
+        def callingUser = new User(UUID.randomUUID(), "calling", "admin", new HashSet<AccessRole>([AccessRoleService.adminRole()]), null)
         when:
         users.trigger(createUserService.createUserWithNameAndMail(name, "", email, callingUser).getSuccess())
         def result = createUserService.createUserWithNameAndMail(name, "","someOtherMail@test.com", callingUser);

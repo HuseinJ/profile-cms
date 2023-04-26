@@ -22,40 +22,24 @@ class RefreshTokenOfUserTest extends Specification{
     def "should return error if empty value is passed in"() {
         given:
         def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
-        and:
-       def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>())
         when:
-        def result = refreshTokeOfUser.refreshTokenOfUser("", user)
+        def result = refreshTokeOfUser.refreshTokenOfUser("")
         then:
         result.wasFailure()
         result.getFail().reason == ValidationErrorCode.EMPTY_VALUE.name()
-    }
-
-    def "should return wrong credentials if refresh token does not match"() {
-        given:
-        def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
-        and:
-        def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>())
-        and:
-        users.findRefreshTokenOfUser(user) >> new RefreshToken(UUID.randomUUID(), "NOTTHESAMETOKEN", Instant.now())
-        when:
-        def result = refreshTokeOfUser.refreshTokenOfUser("1234", user)
-        then:
-        result.wasFailure()
-        result.getFail().reason == ValidationErrorCode.WRONG_CREDENTIALS.name()
     }
 
     def "should return wrong credentials if refresh token is expired"() {
         given:
         def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
         and:
-        def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>())
-        and:
         def token = "someToken"
         and:
-        users.findRefreshTokenOfUser(user) >> new RefreshToken(UUID.randomUUID(), token, Instant.now())
+        def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>(), new RefreshToken(token, Instant.now()))
+        and:
+        users.findUserByRefreshToken(token)>> user
         when:
-        def result = refreshTokeOfUser.refreshTokenOfUser(token, user)
+        def result = refreshTokeOfUser.refreshTokenOfUser(token)
         then:
         result.wasFailure()
         result.getFail().reason == ValidationErrorCode.EXPIRED_CREDENTIALS.name()
@@ -65,17 +49,17 @@ class RefreshTokenOfUserTest extends Specification{
         given:
         def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
         and:
-        def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>())
-        and:
         def token = "someToken"
         and:
-        users.findRefreshTokenOfUser(user) >> new RefreshToken(UUID.randomUUID(), token, Instant.now().plusMillis(100000L))
+        def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>(), new RefreshToken(token, Instant.now().plusMillis(1000L)))
+        and:
+        users.findUserByRefreshToken(token)>> user
         and:
         def contextMock = Mock(SecurityContext.class) as SecurityContext
         contextMock.getAuthentication() >> Mock(Authentication.class)
         SecurityContextHolder.setContext(contextMock)
         when:
-        def result = refreshTokeOfUser.refreshTokenOfUser(token, user)
+        def result = refreshTokeOfUser.refreshTokenOfUser(token)
         then:
         result.wasSuccess()
         1 * jwtUtils.generateJwtToken(_) >> "1234"
@@ -87,7 +71,7 @@ class RefreshTokenOfUserTest extends Specification{
         given:
         def refreshTokeOfUser = new RefreshTokenOfUser(users, jwtUtils)
         and:
-        def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>())
+        def user = new User(UUID.randomUUID(), "name", "mail@mail.com", new HashSet<AccessRole>(), null)
         when:
         def result = refreshTokeOfUser.createRefreshTokenForUser(user)
         then:

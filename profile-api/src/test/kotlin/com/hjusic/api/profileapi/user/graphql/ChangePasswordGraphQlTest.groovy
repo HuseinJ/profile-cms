@@ -34,7 +34,7 @@ class ChangePasswordGraphQlTest extends BaseSpringTest{
             def oldPassword = "somethingOld"
             def name = "user1-change-pw" + Instant.now().toEpochMilli()
         and:
-            users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(oldPassword)))
+            users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>(), null), passwordEncoder.encode(oldPassword)))
         and:
             userAuthServices.callingUser() >> users.findByName(name)
         and:
@@ -60,7 +60,7 @@ class ChangePasswordGraphQlTest extends BaseSpringTest{
         def newPassword = ""
         def name = "user1-change-pw" + Instant.now().toEpochMilli()
         and:
-        users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(oldPassword)))
+        users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>(), null), passwordEncoder.encode(oldPassword)))
         and:
         userAuthServices.callingUser() >> users.findByName(name)
         and:
@@ -86,7 +86,7 @@ class ChangePasswordGraphQlTest extends BaseSpringTest{
         def oldPassword = ""
         def name = "user1-change-pw" + Instant.now().toEpochMilli()
         and:
-        users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(oldPassword)))
+        users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>(), null), passwordEncoder.encode(oldPassword)))
         and:
         userAuthServices.callingUser() >> users.findByName(name)
         and:
@@ -112,7 +112,7 @@ class ChangePasswordGraphQlTest extends BaseSpringTest{
         def oldPassword = "somethingOld"
         def name = "user1-change-pw" + Instant.now().toEpochMilli()
         and:
-        users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(oldPassword)))
+        users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>(), null), passwordEncoder.encode(oldPassword)))
         and:
         userAuthServices.callingUser() >> users.findByName(name)
         and:
@@ -157,7 +157,7 @@ class ChangePasswordGraphQlTest extends BaseSpringTest{
         def oldPassword = "somethingOld"
         def name = "user1-change-pw" + Instant.now().toEpochMilli()
         and:
-        users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>()), passwordEncoder.encode(oldPassword)))
+        users.trigger(new UserCreated(new User(UUID.randomUUID(), name, name + "@mail.com", new HashSet<AccessRole>(), null), passwordEncoder.encode(oldPassword)))
         and:
         userAuthServices.callingUser() >> users.findByName(name)
         and:

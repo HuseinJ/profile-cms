@@ -5,14 +5,13 @@ import java.time.Instant
 import java.util.UUID
 
 class RefreshToken(
-    val id: UUID,
     val token: String,
     val expirationDate: Instant
 ) {
 
     companion object{
         fun from(refreshToken: RefreshTokenDatabaseEntity):RefreshToken{
-            return RefreshToken(refreshToken.id, refreshToken.token, refreshToken.expiryDate)
+            return RefreshToken(refreshToken.token, refreshToken.expiryDate)
         }
     }
 }

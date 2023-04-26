@@ -13,18 +13,29 @@ class RefreshTokenTest extends BaseSpringTest {
 
     def "should create Refresh Token for user"() {
         given:
-        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>()), "password"))
+        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>(), null), "password"))
         and:
-        def token =  "someJWTTOKEN"
+        def token =  "someJWTTOKEN" + Instant.now().toEpochMilli()
         when:
-        def refreshToken = users.trigger(new RefreshTokenCreated(user, new RefreshToken(UUID.randomUUID(), token, Instant.now())))
+        def refreshToken = users.trigger(new RefreshTokenCreated(user, new RefreshToken(token, Instant.now())))
         then:
         users.findRefreshTokenOfUser(user).getToken() == token
     }
 
+    def "should find User by given refresh token"() {
+        given:
+        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>(), null), "password"))
+        and:
+        def token =  "someJWTTOKEN" + Instant.now().toEpochMilli()
+        when:
+        def refreshTokenUser = users.trigger(new RefreshTokenCreated(user, new RefreshToken(token, Instant.now())))
+        then:
+        users.findUserByRefreshToken(refreshTokenUser.refreshToken.token).id == user.id
+    }
+
     def "should not find refresh token if empty for user"() {
         when:
-        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>()), "password"))
+        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>(), null), "password"))
         then:
         users.findRefreshTokenOfUser(user) == null
     }

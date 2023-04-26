@@ -21,7 +21,7 @@ class LoggedInUserGraphQlTest extends BaseSpringTest{
                 }
                 """
         and:
-            userAuthServices.callingUser() >> new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>())
+            userAuthServices.callingUser() >> new User(UUID.randomUUID(), "user1", "user1@mail.com", new HashSet<AccessRole>(), null)
         when:
         def body =
                 RestAssured.given().contentType("application/graphql")
