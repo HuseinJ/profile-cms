@@ -15,20 +15,39 @@ class PageComponentsDatabaseService(
             throw java.lang.IllegalArgumentException("given page is not valid")
         }
 
-        return possiblePage.get().getComponents().stream().map { component -> map(component) }.toList()
+        return possiblePage.get().getComponents().stream().map { component -> map(component).setPageId(uuid) }.toList()
     }
 
     override fun trigger(pageComponentEvent: PageComponentEvent): PageComponent {
         val pageComponent = when (pageComponentEvent) {
             is PageComponentAdded -> handle(pageComponentEvent)
+            is PageComponentRemoved -> handle(pageComponentEvent)
             else -> {
                 throw java.lang.IllegalArgumentException("Unsupported argument")
             }
         }
 
+        pageComponent.setPageId(pageComponentEvent.page.id)
+
         eventPublisher.publish(pageComponentEvent)
 
         return pageComponent
+    }
+
+    private fun handle(pageComponentRemoved: PageComponentRemoved): PageComponent {
+        var possiblePage = pageDatabaseEntityRepository.findById(pageComponentRemoved.page.id)
+
+        if (possiblePage.isEmpty) {
+            throw java.lang.IllegalArgumentException("given page is not valid")
+        }
+
+        var page = possiblePage.get()
+
+        page.removeComponentById(pageComponentRemoved.pageComponent.id)
+
+        pageDatabaseEntityRepository.save(page)
+
+        return pageComponentRemoved.pageComponent
     }
 
     private fun handle(pageComponentEvent: PageComponentAdded): PageComponent {
@@ -57,7 +76,8 @@ class PageComponentsDatabaseService(
         return PageComponent(
             pageComponentDatabaseEntity.id,
             PageComponentName.valueOf(pageComponentDatabaseEntity.componentName),
-            pageComponentDatabaseEntity.componentData
+            pageComponentDatabaseEntity.componentData,
+            null
         )
     }
 }

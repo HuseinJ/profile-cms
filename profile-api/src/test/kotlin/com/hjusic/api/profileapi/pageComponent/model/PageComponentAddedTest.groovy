@@ -47,7 +47,8 @@ class PageComponentAddedTest extends BaseSpringTest {
         when:
         def component = pageComponents.trigger(new PageComponentAdded(new PageComponent(UUID.randomUUID(),
                 PageComponentName.PARAGRAPH,
-                componentData),
+                componentData,
+                UUID.randomUUID()),
                 page))
 
         then:
@@ -58,6 +59,7 @@ class PageComponentAddedTest extends BaseSpringTest {
         componentList.first().componentData.containsKey("key2")
         componentList.first().componentData.containsKey("key3")
         componentList.first().componentData.get("key1") == "value1"
+        componentList.first().pageId == page.id
     }
 
     def "should throw error if user does not have access right to add component to Page"() {
@@ -71,7 +73,7 @@ class PageComponentAddedTest extends BaseSpringTest {
         when:
         def result = page.addComponent(new PageComponent(UUID.randomUUID(),
                 PageComponentName.PARAGRAPH,
-                new HashMap<String, String>()),
+                new HashMap<String, String>(), UUID.randomUUID()),
                 user1)
         then:
         result.fail.reason == PageDomainErrorCode.USER_IS_NOT_ALLOWED_TO_MODIFY_PAGE.name()
@@ -88,7 +90,7 @@ class PageComponentAddedTest extends BaseSpringTest {
         when:
         def result = page.addComponent(new PageComponent(UUID.randomUUID(),
                 PageComponentName.PARAGRAPH,
-                new HashMap<String, String>()),
+                new HashMap<String, String>(), UUID.randomUUID()),
                 user1)
         then:
         result.success != null

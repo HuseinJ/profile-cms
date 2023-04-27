@@ -20,6 +20,10 @@ class PageDatabaseEntity(
         components.add(pageComponentDatabaseEntity)
     }
 
+    fun removeComponentById(componentId: UUID){
+        components.removeIf { component -> component.id == componentId }
+    }
+
     fun getComponents(): List<PageComponentDatabaseEntity> {
         return Collections.unmodifiableList(components)
     }
