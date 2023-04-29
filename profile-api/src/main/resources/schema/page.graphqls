@@ -11,4 +11,5 @@ extend type Query {
 type Page {
     id: String,
     name: String
+    pageComponents: [PageComponent]
 }
