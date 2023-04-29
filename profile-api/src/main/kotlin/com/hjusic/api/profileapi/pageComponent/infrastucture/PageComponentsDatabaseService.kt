@@ -18,6 +18,22 @@ class PageComponentsDatabaseService(
         return possiblePage.get().getComponents().stream().map { component -> map(component).setPageId(uuid) }.toList()
     }
 
+    override fun findComponentsOfPage(pageId: UUID, comonentId: UUID): PageComponent {
+        var possiblePage = pageDatabaseEntityRepository.findById(pageId)
+
+        if (possiblePage.isEmpty) {
+            throw java.lang.IllegalArgumentException("given page is not valid")
+        }
+
+        var pageComponent = possiblePage.get().getComponents().find { component -> component.id == comonentId }
+
+        if(pageComponent == null){
+            throw java.lang.IllegalArgumentException("given pageComponent is not valid")
+        }
+
+        return map(pageComponent!!)
+    }
+
     override fun trigger(pageComponentEvent: PageComponentEvent): PageComponent {
         val pageComponent = when (pageComponentEvent) {
             is PageComponentAdded -> handle(pageComponentEvent)

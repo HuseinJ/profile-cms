@@ -2,6 +2,9 @@ package com.hjusic.api.profileapi.pageComponent.infrastucture
 
 import com.hjusic.api.profileapi.common.event.EventPublisher
 import com.hjusic.api.profileapi.page.infrastructure.PageDatabaseEntityRepository
+import com.hjusic.api.profileapi.page.model.Pages
+import com.hjusic.api.profileapi.pageComponent.application.CreatePageComponent
+import com.hjusic.api.profileapi.pageComponent.application.RemovePageComponent
 import com.hjusic.api.profileapi.pageComponent.model.PageComponents
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -15,5 +18,15 @@ class PageComponentConfiguration {
         pageDatabaseEntityRepository: PageDatabaseEntityRepository
     ): PageComponents {
         return PageComponentsDatabaseService(eventPublisher, pageDatabaseEntityRepository)
+    }
+
+    @Bean
+    fun createPageComponent(pageComponents: PageComponents, pages: Pages): CreatePageComponent{
+        return CreatePageComponent(pageComponents, pages)
+    }
+
+    @Bean
+    fun removePageComponent(pageComponents: PageComponents, pages: Pages): RemovePageComponent {
+        return RemovePageComponent(pageComponents, pages)
     }
 }

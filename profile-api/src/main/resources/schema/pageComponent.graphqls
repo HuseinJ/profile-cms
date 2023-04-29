@@ -1,6 +1,6 @@
 extend type Mutation {
-    createPageComponent(name: String): PageComponent
-    deletePageComponent(id: String): PageComponent
+    createPageComponent(name: PageCompnentName, pageId: String): PageComponent
+    deletePageComponent(pageComponentId: String, pageId: String): PageComponent
 }
 
 type PageComponent {
