@@ -14,7 +14,6 @@ class CreatePage (
     var pages: Pages,
     var createPageService: CreatePageService,
     ){
-
     fun createPage(name:String, callingUser: User): Either<ContextError, Page> {
         if(name == "") {
             return Either.wasFailure(ValidationError(ValidationErrorCode.EMPTY_VALUE))

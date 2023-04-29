@@ -1,0 +1,21 @@
+extend type Mutation {
+    createPageComponent(name: String): PageComponent
+    deletePageComponent(id: String): PageComponent
+}
+
+type PageComponent {
+    id: String,
+    name: PageCompnentName,
+    componentData: [ComponentData],
+    pageid: String
+}
+
+type ComponentData {
+    key: String
+    value: String
+}
+
+enum PageCompnentName {
+    PARAGRAPH,
+    HEADING
+}
