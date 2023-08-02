@@ -16,8 +16,8 @@ class PageGraphQlService(
 
     @DgsQuery
     @Secured
-    fun page(@InputArgument("uuid") uuid: String): PageGraphQlView? {
-        var result = getPage.getPage(uuid)
+    fun page(@InputArgument("uuid") uuid: String?, @InputArgument("name") name: String?): PageGraphQlView? {
+        var result = getPage.getPage(uuid, name)
 
         if(result.wasFailure()){
             throw java.lang.RuntimeException(result.fail?.reason);

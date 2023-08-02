@@ -4,7 +4,7 @@ extend type Mutation {
 }
 
 extend type Query {
-    page(uuid: String): Page
+    page(uuid: String, name: String): Page
     pages: [Page]
 }
 

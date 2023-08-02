@@ -68,6 +68,41 @@ class PageGraphQlServiceTest extends BaseSpringTest{
                 .body("data.page.id", equalTo(page.id.toString()))
     }
 
+    def "should be able to get page by name"() {
+        given:
+        def pagename = "DeathStar"
+        and:
+        def page = pages.trigger(new PageCreated(pagename))
+        and:
+        def roles = new HashSet<AccessRole>();
+        roles.add(AccessRoleService.adminRole());
+        def password = "supersecrettestpassword"
+        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", roles, null), passwordEncoder.encode(password)))
+        def userTokenTuple = signInUser.signInUser(user.name, password).getSuccess();
+        and:
+        userAuthServices.callingUser() >> user
+        and:
+        def query = """
+                query{
+                    page(name: "${page.name}") {
+                        id
+                        name
+                    }
+                }
+                """
+        when:
+        def body =
+                RestAssured.given().contentType("application/graphql")
+                        .body(query.getBytes("UTF-8")).header(new Header("Authorization", "Bearer " + userTokenTuple.token))
+        def result = body.when().post()
+        then:
+        result.then()
+                .statusCode(200)
+                .body("errors", equalTo(null))
+                .body("data.page.name", equalTo(page.name))
+                .body("data.page.id", equalTo(page.id.toString()))
+    }
+
     def "should throw error if id is not valid"() {
         given:
         def roles = new HashSet<AccessRole>();
@@ -95,6 +130,35 @@ class PageGraphQlServiceTest extends BaseSpringTest{
         result.then()
                 .statusCode(200)
                 .body("errors[0].message", containsString(ValidationErrorCode.WRONG_FORMAT.name()))
+    }
+
+    def "should throw error if parameters are both empty"() {
+        given:
+        def roles = new HashSet<AccessRole>();
+        roles.add(AccessRoleService.adminRole());
+        def password = "supersecrettestpassword"
+        def user = users.trigger(new UserCreated(new User(UUID.randomUUID(), "user-" + Instant.now().toString(), "user-"+ Instant.now().toString() +"@mail.com", roles, null), passwordEncoder.encode(password)))
+        def userTokenTuple = signInUser.signInUser(user.name, password).getSuccess();
+        and:
+        userAuthServices.callingUser() >> user
+        and:
+        def query = """
+                query{
+                    page {
+                        id
+                        name
+                    }
+                }
+                """
+        when:
+        def body =
+                RestAssured.given().contentType("application/graphql")
+                        .body(query.getBytes("UTF-8")).header(new Header("Authorization", "Bearer " + userTokenTuple.token))
+        def result = body.when().post()
+        then:
+        result.then()
+                .statusCode(200)
+                .body("errors[0].message", containsString(ValidationErrorCode.EMPTY_VALUE.name()))
     }
 
     def "should be able to get all pages"() {

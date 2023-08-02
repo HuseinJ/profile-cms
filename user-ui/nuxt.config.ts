@@ -1,37 +1,35 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { gql } from '@apollo/client/core';
 
+async function getRoutes(apollo:any) {
+  const { data } = await apollo.query({
+    query: gql`
+      query {
+        pages{
+          name
+        }
+      }
+    `
+  });
+  return data.pages.map((page) => (`/${page.name}`));
+}
+
 export default defineNuxtConfig({
   modules: ['@nuxtjs/apollo'],
   apollo: {
     clients: {
       default: {
-        httpEndpoint: process.env.BASE_API_URL + '/graphql'
+        httpEndpoint: 'http://api.testing.hjusic.com:8080' + '/graphql'
       }
     },
   },
-  async generate() {
-    // Step 1: Fetch data from GraphQL to generate dynamic routes
-    const { data } = await this.$apollo.query({
-      query: gql`
-        query {
-          pages{
-            id
-            name
-            pageComponents {
-              id
-            }
-          }
-        }
-      `
-    });
+  hooks: {
+    async 'nitro:config'(nitroConfig) {
+      if (nitroConfig.dev) return
 
-    // Step 2: Map the data to create dynamic routes array
-    const dynamicRoutes = data.pages.map((page) => ({
-      route: `/${page.name}`,
-      payload: page // You can optionally pass data as payload
-    }));
-
-    return dynamicRoutes;
+      let slugs = await getRoutes();
+      nitroConfig.prerender.routes.push(...slugs);
+      return
+    },
   },
 })

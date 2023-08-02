@@ -33,6 +33,15 @@ class PagesDatabaseService(
         return Optional.of(map(page.get()))
     }
 
+    override fun findPageByName(name: String): Optional<Page> {
+        var page = pageDatabaseEntityRepository.findByName(name);
+
+        if(page.isEmpty){
+            return Optional.empty()
+        }
+        return Optional.of(map(page.get()))
+    }
+
     override fun findAll(): Collection<Page> {
         return pageDatabaseEntityRepository.findAll().stream().map { page -> map(page) }.toList();
     }
