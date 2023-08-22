@@ -1,6 +1,7 @@
 extend type Mutation {
     createPage(name: String): Page
     deletePage(id: String): Page
+    assignHomePage(id: String): Page
 }
 
 extend type Query {

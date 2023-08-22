@@ -9,6 +9,7 @@ class AccessRoleService {
                 AccessRoleName.ROLE_ADMIN,
                 setOf(
                     AccessRight.CREATE_USER,
+                    AccessRight.ASSIGN_HOMEPAGE,
                     AccessRight.LIST_USER,
                     AccessRight.DELETE_USER,
                     AccessRight.CREATE_PAGE,

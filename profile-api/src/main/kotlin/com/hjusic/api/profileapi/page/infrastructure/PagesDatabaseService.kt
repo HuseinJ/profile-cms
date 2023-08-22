@@ -71,9 +71,9 @@ class PagesDatabaseService(
             pageDatabaseEntityRepository.save(pageDatabaseEntity)
         }
 
-        var potentialNewHomePage = pageDatabaseEntityRepository.findById(pageEvent.page.id)
+        var potentialNewHomePage = pageDatabaseEntityRepository.findById(pageEvent.aggregateId)
 
-        if(potentialHomePages.isEmpty()){
+        if(potentialNewHomePage.isEmpty()){
             throw java.lang.IllegalArgumentException("Page is not in Database")
         }
 

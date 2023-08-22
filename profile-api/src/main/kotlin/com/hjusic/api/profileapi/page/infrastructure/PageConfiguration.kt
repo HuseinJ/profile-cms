@@ -2,6 +2,7 @@ package com.hjusic.api.profileapi.page.infrastructure
 
 import com.hjusic.api.profileapi.common.event.EventPublisher
 import com.hjusic.api.profileapi.common.security.UserAuthServices
+import com.hjusic.api.profileapi.page.application.AssignHomePage
 import com.hjusic.api.profileapi.page.application.CreatePage
 import com.hjusic.api.profileapi.page.application.DeletePage
 import com.hjusic.api.profileapi.page.application.GetPage
@@ -36,5 +37,10 @@ class PageConfiguration {
     @Bean
     fun getPage(pages: Pages): GetPage {
         return GetPage(pages)
+    }
+
+    @Bean
+    fun assignHomePage(pages: Pages): AssignHomePage {
+        return AssignHomePage(pages)
     }
 }
