@@ -5,4 +5,5 @@ enum class PageDomainErrorCode(code: String) {
     USER_IS_NOT_ALLOWED_TO_CREATE_PAGE("user.not.allowed.to.create.page"),
     USER_IS_NOT_ALLOWED_TO_MODIFY_PAGE("user.not.allowed.to.modify.page"),
     USER_IS_NOT_ALLOWED_TO_DELETE_PAGE("user.not.allowed.to.delete.page"),
+    USER_IS_NOT_ALLOWED_TO_ASSIGN_HOMEPAGE("user.not.allowed.to.assign.homepage")
 }

@@ -13,6 +13,7 @@ class PageDatabaseEntity(
     val id: UUID = UUID.randomUUID(),
     val pageType: PageEntityType,
     val name: String,
+    val isHomePage: Boolean,
     private val components: MutableList<PageComponentDatabaseEntity> = ArrayList()
 ) {
 
