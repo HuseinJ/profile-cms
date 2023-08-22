@@ -14,6 +14,7 @@ class PagesDatabaseService(
         when (pageEvent) {
             is PageCreated -> page = handle(pageEvent)
             is PageDeleted -> page = handle(pageEvent)
+            is HomePageAssigned -> page = handle(pageEvent)
             else -> {
                 throw java.lang.IllegalArgumentException("Unsupported argument")
             }
@@ -63,11 +64,34 @@ class PagesDatabaseService(
         return pageDeleted.page
     }
 
+    private fun handle(pageEvent: HomePageAssigned): Page {
+        var potentialHomePages = pageDatabaseEntityRepository.findByPageType(PageEntityType.HOME_PAGE);
+        potentialHomePages.forEach { pageDatabaseEntity ->
+            pageDatabaseEntity.pageType = PageEntityType.UNPUBLISHED
+            pageDatabaseEntityRepository.save(pageDatabaseEntity)
+        }
+
+        var potentialNewHomePage = pageDatabaseEntityRepository.findById(pageEvent.page.id)
+
+        if(potentialHomePages.isEmpty()){
+            throw java.lang.IllegalArgumentException("Page is not in Database")
+        }
+
+        var newHomePage = potentialNewHomePage.get()
+        newHomePage.pageType = PageEntityType.HOME_PAGE
+        pageDatabaseEntityRepository.save(newHomePage)
+
+        return map(newHomePage)
+    }
+
     fun map(pageDatabaseEntity: PageDatabaseEntity): Page {
         return when (pageDatabaseEntity.pageType) {
             PageEntityType.UNPUBLISHED -> UnpublishedPage(
                 pageDatabaseEntity.id, pageDatabaseEntity.name
             );
+            PageEntityType.HOME_PAGE -> HomePage(
+                pageDatabaseEntity.id, pageDatabaseEntity.name
+            )
             else -> throw java.lang.IllegalArgumentException("Unsupported argument")
         }
     }

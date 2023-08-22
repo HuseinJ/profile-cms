@@ -32,13 +32,4 @@ abstract class Page(
         return Either.wasSuccess(PageComponentAdded(pageComponent, this))
     }
 
-    fun assignHomePage(callingUser: User): Either<DomainError, HomePageAssigned>{
-        if (!callingUser.roles.stream().flatMap { role -> role.accessRights.stream() }
-                .anyMatch { accessRight -> accessRight == AccessRight.ASSIGN_HOMEPAGE}) {
-            return Either.wasFailure(DomainError(PageDomainErrorCode.USER_IS_NOT_ALLOWED_TO_ASSIGN_HOMEPAGE.name))
-        }
-
-        return  Either.wasSuccess(HomePageAssigned.now(this))
-    }
-
 }

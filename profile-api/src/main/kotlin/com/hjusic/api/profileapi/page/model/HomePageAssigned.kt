@@ -3,7 +3,7 @@ package com.hjusic.api.profileapi.page.model
 import java.util.*
 
 class HomePageAssigned private constructor(
-   page: Page
+   val page: Page
 ): PageEvent(page) {
 
     companion object{

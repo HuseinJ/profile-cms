@@ -11,9 +11,8 @@ import kotlin.collections.ArrayList
 class PageDatabaseEntity(
     @Id
     val id: UUID = UUID.randomUUID(),
-    val pageType: PageEntityType,
+    var pageType: PageEntityType,
     val name: String,
-    val isHomePage: Boolean,
     private val components: MutableList<PageComponentDatabaseEntity> = ArrayList()
 ) {
 

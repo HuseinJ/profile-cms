@@ -1,4 +1,8 @@
 package com.hjusic.api.profileapi.page.model
 
-class HomePage {
+import java.util.*
+class HomePage(
+    id: UUID,
+    name: String
+): Page(id, name) {
 }

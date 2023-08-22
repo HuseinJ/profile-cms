@@ -6,5 +6,5 @@ import java.util.*
 
 interface PageDatabaseEntityRepository: MongoRepository<PageDatabaseEntity, UUID> {
     fun findByName(name: String): Optional<PageDatabaseEntity>
-    fun findByHomePageIsTrue(): List<PageDatabaseEntity>
+    fun findByPageType(pageEntityType: PageEntityType): List<PageDatabaseEntity>
 }
