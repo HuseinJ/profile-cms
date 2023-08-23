@@ -6,6 +6,7 @@ import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsQuery
 import com.netflix.graphql.dgs.InputArgument
 import org.springframework.security.access.annotation.Secured
+import java.io.NotActiveException
 import java.util.UUID
 
 @DgsComponent
@@ -34,5 +35,17 @@ class PageGraphQlService(
     @Secured
     fun pages(): List<PageGraphQlView> {
         return pages.findAll().stream().map { page -> PageGraphQlView.from(page) }.toList();
+    }
+
+    @DgsQuery
+    @Secured
+    fun home(): PageGraphQlView {
+        var potentialHomePage = pages.findHomePage();
+
+        if (potentialHomePage.isEmpty) {
+            throw SecurityException("No Homepage Set")
+        }
+
+        return PageGraphQlView.from(potentialHomePage.get())
     }
 }

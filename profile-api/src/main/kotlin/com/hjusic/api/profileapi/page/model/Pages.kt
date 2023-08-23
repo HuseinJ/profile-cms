@@ -6,5 +6,6 @@ interface Pages {
     fun trigger(pageEvent: PageEvent): Page
     fun findPageById(uuid: UUID): Optional<Page>
     fun findPageByName(name: String): Optional<Page>
+    fun findHomePage(): Optional<Page>
     fun findAll(): Collection<Page>
 }

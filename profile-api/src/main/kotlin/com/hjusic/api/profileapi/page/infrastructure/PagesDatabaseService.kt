@@ -43,6 +43,19 @@ class PagesDatabaseService(
         return Optional.of(map(page.get()))
     }
 
+    override fun findHomePage(): Optional<Page> {
+        var potentialHomePages = pageDatabaseEntityRepository.findByPageType(PageEntityType.HOME_PAGE)
+
+        if(potentialHomePages.isEmpty()){
+            return Optional.empty()
+        }
+
+        var homePage = potentialHomePages.first()
+
+        return Optional.of(map(homePage))
+
+    }
+
     override fun findAll(): Collection<Page> {
         return pageDatabaseEntityRepository.findAll().stream().map { page -> map(page) }.toList();
     }
