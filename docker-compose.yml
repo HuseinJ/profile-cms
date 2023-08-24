@@ -14,15 +14,14 @@ services:
       - SPRING_DATA_MONGODB_HOST=mongo_db
       - SPRING_DATA_MONGODB_PORT=27017
       - SPRING_DATA_MONGODB_DATABASE=${MONGO_INIT_DB}
+      - JWT_COOKIE_NAME=token
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRATION_MS=${JWT_EXPIRATION_MS}
+      - JWT_REFRESH_EXPIRATION_MS=${JWT_REFRESH_EXPIRATION_MS}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
     networks:
       - main-back-end
-  amdin-ui:
-    build: admin-ui
-    restart: unless-stopped
-    ports:
-      - ${ADMIN_UI_PORT}:80
-    depends_on:
-      - profile-api
   mongo_db:
     image: "mongo:latest"
     restart: always

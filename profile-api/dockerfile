@@ -1,4 +1,29 @@
-FROM eclipse-temurin:18
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+# Use a base image with OpenJDK and Maven for building Java applications
+FROM maven:3.8-openjdk-18 AS build
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the Maven project files to the container
+COPY pom.xml .
+
+# Download the project dependencies
+RUN mvn dependency:go-offline -B
+
+# Copy the application source code to the container
+COPY src ./src
+
+# Build the application using Maven
+RUN mvn package -DskipTests
+
+# Use a base image with OpenJDK for running Java applications
+FROM openjdk:18
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the JAR file from the build image to the runtime image
+COPY --from=build /app/target/profile-api-*.jar ./profile-api.jar
+
+# Set the entry point for the container
+CMD ["java", "-jar", "profile-api.jar"]
