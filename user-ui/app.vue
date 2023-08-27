@@ -20,7 +20,7 @@
 
   @include respond-to('large') {
     max-width: $large;
-    padding: 0em;
+    padding: 0;
   }
 }
 </style>
