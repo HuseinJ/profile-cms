@@ -5,7 +5,6 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class PageComponentDatabaseEntity(
-
     @Id
     val id: UUID = UUID.randomUUID(),
     val componentName: String,

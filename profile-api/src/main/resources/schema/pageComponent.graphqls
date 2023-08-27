@@ -17,5 +17,5 @@ type ComponentData {
 
 enum PageCompnentName {
     PARAGRAPH,
-    HEADING
+    HEADER
 }
