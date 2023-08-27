@@ -3,10 +3,12 @@
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
+    <Footer></Footer>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Footer from "~/components/atoms/Footer.vue";
 </script>
 
 <style scoped lang="scss">
@@ -36,6 +38,11 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-family: $default-font;
 }
+
+span {
+  font-family: $default-font;
+}
+
 body{
   margin: 0;
 
