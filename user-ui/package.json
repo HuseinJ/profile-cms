@@ -11,10 +11,13 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/node": "^18.17.0",
-    "nuxt": "^3.6.5"
+    "nuxt": "^3.6.5",
+    "sass": "^1.66.1",
+    "@nuxtjs/style-resources": "^1.2.1"
   },
   "dependencies": {
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
+
     "axios": "^1.4.0"
   }
 }

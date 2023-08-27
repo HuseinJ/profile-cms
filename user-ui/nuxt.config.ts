@@ -36,4 +36,12 @@ export default defineNuxtConfig({
       return
     },
   },
+  buildModules: [
+    '@nuxtjs/style-resources'
+  ],
+  styleResources: {
+    scss: [
+      '@/assets/scss/main.scss', // Replace with your SCSS file path
+    ],
+  },
 })
