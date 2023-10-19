@@ -15,7 +15,6 @@ class RemovePageComponent(
     var pageComponents: PageComponents,
     var pages: Pages
 ) {
-
     fun removePageComponent(possiblePageId: String, possiblePageComponentId: String, callingUser: User): Either<ContextError, PageComponent> {
         if (possiblePageId == "" || possiblePageComponentId == "") {
             return Either.wasFailure(ValidationError(ValidationErrorCode.EMPTY_VALUE))

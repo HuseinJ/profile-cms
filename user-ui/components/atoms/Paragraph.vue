@@ -17,5 +17,8 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-
+  p{
+    hyphens: auto;
+    text-align: justify
+  }
 </style>

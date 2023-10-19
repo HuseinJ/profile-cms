@@ -2,7 +2,7 @@
 import axios from 'axios'
 async function getRoutes(apollo:any) {
   return axios({
-    url: 'http://api.testing.hjusic.com:8080' + '/graphql',
+    url: 'http://api.testing.hjusic.com:8081' + '/graphql',
     method: 'post',
     data: {
       query: `
@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   apollo: {
     clients: {
       default: {
-        httpEndpoint: 'http://api.testing.hjusic.com:8080' + '/graphql'
+        httpEndpoint: 'http://api.testing.hjusic.com:8081' + '/graphql'
       }
     },
   },
