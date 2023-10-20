@@ -3,7 +3,6 @@ pipeline {
     tools {
         // Specify the name of the Maven installation defined in the Jenkins configuration.
         maven 'Maven'
-        groovy 'groovy'
     }
     stages {
         stage('Checkout') {
@@ -15,6 +14,18 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'cd profile-api && mvn clean test'
+            }
+        }
+
+        stage('Build Docker') {
+            steps {
+                sh 'cd profile-api && docker build -t profile-api:${env.BUILD_NUMBER} .'
+            }
+        }
+
+        stage('Deploy Profile Api') {
+            steps {
+
             }
         }
     }
