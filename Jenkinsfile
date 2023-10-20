@@ -14,8 +14,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'cd profile-api'
-                sh 'mvn clean test'
+                sh 'cd profile-api && mvn clean test'
             }
         }
     }
