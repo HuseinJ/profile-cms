@@ -8,10 +8,10 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Test') {
             steps {
                 sh 'cd profile-api'
-                sh 'mvn clean package'
+                sh 'mvn test'
             }
         }
     }
