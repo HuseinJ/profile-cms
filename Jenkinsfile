@@ -31,15 +31,17 @@ pipeline {
                     def baseAdminUrl = "https://admin.hjusic.com"
                     def adminEmail = "husein.jusic@icloud.com"
 
-                    withEnv(["API_PORT=${apiPort}",
-                            "BASE_ADMIN_URL=${baseAdminUrl},
-                            "ADMIN_EMAIL=${adminEmail}"]) {
+                    withEnv([
+                        "API_PORT=${apiPort}",
+                        "BASE_ADMIN_URL=${baseAdminUrl}",
+                        "ADMIN_EMAIL=${adminEmail}"
+                    ]) {
                         sh "docker-compose up -d"
                     }
                 }
-                sh "docker compose up -d"
             }
         }
+
     }
 
     post {
