@@ -50,7 +50,7 @@ class UsersGraphQlTest extends BaseSpringTest {
         then:
         result.then()
                 .statusCode(200)
-                .body("errors[0].message", containsString("Zugriff verweigert"))
+                .body("errors[0].message", containsString("Access is denied"))
     }
 
     def "should return a list of users if the caller is logged in"() {
@@ -104,6 +104,6 @@ class UsersGraphQlTest extends BaseSpringTest {
         then:
         result.then()
                 .statusCode(200)
-                .body("errors[0].message", containsString("Zugriff verweigert"))
+                .body("errors[0].message", containsString("Access is denied"))
     }
 }
