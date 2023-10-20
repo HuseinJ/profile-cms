@@ -3,7 +3,7 @@ pipeline {
     tools {
         // Specify the name of the Maven installation defined in the Jenkins configuration.
         maven 'Maven'
-        groovy 'Groovy'
+        groovy 'groovy'
     }
     stages {
         stage('Checkout') {
