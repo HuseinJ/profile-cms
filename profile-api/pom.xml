@@ -186,6 +186,8 @@
                             <directory>${project.basedir}/src/test/kotlin</directory>
                             <includes>
                                 <include>**/*.groovy</include>
+                                <include>**/*Test.java</include>
+                                <include>**/*Spec.java</include>
                             </includes>
                         </testSource>
                     </testSources>
