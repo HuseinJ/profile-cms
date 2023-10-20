@@ -23,6 +23,23 @@ pipeline {
                 sh "cd profile-api && docker build -t profile-api:${env.BUILD_NUMBER} ."
             }
         }
+
+        stage('Deploy Profile Blog') {
+            steps {
+                script {
+                    def apiPort = "8081"
+                    def baseAdminUrl = "https://admin.hjusic.com"
+                    def adminEmail = "husein.jusic@icloud.com"
+
+                    withEnv(["API_PORT=${apiPort}",
+                            "BASE_ADMIN_URL=${baseAdminUrl}
+                            "ADMIN_EMAIL=${adminEmail}"]) {
+                        sh "docker-compose up -d"
+                    }
+                }
+                sh "docker compose up -d"
+            }
+        }
     }
 
     post {
