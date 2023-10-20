@@ -3,6 +3,7 @@ pipeline {
     tools {
         // Specify the name of the Maven installation defined in the Jenkins configuration.
         maven 'Maven'
+        dockerTool 'docker'
     }
     stages {
         stage('Checkout') {
@@ -19,7 +20,7 @@ pipeline {
 
         stage('Build Docker') {
             steps {
-                sh 'cd profile-api && docker build -t profile-api:${env.BUILD_NUMBER} .'
+                sh "cd profile-api && docker build -t profile-api:${env.BUILD_NUMBER} ."
             }
         }
     }
