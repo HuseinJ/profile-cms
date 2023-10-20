@@ -22,12 +22,6 @@ pipeline {
                 sh 'cd profile-api && docker build -t profile-api:${env.BUILD_NUMBER} .'
             }
         }
-
-        stage('Deploy Profile Api') {
-            steps {
-
-            }
-        }
     }
 
     post {
