@@ -13,7 +13,6 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'cd profile-api'
                 sh 'mvn test'
             }
         }
