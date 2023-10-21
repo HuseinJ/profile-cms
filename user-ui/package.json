@@ -9,15 +9,15 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^1.0.0",
+    "@nuxtjs/style-resources": "^1.2.1",
     "@types/node": "^18.17.0",
     "nuxt": "^3.6.5",
-    "sass": "^1.66.1",
-    "@nuxtjs/style-resources": "^1.2.1"
+    "sass": "^1.69.4"
   },
   "dependencies": {
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
-
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "sass-loader": "^13.3.2"
   }
 }
