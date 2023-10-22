@@ -15,13 +15,16 @@ import Footer from "~/components/atoms/Footer.vue";
 @import "@/assets/scss/main.scss"; // Import the SCSS file
 
 .main-holder{
-  padding: 1em;
+  margin: $baseMargin;
 
   display: flex;
   flex-direction: column;
 
+  width: calc(100% - $baseMargin - $baseMargin);
+
   @include respond-to('large') {
     max-width: $large;
+    width: $large;
     padding: 0;
   }
 }
@@ -53,6 +56,8 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+
 html{
   height: 100vh;
 }

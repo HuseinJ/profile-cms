@@ -1,11 +1,14 @@
 <template>
-  <PageComponent v-for="component in data.home.pageComponents" :pageComponent="component"> test </PageComponent>
+  <Header text="Under Construction"></Header>
+  <Paragraph text="This is powered by my own CMS which currently is still in development. For more information, visit my GitHub repository" />
+  <GitTag url="https://github.com/HuseinJ/profile-cms/settings" tag-text="Profile-CMS"></GitTag>
+  <PageComponent v-if="data" v-for="component in data.home.pageComponents" :pageComponent="component"> test </PageComponent>
 </template>
 
 <script lang="ts" setup>
 import Header from "~/components/atoms/Header.vue";
 import Paragraph from "~/components/atoms/Paragraph.vue";
-import SubHeader from "~/components/atoms/SubHeader.vue";
+import GitTag from "~/components/atoms/GitTag.vue";
 
 const query = gql`
   query Home{
