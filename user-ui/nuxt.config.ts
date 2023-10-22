@@ -2,7 +2,7 @@
 import axios from 'axios'
 async function getRoutes(apollo:any) {
   return axios({
-    url: process.env.CMS_URL + '/graphql',
+    url: process.env.CMS_URL ? process.env.CMS_URL + '/graphql' : "localhost:8080/graphql",
     method: 'post',
     data: {
       query: `
@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   apollo: {
     clients: {
       default: {
-        httpEndpoint: process.env.CMS_URL + '/graphql'
+        httpEndpoint: process.env.CMS_URL ? process.env.CMS_URL + '/graphql' : "localhost:8080/graphql",
       }
     },
   },
@@ -43,6 +43,9 @@ export default defineNuxtConfig({
     scss: [
       '@/assets/scss/main.scss', // Replace with your SCSS file path
     ],
+    css: [
+      '@fortawesome/fontawesome-svg-core/styles.css'
+    ]
   },
   loaders: {
     sass: {
