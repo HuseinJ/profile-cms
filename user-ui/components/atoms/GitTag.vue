@@ -1,8 +1,11 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import Paragraph from "~/components/atoms/Paragraph.vue";
 
 export default defineComponent({
   name: "GitTag",
+  components: {Paragraph, FontAwesomeIcon},
   props:{
     url: {
       type: String,
@@ -19,8 +22,8 @@ export default defineComponent({
 <template>
   <a :href="url" target="_blank">
     <div class="git-tag">
-      <font-awesome-icon icon="fa-brands fa-github-square" />
-      <span v-if="tagText && tagText != ''">{{tagText}}</span>
+      <FontAwesomeIcon icon="fa-brands fa-github-square" />
+      <Paragraph v-if="tagText" :text="tagText" />
     </div>
   </a>
 </template>
