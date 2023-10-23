@@ -97,11 +97,15 @@ class PageComponentsDatabaseService(
     }
 
     fun map(pageComponentDatabaseEntity: PageComponentDatabaseEntity): PageComponent {
-        return PageComponent(
+        var pageComponent = PageComponent(
             pageComponentDatabaseEntity.id,
             PageComponentName.valueOf(pageComponentDatabaseEntity.componentName),
             pageComponentDatabaseEntity.componentData,
         )
+
+        pageComponent.order = pageComponentDatabaseEntity.order
+
+        return pageComponent
     }
 
     private fun findHighestOrder(page: PageDatabaseEntity): Int {

@@ -14,7 +14,7 @@ class PageComponent(
     val componentName: PageComponentName,
     val componentData: Map<String, String>,
 ){
-    private var order: Int? = null
+    var order: Int? = null
         get() = field
         set(value) {
             field = value

@@ -61,6 +61,35 @@ class PageComponentAddedTest extends BaseSpringTest {
         componentList.first().pageid == page.id
     }
 
+    def "should be able to add multiple component to the page with ASC order"() {
+        given:
+        def page = pages.trigger(new PageCreated("testPage1Order"))
+        and:
+        def componentData = new HashMap<String, String>()
+        componentData.put("key1", "value1")
+        componentData.put("key2", "value2")
+        componentData.put("key3", "value3")
+        when:
+        pageComponents.trigger(new PageComponentAdded(new PageComponent(UUID.randomUUID(),
+                PageComponentName.PARAGRAPH,
+                componentData),
+                page))
+        pageComponents.trigger(new PageComponentAdded(new PageComponent(UUID.randomUUID(),
+                PageComponentName.HEADER,
+                componentData),
+                page))
+
+        then:
+        def componentList = pageComponents.findComponentsOfPage(page.id)
+        componentList.size() == 2
+        def c1 = componentList.stream().find { it -> it.componentName == PageComponentName.PARAGRAPH}
+        def c2 = componentList.stream().find { it -> it.componentName == PageComponentName.HEADER}
+
+        c1 != null && c2 != null
+        ((PageComponent) c1).order == 1
+        ((PageComponent) c2).order == 2
+    }
+
     def "should throw error if user does not have access right to add component to Page"() {
         given:
         def password = "password1"
