@@ -1,6 +1,7 @@
 package com.hjusic.api.profileapi.pageComponent.infrastucture
 
 import com.hjusic.api.profileapi.common.event.EventPublisher
+import com.hjusic.api.profileapi.page.infrastructure.PageDatabaseEntity
 import com.hjusic.api.profileapi.page.infrastructure.PageDatabaseEntityRepository
 import com.hjusic.api.profileapi.pageComponent.model.*
 import java.util.*
@@ -15,7 +16,13 @@ class PageComponentsDatabaseService(
             throw java.lang.IllegalArgumentException("given page is not valid")
         }
 
-        return possiblePage.get().getComponents().stream().map { component -> map(component).setPageId(uuid) }.toList()
+        return possiblePage.get().getComponents().stream()
+            .map { component ->
+                val mappedComponent = map(component)
+                mappedComponent.pageid = uuid
+                mappedComponent
+            }
+            .toList()
     }
 
     override fun findComponentsOfPage(pageId: UUID, comonentId: UUID): PageComponent {
@@ -27,11 +34,11 @@ class PageComponentsDatabaseService(
 
         var pageComponent = possiblePage.get().getComponents().find { component -> component.id == comonentId }
 
-        if(pageComponent == null){
+        if (pageComponent == null) {
             throw java.lang.IllegalArgumentException("given pageComponent is not valid")
         }
 
-        return map(pageComponent!!)
+        return map(pageComponent)
     }
 
     override fun trigger(pageComponentEvent: PageComponentEvent): PageComponent {
@@ -43,7 +50,7 @@ class PageComponentsDatabaseService(
             }
         }
 
-        pageComponent.setPageId(pageComponentEvent.page.id)
+        pageComponent.pageid = pageComponentEvent.page.id
 
         eventPublisher.publish(pageComponentEvent)
 
@@ -80,6 +87,7 @@ class PageComponentsDatabaseService(
                 pageComponentEvent.pageComponent.id,
                 pageComponentEvent.pageComponent.componentName.name,
                 pageComponentEvent.pageComponent.componentData,
+                findHighestOrder(page) + 1
             )
         )
 
@@ -93,7 +101,13 @@ class PageComponentsDatabaseService(
             pageComponentDatabaseEntity.id,
             PageComponentName.valueOf(pageComponentDatabaseEntity.componentName),
             pageComponentDatabaseEntity.componentData,
-            null
         )
+    }
+
+    private fun findHighestOrder(page: PageDatabaseEntity): Int {
+        return page.getComponents().stream()
+            .mapToInt { pc -> pc.order }
+            .max()
+            .orElse(0)
     }
 }

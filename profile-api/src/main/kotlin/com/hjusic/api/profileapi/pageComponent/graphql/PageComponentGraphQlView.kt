@@ -21,7 +21,7 @@ class PageComponentGraphQlView private constructor(
                 pageComponent.id.toString(),
                 pageComponent.componentName,
                 componentData,
-                pageComponent.getPageId().toString()
+                pageComponent.pageid.toString()
             )
         }
     }

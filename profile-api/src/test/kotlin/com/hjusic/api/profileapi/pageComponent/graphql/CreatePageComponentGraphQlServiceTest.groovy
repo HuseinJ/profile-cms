@@ -73,7 +73,7 @@ class CreatePageComponentGraphQlServiceTest extends BaseSpringTest {
                 .statusCode(200)
                 .body("errors", equalTo(null))
                 .body("data.createPageComponent.pageid", equalTo(page.id.toString()))
-                .body("data.createPageComponent.pageid", equalTo(createdComponent.getPageId().toString()))
+                .body("data.createPageComponent.pageid", equalTo(createdComponent.pageid.toString()))
                 .body("data.createPageComponent.id", equalTo(createdComponent.id.toString()))
     }
 
