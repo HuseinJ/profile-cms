@@ -45,6 +45,7 @@ class PageComponentsDatabaseService(
         val pageComponent = when (pageComponentEvent) {
             is PageComponentAdded -> handle(pageComponentEvent)
             is PageComponentRemoved -> handle(pageComponentEvent)
+            is PageComponentSwitched -> handle(pageComponentEvent)
             else -> {
                 throw java.lang.IllegalArgumentException("Unsupported argument")
             }
@@ -55,6 +56,22 @@ class PageComponentsDatabaseService(
         eventPublisher.publish(pageComponentEvent)
 
         return pageComponent
+    }
+
+    private fun handle(pageComponentSwitched: PageComponentSwitched): PageComponent {
+        var possiblePage = pageDatabaseEntityRepository.findById(pageComponentSwitched.page.id)
+
+        if (possiblePage.isEmpty) {
+            throw java.lang.IllegalArgumentException("given page is not valid")
+        }
+
+        var page = possiblePage.get()
+
+        page.switchComponentOrder(pageComponentSwitched.pageComponent.id, pageComponentSwitched.secondPageComponent.id)
+
+        pageDatabaseEntityRepository.save(page)
+
+        return pageComponentSwitched.pageComponent
     }
 
     private fun handle(pageComponentRemoved: PageComponentRemoved): PageComponent {

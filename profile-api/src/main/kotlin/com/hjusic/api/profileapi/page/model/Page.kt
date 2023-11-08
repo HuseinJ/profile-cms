@@ -6,6 +6,7 @@ import com.hjusic.api.profileapi.common.result.Either
 import com.hjusic.api.profileapi.page.application.DeletePage
 import com.hjusic.api.profileapi.pageComponent.model.PageComponent
 import com.hjusic.api.profileapi.pageComponent.model.PageComponentAdded
+import com.hjusic.api.profileapi.pageComponent.model.PageComponentSwitched
 import com.hjusic.api.profileapi.user.model.User
 import java.util.*
 
@@ -32,4 +33,12 @@ abstract class Page(
         return Either.wasSuccess(PageComponentAdded(pageComponent, this))
     }
 
+    fun switchComponents(firstPageComponent: PageComponent, secondPageComponent: PageComponent, callingUser: User): Either<DomainError, PageComponentSwitched>{
+        if (!callingUser.roles.stream().flatMap { role -> role.accessRights.stream() }
+                .anyMatch { accessRight -> accessRight == AccessRight.MODIFY_PAGE}) {
+            return Either.wasFailure(DomainError(PageDomainErrorCode.USER_IS_NOT_ALLOWED_TO_MODIFY_PAGE.name))
+        }
+
+        return Either.wasSuccess(PageComponentSwitched(firstPageComponent, secondPageComponent, this))
+    }
 }

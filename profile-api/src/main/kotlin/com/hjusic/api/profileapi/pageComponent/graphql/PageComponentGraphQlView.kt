@@ -14,7 +14,8 @@ class PageComponentGraphQlView private constructor(
         fun from(pageComponent: PageComponent): PageComponentGraphQlView {
 
             var componentData =
-                pageComponent.componentData.entries.stream().map { entry -> ComponentData(entry.key, entry.value) }
+                pageComponent.componentData.entries.stream()
+                    .map { entry -> ComponentData(entry.key, entry.value) }
                     .toList()
 
             return PageComponentGraphQlView(

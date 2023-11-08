@@ -35,6 +35,17 @@ class PageDatabaseEntity(
         }
     }
 
+    fun switchComponentOrder(componentId1: UUID, componentId2: UUID) {
+        val component1 = components.firstOrNull { it.id == componentId1 }
+        val component2 = components.firstOrNull { it.id == componentId2 }
+
+        if (component1 != null && component2 != null) {
+            val tempOrder = component1.order
+            component1.order = component2.order
+            component2.order = tempOrder
+        }
+    }
+
     fun getComponents(): List<PageComponentDatabaseEntity> {
         return Collections.unmodifiableList(components)
     }

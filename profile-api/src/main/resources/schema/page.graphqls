@@ -2,6 +2,7 @@ extend type Mutation {
     createPage(name: String): Page
     deletePage(id: String): Page
     assignHomePage(id: String): Page
+    switchComponents(pageId: String ,firstComponentId: String, secondComponentId: String): Page
 }
 
 extend type Query {
