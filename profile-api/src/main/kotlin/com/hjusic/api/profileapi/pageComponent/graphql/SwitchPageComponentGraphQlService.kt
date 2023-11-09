@@ -17,7 +17,7 @@ class SwitchPageComponentGraphQlService(
     fun switchComponents(pageId: String, firstComponentId: String, secondComponentId: String): PageGraphQlView{
         var loggedInUser = userAuthServices.callingUser()
 
-        var result = switchPageComponents.switchPageComponents(pageId, firstComponentId, secondComponentId, loggedInUser)
+        var result = switchPageComponents.switchPageComponents(firstComponentId, secondComponentId, pageId, loggedInUser)
 
         if (result.wasFailure()) {
             throw SecurityException(result.fail?.reason)

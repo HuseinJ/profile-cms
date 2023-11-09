@@ -27,7 +27,7 @@ class PageComponentSwitchedTest extends BaseSpringTest{
     @Autowired
     PasswordEncoder passwordEncoder
 
-    def "Should be able to switch page components in user has access right to modify page"() {
+    def "Should be able to switch page components if user has access right to modify page"() {
         given:
         def password = "password1"
         def roles = new HashSet<AccessRole>()
@@ -66,7 +66,7 @@ class PageComponentSwitchedTest extends BaseSpringTest{
         pageComponents.findComponentsOfPage(page.id, pageComponent4.id).order == 1
     }
 
-    def "Should not be able to switch page components in user does not have access right to modify page"() {
+    def "Should not be able to switch page components if user does not have access right to modify page"() {
         given:
         def password = "password1"
         def roles = new HashSet<AccessRole>()
