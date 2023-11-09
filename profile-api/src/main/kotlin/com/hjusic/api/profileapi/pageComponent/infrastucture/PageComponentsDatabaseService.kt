@@ -1,6 +1,7 @@
 package com.hjusic.api.profileapi.pageComponent.infrastucture
 
 import com.hjusic.api.profileapi.common.event.EventPublisher
+import com.hjusic.api.profileapi.page.infrastructure.PageDatabaseEntity
 import com.hjusic.api.profileapi.page.infrastructure.PageDatabaseEntityRepository
 import com.hjusic.api.profileapi.pageComponent.model.*
 import java.util.*
@@ -15,7 +16,13 @@ class PageComponentsDatabaseService(
             throw java.lang.IllegalArgumentException("given page is not valid")
         }
 
-        return possiblePage.get().getComponents().stream().map { component -> map(component).setPageId(uuid) }.toList()
+        return possiblePage.get().getComponents().stream()
+            .map { component ->
+                val mappedComponent = map(component)
+                mappedComponent.pageid = uuid
+                mappedComponent
+            }
+            .toList()
     }
 
     override fun findComponentsOfPage(pageId: UUID, comonentId: UUID): PageComponent {
@@ -27,27 +34,44 @@ class PageComponentsDatabaseService(
 
         var pageComponent = possiblePage.get().getComponents().find { component -> component.id == comonentId }
 
-        if(pageComponent == null){
+        if (pageComponent == null) {
             throw java.lang.IllegalArgumentException("given pageComponent is not valid")
         }
 
-        return map(pageComponent!!)
+        return map(pageComponent)
     }
 
     override fun trigger(pageComponentEvent: PageComponentEvent): PageComponent {
         val pageComponent = when (pageComponentEvent) {
             is PageComponentAdded -> handle(pageComponentEvent)
             is PageComponentRemoved -> handle(pageComponentEvent)
+            is PageComponentSwitched -> handle(pageComponentEvent)
             else -> {
                 throw java.lang.IllegalArgumentException("Unsupported argument")
             }
         }
 
-        pageComponent.setPageId(pageComponentEvent.page.id)
+        pageComponent.pageid = pageComponentEvent.page.id
 
         eventPublisher.publish(pageComponentEvent)
 
         return pageComponent
+    }
+
+    private fun handle(pageComponentSwitched: PageComponentSwitched): PageComponent {
+        var possiblePage = pageDatabaseEntityRepository.findById(pageComponentSwitched.page.id)
+
+        if (possiblePage.isEmpty) {
+            throw java.lang.IllegalArgumentException("given page is not valid")
+        }
+
+        var page = possiblePage.get()
+
+        page.switchComponentOrder(pageComponentSwitched.pageComponent.id, pageComponentSwitched.secondPageComponent.id)
+
+        pageDatabaseEntityRepository.save(page)
+
+        return pageComponentSwitched.pageComponent
     }
 
     private fun handle(pageComponentRemoved: PageComponentRemoved): PageComponent {
@@ -80,6 +104,7 @@ class PageComponentsDatabaseService(
                 pageComponentEvent.pageComponent.id,
                 pageComponentEvent.pageComponent.componentName.name,
                 pageComponentEvent.pageComponent.componentData,
+                findHighestOrder(page) + 1
             )
         )
 
@@ -89,11 +114,21 @@ class PageComponentsDatabaseService(
     }
 
     fun map(pageComponentDatabaseEntity: PageComponentDatabaseEntity): PageComponent {
-        return PageComponent(
+        var pageComponent = PageComponent(
             pageComponentDatabaseEntity.id,
             PageComponentName.valueOf(pageComponentDatabaseEntity.componentName),
             pageComponentDatabaseEntity.componentData,
-            null
         )
+
+        pageComponent.order = pageComponentDatabaseEntity.order
+
+        return pageComponent
+    }
+
+    private fun findHighestOrder(page: PageDatabaseEntity): Int {
+        return page.getComponents().stream()
+            .mapToInt { pc -> pc.order }
+            .max()
+            .orElse(0)
     }
 }

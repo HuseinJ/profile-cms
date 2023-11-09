@@ -20,8 +20,30 @@ class PageDatabaseEntity(
         components.add(pageComponentDatabaseEntity)
     }
 
-    fun removeComponentById(componentId: UUID){
-        components.removeIf { component -> component.id == componentId }
+    fun removeComponentById(componentId: UUID) {
+        val componentToRemove = components.firstOrNull { it.id == componentId }
+        if (componentToRemove != null) {
+            val orderToRemove = componentToRemove.order
+            components.removeIf { it.id == componentId }
+
+            // Decrement the order of components with a higher order
+            components.forEach { component ->
+                if (component.order > orderToRemove) {
+                    component.order--
+                }
+            }
+        }
+    }
+
+    fun switchComponentOrder(componentId1: UUID, componentId2: UUID) {
+        val component1 = components.firstOrNull { it.id == componentId1 }
+        val component2 = components.firstOrNull { it.id == componentId2 }
+
+        if (component1 != null && component2 != null) {
+            val tempOrder = component1.order
+            component1.order = component2.order
+            component2.order = tempOrder
+        }
     }
 
     fun getComponents(): List<PageComponentDatabaseEntity> {

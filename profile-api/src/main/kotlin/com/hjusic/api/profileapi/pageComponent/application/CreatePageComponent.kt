@@ -43,7 +43,6 @@ class CreatePageComponent(
                 UUID.randomUUID(),
                 pageComponentName,
                 HashMap(),
-                pageId
             ),
             callingUser
         )

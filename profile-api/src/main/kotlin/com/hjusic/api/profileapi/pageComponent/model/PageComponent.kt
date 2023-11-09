@@ -13,15 +13,17 @@ class PageComponent(
     val id: UUID,
     val componentName: PageComponentName,
     val componentData: Map<String, String>,
-    private var pageid: UUID?
 ){
-    fun getPageId(): UUID? {
-        return pageid
-    }
-    fun setPageId(pageid: UUID): PageComponent {
-        this.pageid = pageid
-        return this
-    }
+    var order: Int? = null
+        get() = field
+        set(value) {
+            field = value
+        }
+    var pageid: UUID? = null
+        get() = field
+        set(value) {
+            field = value
+        }
 
     fun removePageComponent(callingUser: User): Either<DomainError, PageComponentRemoved>{
         if (!callingUser.roles.stream().flatMap { role -> role.accessRights.stream() }

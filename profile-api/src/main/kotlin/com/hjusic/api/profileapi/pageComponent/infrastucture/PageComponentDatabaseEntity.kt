@@ -8,5 +8,6 @@ class PageComponentDatabaseEntity(
     @Id
     val id: UUID = UUID.randomUUID(),
     val componentName: String,
-    val componentData: Map<String, String> = HashMap()
+    val componentData: Map<String, String> = HashMap(),
+    var order: Int
 )

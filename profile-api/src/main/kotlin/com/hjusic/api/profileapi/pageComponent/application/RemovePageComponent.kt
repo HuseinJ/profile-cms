@@ -29,7 +29,7 @@ class RemovePageComponent(
         }
 
         var pageComponent = pageComponents.findComponentsOfPage(pageId, componentID)
-        pageComponent.setPageId(pageId)
+        pageComponent.pageid = pageId
         var possibleRemoveEvent = pageComponent.removePageComponent(callingUser)
 
         if(possibleRemoveEvent.wasFailure()){

@@ -48,13 +48,11 @@ class RemovePageComponentGraphQlServiceTest extends BaseSpringTest {
         and:
         def pageComponent1 = pageComponents.trigger(new PageComponentAdded(new PageComponent(UUID.randomUUID(),
                 PageComponentName.PARAGRAPH,
-                new HashMap<String, String>(),
-                UUID.randomUUID()),
+                new HashMap<String, String>()),
                 page))
         def pageComponent2 = pageComponents.trigger(new PageComponentAdded(new PageComponent(UUID.randomUUID(),
                 PageComponentName.PARAGRAPH,
-                new HashMap<String, String>(),
-                UUID.randomUUID()),
+                new HashMap<String, String>()),
                 page))
         and:
         def roles = new HashSet<AccessRole>()
@@ -215,8 +213,7 @@ class RemovePageComponentGraphQlServiceTest extends BaseSpringTest {
         and:
         def pageComponent1 = pageComponents.trigger(new PageComponentAdded(new PageComponent(UUID.randomUUID(),
                 PageComponentName.PARAGRAPH,
-                new HashMap<String, String>(),
-                UUID.randomUUID()),
+                new HashMap<String, String>()),
                 page))
         and:
         def roles = new HashSet<AccessRole>()
@@ -253,8 +250,7 @@ class RemovePageComponentGraphQlServiceTest extends BaseSpringTest {
         and:
         def pageComponent1 = pageComponents.trigger(new PageComponentAdded(new PageComponent(UUID.randomUUID(),
                 PageComponentName.PARAGRAPH,
-                new HashMap<String, String>(),
-                UUID.randomUUID()),
+                new HashMap<String, String>()),
                 page))
         and:
         def roles = new HashSet<AccessRole>()
@@ -291,8 +287,7 @@ class RemovePageComponentGraphQlServiceTest extends BaseSpringTest {
         and:
         def pageComponent1 = pageComponents.trigger(new PageComponentAdded(new PageComponent(UUID.randomUUID(),
                 PageComponentName.PARAGRAPH,
-                new HashMap<String, String>(),
-                UUID.randomUUID()),
+                new HashMap<String, String>()),
                 page))
         and:
         def roles = new HashSet<AccessRole>()
