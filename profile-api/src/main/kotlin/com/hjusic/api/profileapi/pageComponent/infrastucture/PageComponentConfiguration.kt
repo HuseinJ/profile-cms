@@ -5,6 +5,7 @@ import com.hjusic.api.profileapi.page.infrastructure.PageDatabaseEntityRepositor
 import com.hjusic.api.profileapi.page.model.Pages
 import com.hjusic.api.profileapi.pageComponent.application.CreatePageComponent
 import com.hjusic.api.profileapi.pageComponent.application.RemovePageComponent
+import com.hjusic.api.profileapi.pageComponent.application.SetComponentDataOnPageComponent
 import com.hjusic.api.profileapi.pageComponent.application.SwitchPageComponents
 import com.hjusic.api.profileapi.pageComponent.model.PageComponents
 import org.springframework.context.annotation.Bean
@@ -34,5 +35,10 @@ class PageComponentConfiguration {
     @Bean
     fun switchPageComponents(pageComponents: PageComponents, pages: Pages): SwitchPageComponents{
         return SwitchPageComponents(pageComponents, pages)
+    }
+
+    @Bean
+    fun setComponentDataOnPageComponent(pageComponents: PageComponents, pages: Pages): SetComponentDataOnPageComponent {
+        return SetComponentDataOnPageComponent(pageComponents, pages)
     }
 }

@@ -1,6 +1,7 @@
 extend type Mutation {
     createPageComponent(name: PageCompnentName, pageId: String): PageComponent
     removePageComponent(pageComponentId: String, pageId: String): PageComponent
+    setPageComponentData(componentData: [ComponentDataInput], pageComponentId: String, pageId: String): PageComponent
 }
 
 type PageComponent {
@@ -11,6 +12,11 @@ type PageComponent {
 }
 
 type ComponentData {
+    key: String
+    value: String
+}
+
+input ComponentDataInput {
     key: String
     value: String
 }
