@@ -65,7 +65,7 @@ class PageComponentsDatabaseService(
             ?: throw IllegalArgumentException("Given pageComponent is not valid")
 
         pageComponent.componentData = pageComponentDataSet.componentData
-        page.setComponents(page.getComponents().map { if (it.id == pageComponent.id) pageComponent else it })
+        pageDatabaseEntityRepository.save(page)
         return map(pageComponent)
     }
 
