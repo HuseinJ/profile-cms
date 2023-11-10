@@ -38,4 +38,17 @@ class PageComponent(
         return Either.wasSuccess(PageComponentRemoved(this, UnpublishedPage(pageid!!, "")))
     }
 
+    fun setComponentData(componentData: Map<String, String>, callingUser: User, page: Page): Either<DomainError, PageComponentDataSet> {
+        if (!callingUser.roles.stream().flatMap { role -> role.accessRights.stream() }
+                .anyMatch { accessRight -> accessRight == AccessRight.MODIFY_PAGE}) {
+            return Either.wasFailure(DomainError(PageDomainErrorCode.USER_IS_NOT_ALLOWED_TO_MODIFY_PAGE.name))
+        }
+
+        if(pageid == null) {
+            return Either.wasFailure(DomainError(PageDomainErrorCode.NO_SUCH_PAGE_WITH_THIS_ID.name))
+        }
+
+        return Either.wasSuccess(PageComponentDataSet(this, page, componentData))
+    }
+
 }

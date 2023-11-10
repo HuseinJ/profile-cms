@@ -33,8 +33,22 @@ class SetComponentDataOnPageComponent(
             return Either.wasFailure(ValidationError(ValidationErrorCode.WRONG_FORMAT))
         }
 
+        var potentialPage = pages.findPageById(pageId)
+
+        if(potentialPage.isEmpty){
+            return Either.wasFailure(ValidationError(ValidationErrorCode.EMPTY_VALUE))
+        }
         var pageComponent = pageComponents.findComponentsOfPage(pageId, componentID)
 
-        return Either.wasFailure(ContextError("not implemented"))
+        val componentDataMap: Map<String, String> = componentDataGraphQlInput
+            .associate { it.key to it.value }
+
+        val result = pageComponent.setComponentData( componentDataMap, callingUser, potentialPage.get())
+
+        if(result.wasFailure()){
+            return Either.wasFailure(result.fail!!)
+        }
+
+        return Either.wasSuccess(pageComponents.trigger(result.success!!))
     }
 }

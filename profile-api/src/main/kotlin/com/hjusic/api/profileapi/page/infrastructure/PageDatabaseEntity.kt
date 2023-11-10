@@ -13,7 +13,7 @@ class PageDatabaseEntity(
     val id: UUID = UUID.randomUUID(),
     var pageType: PageEntityType,
     val name: String,
-    private val components: MutableList<PageComponentDatabaseEntity> = ArrayList()
+    private var components: MutableList<PageComponentDatabaseEntity> = ArrayList()
 ) {
 
     fun addComponent(pageComponentDatabaseEntity: PageComponentDatabaseEntity){
@@ -48,5 +48,9 @@ class PageDatabaseEntity(
 
     fun getComponents(): List<PageComponentDatabaseEntity> {
         return Collections.unmodifiableList(components)
+    }
+
+    fun setComponents(map: List<PageComponentDatabaseEntity>){
+        this.components = map.toMutableList()
     }
 }
