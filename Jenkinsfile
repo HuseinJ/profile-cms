@@ -22,13 +22,12 @@ pipeline {
               args '''
               -v "${WORKSPACE}":/data/project
               --entrypoint=""
-              --baseline qodana.sarif.json
               '''
               image 'jetbrains/qodana-jvm'
             }
         }
           steps {
-            sh '''qodana'''
+            sh '''qodana --baseline qodana.sarif.json'''
           }
         }
 
