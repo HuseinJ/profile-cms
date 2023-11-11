@@ -22,6 +22,7 @@ pipeline {
               args '''
               -v "${WORKSPACE}":/data/project
               --entrypoint=""
+              --baseline qodana.sarif.json
               '''
               image 'jetbrains/qodana-jvm'
             }
