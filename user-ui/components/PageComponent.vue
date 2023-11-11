@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { ref, defineProps } from 'vue';
 import Paragraph from "~/components/atoms/Paragraph.vue";
 import Header from "~/components/atoms/Header.vue";
 

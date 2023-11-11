@@ -9,10 +9,8 @@ import com.hjusic.api.profileapi.user.model.RefreshToken
 import com.hjusic.api.profileapi.user.model.User
 import com.hjusic.api.profileapi.user.model.Users
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import java.time.Instant

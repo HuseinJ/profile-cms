@@ -15,7 +15,3 @@ export default defineComponent({
 <template>
   <h2>{{text}}</h2>
 </template>
-
-<style scoped lang="scss">
-
-</style>

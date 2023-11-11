@@ -1,7 +1,6 @@
 package com.hjusic.api.profileapi.page.infrastructure
 
 import com.hjusic.api.profileapi.pageComponent.infrastucture.PageComponentDatabaseEntity
-import com.hjusic.api.profileapi.pageComponent.model.PageComponent
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*

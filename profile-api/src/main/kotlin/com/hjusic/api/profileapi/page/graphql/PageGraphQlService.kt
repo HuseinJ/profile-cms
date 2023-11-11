@@ -6,8 +6,6 @@ import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsQuery
 import com.netflix.graphql.dgs.InputArgument
 import org.springframework.security.access.annotation.Secured
-import java.io.NotActiveException
-import java.util.UUID
 
 @DgsComponent
 class PageGraphQlService(

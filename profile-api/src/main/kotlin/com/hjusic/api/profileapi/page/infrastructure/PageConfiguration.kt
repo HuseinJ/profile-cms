@@ -1,7 +1,6 @@
 package com.hjusic.api.profileapi.page.infrastructure
 
 import com.hjusic.api.profileapi.common.event.EventPublisher
-import com.hjusic.api.profileapi.common.security.UserAuthServices
 import com.hjusic.api.profileapi.page.application.AssignHomePage
 import com.hjusic.api.profileapi.page.application.CreatePage
 import com.hjusic.api.profileapi.page.application.DeletePage

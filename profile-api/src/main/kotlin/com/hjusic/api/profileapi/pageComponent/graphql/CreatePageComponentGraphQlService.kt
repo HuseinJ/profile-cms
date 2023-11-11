@@ -1,7 +1,6 @@
 package com.hjusic.api.profileapi.pageComponent.graphql
 
 import com.hjusic.api.profileapi.common.security.UserAuthServices
-import com.hjusic.api.profileapi.page.graphql.PageGraphQlView
 import com.hjusic.api.profileapi.pageComponent.application.CreatePageComponent
 import com.hjusic.api.profileapi.pageComponent.model.PageComponentName
 import com.netflix.graphql.dgs.DgsComponent

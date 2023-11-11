@@ -1,7 +1,6 @@
 package com.hjusic.api.profileapi.common.security
 
 import com.hjusic.api.profileapi.user.infrastructure.UserDatabaseEntityRepository
-import com.hjusic.api.profileapi.user.infrastructure.UserDatabaseService
 import com.hjusic.api.profileapi.user.model.User
 import com.hjusic.api.profileapi.user.model.Users
 import org.springframework.beans.factory.annotation.Autowired
@@ -9,7 +8,6 @@ import org.springframework.security.core.context.SecurityContextHolder
 
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UsernameNotFoundException
-import kotlin.reflect.typeOf
 
 class UserAuthServiceImpl : UserAuthServices {
 

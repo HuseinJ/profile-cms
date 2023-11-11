@@ -3,8 +3,6 @@ package com.hjusic.api.profileapi.user.infrastructure
 import com.hjusic.api.profileapi.accessRole.infrastructure.AccessRoleDatabaseService
 import com.hjusic.api.profileapi.common.event.EventPublisher
 import com.hjusic.api.profileapi.user.model.*
-import org.springframework.beans.factory.annotation.Value
-import java.time.Instant
 import java.util.*
 import java.util.stream.Collectors
 

@@ -2,7 +2,6 @@ package com.hjusic.api.profileapi.user.model
 
 import com.hjusic.api.profileapi.user.infrastructure.RefreshTokenDatabaseEntity
 import java.time.Instant
-import java.util.UUID
 
 class RefreshToken(
     val token: String,

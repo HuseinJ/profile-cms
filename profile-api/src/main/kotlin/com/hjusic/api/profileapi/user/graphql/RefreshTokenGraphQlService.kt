@@ -4,7 +4,6 @@ import com.hjusic.api.profileapi.common.security.UserAuthServices
 import com.hjusic.api.profileapi.user.application.RefreshTokenOfUser
 import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsMutation
-import com.netflix.graphql.dgs.DgsQuery
 import com.netflix.graphql.dgs.InputArgument
 
 @DgsComponent

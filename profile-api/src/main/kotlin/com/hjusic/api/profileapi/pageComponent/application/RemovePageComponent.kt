@@ -8,7 +8,6 @@ import com.hjusic.api.profileapi.page.model.Pages
 import com.hjusic.api.profileapi.pageComponent.model.PageComponent
 import com.hjusic.api.profileapi.pageComponent.model.PageComponents
 import com.hjusic.api.profileapi.user.model.User
-import java.rmi.server.UID
 import java.util.*
 
 class RemovePageComponent(

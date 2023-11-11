@@ -5,7 +5,6 @@ import com.hjusic.api.profileapi.common.error.ValidationError
 import com.hjusic.api.profileapi.common.error.ValidationErrorCode
 import com.hjusic.api.profileapi.common.result.Either
 import com.hjusic.api.profileapi.page.model.Pages
-import com.hjusic.api.profileapi.pageComponent.graphql.ComponentDataGraphQlInput
 import com.hjusic.api.profileapi.pageComponent.model.PageComponent
 import com.hjusic.api.profileapi.pageComponent.model.PageComponents
 import com.hjusic.api.profileapi.user.model.User

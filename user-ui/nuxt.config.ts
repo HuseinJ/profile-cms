@@ -33,7 +33,6 @@ export default defineNuxtConfig({
       if (nitroConfig.dev) return
       let slugs = await getRoutes();
       nitroConfig.prerender.routes.push(...slugs);
-      return
     },
   },
   buildModules: [
