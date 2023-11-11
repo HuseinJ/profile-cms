@@ -16,13 +16,11 @@ class PageComponentsDatabaseService(
             throw java.lang.IllegalArgumentException("given page is not valid")
         }
 
-        return possiblePage.get().getComponents().stream()
-            .map { component ->
+        return possiblePage.get().getComponents().stream().map { component ->
                 val mappedComponent = map(component)
                 mappedComponent.pageid = uuid
                 mappedComponent
-            }
-            .toList()
+            }.toList()
     }
 
     override fun findComponentsOfPage(pageId: UUID, comonentId: UUID): PageComponent {
@@ -37,8 +35,9 @@ class PageComponentsDatabaseService(
         if (pageComponent == null) {
             throw java.lang.IllegalArgumentException("given pageComponent is not valid")
         }
-
-        return map(pageComponent)
+        val mappedComponent = map(pageComponent)
+        mappedComponent.pageid = pageId
+        return mappedComponent
     }
 
     override fun trigger(pageComponentEvent: PageComponentEvent): PageComponent {
@@ -46,6 +45,7 @@ class PageComponentsDatabaseService(
             is PageComponentAdded -> handle(pageComponentEvent)
             is PageComponentRemoved -> handle(pageComponentEvent)
             is PageComponentSwitched -> handle(pageComponentEvent)
+            is PageComponentDataSet -> handle(pageComponentEvent)
             else -> {
                 throw java.lang.IllegalArgumentException("Unsupported argument")
             }
@@ -56,6 +56,18 @@ class PageComponentsDatabaseService(
         eventPublisher.publish(pageComponentEvent)
 
         return pageComponent
+    }
+
+    private fun handle(pageComponentDataSet: PageComponentDataSet): PageComponent {
+        val page = pageDatabaseEntityRepository.findById(pageComponentDataSet.page.id)
+            .orElseThrow { IllegalArgumentException("Given page is not valid") }
+
+        val pageComponent = page.getComponents().find { it.id == pageComponentDataSet.pageComponent.id }
+            ?: throw IllegalArgumentException("Given pageComponent is not valid")
+
+        pageComponent.componentData = pageComponentDataSet.componentData
+        pageDatabaseEntityRepository.save(page)
+        return map(pageComponent)
     }
 
     private fun handle(pageComponentSwitched: PageComponentSwitched): PageComponent {
@@ -126,9 +138,6 @@ class PageComponentsDatabaseService(
     }
 
     private fun findHighestOrder(page: PageDatabaseEntity): Int {
-        return page.getComponents().stream()
-            .mapToInt { pc -> pc.order }
-            .max()
-            .orElse(0)
+        return page.getComponents().stream().mapToInt { pc -> pc.order }.max().orElse(0)
     }
 }
