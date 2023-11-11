@@ -23,11 +23,15 @@ pipeline {
               -v "${WORKSPACE}":/data/project
               --entrypoint=""
               '''
-              image 'jetbrains/qodana-jvm'
+              image 'jetbrains/qodana-<linter>'
             }
         }
           steps {
-            sh '''qodana --baseline qodana.sarif.json'''
+            sh '''
+            qodana \
+            --fail-threshold 5 \
+            --baseline /qodana.sarif.json
+            '''
           }
         }
 
