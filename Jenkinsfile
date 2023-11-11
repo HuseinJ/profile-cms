@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent none
+    environment {
+          QODANA_TOKEN=credentials('qodana-token')
+       }
     tools {
         // Specify the name of the Maven installation defined in the Jenkins configuration.
         maven 'Maven'
@@ -7,18 +10,36 @@ pipeline {
     }
     stages {
         stage('Checkout') {
+        agent any
             steps {
                 checkout scm
             }
         }
 
+        stage('Qodana') {
+        agent {
+            docker {
+              args '''
+              -v "${WORKSPACE}":/data/project
+              --entrypoint=""
+              '''
+              image 'jetbrains/qodana-jvm'
+            }
+        }
+          steps {
+            sh '''qodana'''
+          }
+        }
+
         stage('Test') {
+        agent any
             steps {
                 sh 'cd profile-api && mvn clean test'
             }
         }
 
         stage('Build Docker') {
+        agent any
             steps {
                 sh "cd profile-api && docker build -t profile-api:${env.BUILD_NUMBER} ."
             }
