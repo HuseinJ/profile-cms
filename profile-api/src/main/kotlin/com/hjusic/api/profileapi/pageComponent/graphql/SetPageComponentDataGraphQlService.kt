@@ -16,7 +16,7 @@ class SetPageComponentDataGraphQlService(
     @DgsMutation
     @Secured
     fun setPageComponentData(
-        @InputArgument componentData: List<ComponentDataGraphQlInput>,
+        @InputArgument componentData: List<Map<String, String>>,
         @InputArgument pageComponentId: String,
         @InputArgument pageId: String
     ): PageComponentGraphQlView {

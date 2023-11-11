@@ -35,8 +35,9 @@ class PageComponentsDatabaseService(
         if (pageComponent == null) {
             throw java.lang.IllegalArgumentException("given pageComponent is not valid")
         }
-
-        return map(pageComponent)
+        val mappedComponent = map(pageComponent)
+        mappedComponent.pageid = pageId
+        return mappedComponent
     }
 
     override fun trigger(pageComponentEvent: PageComponentEvent): PageComponent {

@@ -10,6 +10,7 @@ import com.hjusic.api.profileapi.pageComponent.model.PageComponent
 import com.hjusic.api.profileapi.pageComponent.model.PageComponents
 import com.hjusic.api.profileapi.user.model.User
 import java.util.*
+import kotlin.collections.HashMap
 
 class SetComponentDataOnPageComponent(
     var pageComponents: PageComponents,
@@ -17,7 +18,7 @@ class SetComponentDataOnPageComponent(
 ) {
 
     fun setComponentDataOnPageComponent(
-        componentDataGraphQlInput: List<ComponentDataGraphQlInput>,
+        componentDataGraphQlInput: List<Map<String, String>>,
         possiblePageId: String,
         possiblePageComponentId: String,
         callingUser: User): Either<ContextError, PageComponent> {
@@ -40,8 +41,8 @@ class SetComponentDataOnPageComponent(
         }
         var pageComponent = pageComponents.findComponentsOfPage(pageId, componentID)
 
-        val componentDataMap: Map<String, String> = componentDataGraphQlInput
-            .associate { it.key to it.value }
+        val componentDataMap = HashMap<String, String>()
+        componentDataGraphQlInput.forEach { item -> componentDataMap.put(item.get("key")!!, item.get("value")!!) }
 
         val result = pageComponent.setComponentData( componentDataMap, callingUser, potentialPage.get())
 
