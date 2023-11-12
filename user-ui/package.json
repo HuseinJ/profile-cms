@@ -22,7 +22,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
-    "axios": "^1.4.0",
+    "axios": "^1.6.0",
     "sass-loader": "^13.3.2"
   }
 }
