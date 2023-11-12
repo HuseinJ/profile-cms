@@ -1,9 +1,9 @@
 <template>
     <template v-if="pageComponent.name === 'PARAGRAPH'">
-      <Paragraph :text="'lolol'" />
+      <Paragraph :text="getValueFromKey(pageComponent.componentData,'text')"  />
     </template>
-    <template v-else-if="pageComponent.name === 'HEADING'">
-      <Header :text="'lol head'" />
+    <template v-else-if="pageComponent.name === 'HEADER'">
+      <Header :text="getValueFromKey(pageComponent.componentData,'text')" />
     </template>
     <template v-else>
       <!-- Handle other component types here -->
@@ -29,6 +29,16 @@ export default {
     return {
       getKeyValue,
     };
+  },
+  methods: {
+    getValueFromKey(componentData, targetKey) {
+      for (let i = 0; i < componentData.length; i++) {
+        if (componentData[i].key === targetKey) {
+          return componentData[i].value;
+        }
+      }
+      return null; // If the key is not found in the array
+    }
   }
 };
 </script>
