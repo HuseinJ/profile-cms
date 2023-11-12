@@ -23,5 +23,6 @@ input ComponentDataInput {
 
 enum PageCompnentName {
     PARAGRAPH,
-    HEADER
+    HEADER,
+    GIT_TAG
 }

@@ -5,6 +5,9 @@
     <template v-else-if="pageComponent.name === 'HEADER'">
       <Header :text="getValueFromKey(pageComponent.componentData,'text')" />
     </template>
+  <template v-else-if="pageComponent.name === 'HEADER'">
+    <GitTag :url="getValueFromKey(pageComponent.componentData,'url')" :tag-text="getValueFromKey(pageComponent.componentData,'tag-text')" />
+  </template>
     <template v-else>
       <!-- Handle other component types here -->
     </template>
@@ -13,9 +16,10 @@
 <script>
 import Paragraph from "~/components/atoms/Paragraph.vue";
 import Header from "~/components/atoms/Header.vue";
+import GitTag from "~/components/atoms/GitTag.vue";
 
 export default {
-  components: {Header, Paragraph},
+  components: {GitTag, Header, Paragraph},
   props: {
     pageComponent: Object // Pass the PageComponent as a prop
   },
