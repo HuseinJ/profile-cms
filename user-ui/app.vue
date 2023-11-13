@@ -9,6 +9,13 @@
 
 <script lang="ts" setup>
 import Footer from "~/components/atoms/Footer.vue";
+
+useSeoMeta({
+  title: 'Husein Jusic',
+  ogTitle: 'Husein Jusic',
+  description: 'This is my profile page. Powered by my own Content Management System',
+  ogDescription: 'This is my profile page. Powered by my own Content Management System',
+})
 </script>
 
 <style scoped lang="scss">
