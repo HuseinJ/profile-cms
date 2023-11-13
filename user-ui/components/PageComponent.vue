@@ -5,7 +5,7 @@
     <template v-else-if="pageComponent.name === 'HEADER'">
       <Header :text="getValueFromKey(pageComponent.componentData,'text')" />
     </template>
-  <template v-else-if="pageComponent.name === 'HEADER'">
+  <template v-else-if="pageComponent.name === 'GIT_TAG'">
     <GitTag :url="getValueFromKey(pageComponent.componentData,'url')" :tag-text="getValueFromKey(pageComponent.componentData,'tag-text')" />
   </template>
     <template v-else>

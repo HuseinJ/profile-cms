@@ -19,6 +19,7 @@ class PageComponentGraphQlService(
         val page: PageGraphQlView = dfe.getSource()
 
         return pageComponents.findComponentsOfPage(UUID.fromString(page.id)).stream()
+            .sorted { o1, o2 -> (o1.order ?: 0).compareTo(o2.order ?: 0) }
             .map { component -> PageComponentGraphQlView.from(component) }.toList()
     }
 }
