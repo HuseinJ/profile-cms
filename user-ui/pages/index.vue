@@ -1,11 +1,18 @@
 <template>
-  <PageComponent v-if="data" v-for="component in data.home.pageComponents" :pageComponent="component"> test </PageComponent>
+  <component v-if="data" v-for="(component, index) in data.home.pageComponents" :key="index" :is="componentName('PageComponent')" :pageComponent="component">
+  </component>
 </template>
 
 <script lang="ts" setup>
-import Header from "~/components/atoms/Header.vue";
-import Paragraph from "~/components/atoms/Paragraph.vue";
-import GitTag from "~/components/atoms/GitTag.vue";
+import { defineAsyncComponent } from 'vue';
+
+const componentName = (name: any)=> {
+  const componentMap: any = {
+    PageComponent: defineAsyncComponent(() => import('../components/PageComponent.vue')),
+  };
+
+  return componentMap[name] || 'div';
+};
 
 const query = gql`
   query Home{
@@ -23,6 +30,4 @@ const query = gql`
   }
 `
 const { data } = await useAsyncQuery(query)
-
-console.log(data)
 </script>
