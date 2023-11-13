@@ -14,7 +14,7 @@ useSeoMeta({
   title: 'Husein Jusic',
   ogTitle: 'Husein Jusic',
   description: 'This is my profile page. Powered by my own Content Management System',
-  ogDescription: 'his is my profile page. Powered by my own Content Management System',
+  ogDescription: 'This is my profile page. Powered by my own Content Management System',
 })
 </script>
 
