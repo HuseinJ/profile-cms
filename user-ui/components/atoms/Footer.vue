@@ -9,18 +9,20 @@
 </template>
 
 <style scoped lang="scss">
+@import "@/assets/scss/main.scss"; // Import the SCSS file
+
  .footer{
    position: fixed;
    left: 0;
    right: 0;
    bottom: 0;
    height: 30px;
-   background-color: #303030;
+   background-color: $primaryDark;
 
    display: flex;
    align-items: center;
    padding: 0 20px;
 
-   color: gray;
+   color: $baseBackground;
  }
 </style>
