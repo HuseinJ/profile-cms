@@ -16,12 +16,12 @@
    left: 0;
    right: 0;
    bottom: 0;
-   height: 30px;
+   height: $baseHeight;
    background-color: $primaryDark;
 
    display: flex;
    align-items: center;
-   padding: 0 20px;
+   padding: 0 $baseMargin;
 
    color: $baseBackground;
  }
