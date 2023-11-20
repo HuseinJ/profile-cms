@@ -13,6 +13,18 @@ $large: map-get($breakpoints, 'large');
 $baseHeight: 50px;
 $baseMargin: 20px;
 
+$imgSmall: 200px;
+$imgMedium: 400px;
+$imgBig: 600px;
+
+//colors
+$baseBackground: #fefae0;
+$primaryBright: #606c38;
+$primaryDark: #283618;
+$secondaryBright: #587792;
+$secondaryDark: #4F5D75;
+
+
 @mixin respond-to($breakpoint) {
   @if $breakpoint == 'small' {
     @media (min-width: map-get($breakpoints, 'small')) {

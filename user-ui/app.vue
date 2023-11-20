@@ -56,7 +56,7 @@ span {
 body{
   margin: 0;
 
-  background-color: antiquewhite;
+  background-color: $baseBackground;
 
   display: flex;
   flex-direction: column;

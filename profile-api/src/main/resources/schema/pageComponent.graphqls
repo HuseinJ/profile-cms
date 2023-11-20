@@ -24,5 +24,8 @@ input ComponentDataInput {
 enum PageCompnentName {
     PARAGRAPH,
     HEADER,
+    IMAGE,
+    LINKEDIN_TAG,
+    MAIL_TAG,
     GIT_TAG
 }

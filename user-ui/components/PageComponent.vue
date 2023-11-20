@@ -8,6 +8,15 @@
   <template v-else-if="pageComponent.name === 'GIT_TAG'">
     <GitTag :url="getValueFromKey(pageComponent.componentData,'url')" :tag-text="getValueFromKey(pageComponent.componentData,'tag-text')" />
   </template>
+  <template v-else-if="pageComponent.name === 'IMAGE'">
+    <Image :img-src="getValueFromKey(pageComponent.componentData,'src')" :alt-text="getValueFromKey(pageComponent.componentData,'alt')" />
+  </template>
+  <template v-else-if="pageComponent.name === 'MAIL_TAG'">
+    <EmailTag :mailto="getValueFromKey(pageComponent.componentData,'mailTo')" :tag-text="getValueFromKey(pageComponent.componentData,'tag-text')" />
+  </template>
+  <template v-else-if="pageComponent.name === 'LINKEDIN_TAG'">
+    <LinkedInTag :url="getValueFromKey(pageComponent.componentData,'url')" :tag-text="getValueFromKey(pageComponent.componentData,'tag-text')" />
+  </template>
     <template v-else>
       <!-- Handle other component types here -->
     </template>
@@ -17,9 +26,12 @@
 import Paragraph from "~/components/atoms/Paragraph.vue";
 import Header from "~/components/atoms/Header.vue";
 import GitTag from "~/components/atoms/GitTag.vue";
+import Image from "~/components/atoms/Image.vue";
+import EmailTag from "~/components/atoms/EmailTag.vue";
+import LinkedInTag from "~/components/atoms/LinkedInTag.vue";
 
 export default {
-  components: {GitTag, Header, Paragraph},
+  components: {LinkedInTag, EmailTag, Image, GitTag, Header, Paragraph},
   props: {
     pageComponent: Object // Pass the PageComponent as a prop
   },
