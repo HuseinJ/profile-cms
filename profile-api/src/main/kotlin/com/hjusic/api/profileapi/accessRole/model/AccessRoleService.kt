@@ -14,6 +14,7 @@ class AccessRoleService {
                     AccessRight.DELETE_USER,
                     AccessRight.CREATE_PAGE,
                     AccessRight.MODIFY_PAGE,
+                    AccessRight.UPLOAD_FILE
                 )
             )
         }
