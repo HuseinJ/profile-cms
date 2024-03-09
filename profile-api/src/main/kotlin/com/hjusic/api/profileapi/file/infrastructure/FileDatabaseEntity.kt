@@ -8,6 +8,8 @@ import java.util.*
 @Document
 class FileDatabaseEntity(
     @Id
-    val id: UUID = UUID.randomUUID(),
-    val file: MultipartFile){
+    val id: UUID,
+    val name: String,
+    val file: MultipartFile,
+    val state: FileState){
 }
