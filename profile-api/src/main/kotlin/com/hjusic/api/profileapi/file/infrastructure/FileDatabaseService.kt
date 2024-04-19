@@ -31,7 +31,7 @@ class FileDatabaseService(
                 FileDatabaseEntity(
                     fileUploaded.file.id,
                     fileUploaded.file.name,
-                    fileUploaded.content,
+                    fileUploaded.content.bytes,
                     FileState.REGISTERED)
             )
         )

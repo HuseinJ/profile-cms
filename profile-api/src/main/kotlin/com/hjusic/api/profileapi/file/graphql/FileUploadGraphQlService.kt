@@ -22,7 +22,7 @@ class FileUploadGraphQlService(
         val file = dfe.getArgument<MultipartFile>("input")
         var loggedInUser = userAuthServices.callingUser()
 
-        val registeredFile = uploadFile.uploadFile(file.name, file, loggedInUser)
+        val registeredFile = uploadFile.uploadFile(file.originalFilename!!, file, loggedInUser)
 
         if(registeredFile.wasFailure()) {
             throw Exception(registeredFile.fail!!.reason)

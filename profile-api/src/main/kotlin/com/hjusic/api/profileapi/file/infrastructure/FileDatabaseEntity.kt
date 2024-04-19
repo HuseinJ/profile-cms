@@ -10,6 +10,6 @@ class FileDatabaseEntity(
     @Id
     val id: UUID,
     val name: String,
-    val file: MultipartFile,
+    val fileContent: ByteArray,
     val state: FileState){
 }
