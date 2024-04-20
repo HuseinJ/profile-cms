@@ -6,7 +6,7 @@ import com.hjusic.api.profileapi.user.model.User
 import org.springframework.web.multipart.MultipartFile
 import spock.lang.Specification
 
-class RegisterPageTest extends Specification{
+class RegisterFileTest extends Specification{
 
     def "should throw error if user is not allowed to register the file"() {
         given:
