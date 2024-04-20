@@ -61,6 +61,7 @@ class WebSecurityConfiguration {
         http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
             .antMatchers("/graphql").permitAll().and().authorizeRequests().antMatchers("/graphiql").permitAll()
+            .and().authorizeRequests().antMatchers("/fd").permitAll()
             .anyRequest().authenticated()
         http.authenticationProvider(authenticationProvider())
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)
