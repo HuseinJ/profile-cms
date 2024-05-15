@@ -1,0 +1,17 @@
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  build:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: trigger single Job
+        uses: appleboy/jenkins-action@master
+        with:
+          url: "https://ci.hjusic.com/job/profile-cms/build?token=profileCmsBuildNow"
+          user: "example"
+          job: "foobar"
