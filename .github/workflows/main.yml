@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Trigger HTTP Request
         run: |
-          curl -X GET https://ci.hjusic.com/job/profile-cms/build?token=profileCmsBuildNow
+          curl -X GET https://ci.hjusic.com/job/profile-cms/build?token=profilecmsbuildnow
