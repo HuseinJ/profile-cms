@@ -32,7 +32,6 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
                 emailext (
                     body: """
-                    <p>Hello Team,</p>
                     <p>The build was successful. Here are the details:</p>
                     <ul>
                         <li>Project: ${env.JOB_NAME}</li>
@@ -41,8 +40,8 @@ pipeline {
                         <li>Duration: ${currentBuild.durationString}</li>
                         <li>Built By: ${currentBuild.getBuildCauses()}</li>
                     </ul>
-                    <p>Please review the build artifacts and logs for more details.</p>
-                    <p>Regards,<br>Jenkins</p>
+                    <p>Review the build artifacts and logs for more details.</p>
+                    <p>BeepBoopBeep,<br>Jenkins</p>
                     """,
                     recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                     subject: "SUCCESS: Build ${env.BUILD_NUMBER} - ${env.JOB_NAME}",
@@ -52,7 +51,6 @@ pipeline {
             failure {
                 emailext (
                     body: """
-                    <p>Hello Team,</p>
                     <p>The build has failed. Here are the details:</p>
                     <ul>
                         <li>Project: ${env.JOB_NAME}</li>
@@ -61,8 +59,8 @@ pipeline {
                         <li>Duration: ${currentBuild.durationString}</li>
                         <li>Built By: ${currentBuild.getBuildCauses()}</li>
                     </ul>
-                    <p>Please review the build logs to diagnose the issue.</p>
-                    <p>Regards,<br>Jenkins</p>
+                    <p>Review the build artifacts and logs for more details.</p>
+                    <p>BeepBoopBeep,<br>Jenkins</p>
                     """,
                     recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                     subject: "FAILURE: Build ${env.BUILD_NUMBER} - ${env.JOB_NAME}",
