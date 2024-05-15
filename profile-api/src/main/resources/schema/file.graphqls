@@ -1,0 +1,10 @@
+extend type Mutation {
+    uploadFileWithMultipartPOST(input: Upload!): File
+}
+
+type File {
+    id: String,
+    name: String
+}
+
+scalar Upload

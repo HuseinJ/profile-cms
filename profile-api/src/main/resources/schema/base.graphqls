@@ -1,8 +1,5 @@
 type Query {
-    loggedInUser: User
-    users: [User]
 }
 
 type Mutation {
-    test: User
 }
