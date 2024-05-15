@@ -28,16 +28,46 @@ pipeline {
     }
 
     post {
-        success {
-            archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
-            always {
-                emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+            success {
+                archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
+                emailext (
+                    body: """
+                    <p>Hello Team,</p>
+                    <p>The build was successful. Here are the details:</p>
+                    <ul>
+                        <li>Project: ${env.JOB_NAME}</li>
+                        <li>Build Number: ${env.BUILD_NUMBER}</li>
+                        <li>Build URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></li>
+                        <li>Duration: ${currentBuild.durationString}</li>
+                        <li>Built By: ${currentBuild.getBuildCauses()}</li>
+                    </ul>
+                    <p>Please review the build artifacts and logs for more details.</p>
+                    <p>Regards,<br>Jenkins</p>
+                    """,
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                    subject: "SUCCESS: Build ${env.BUILD_NUMBER} - ${env.JOB_NAME}",
+                    mimeType: 'text/html'
+                )
+            }
+            failure {
+                emailext (
+                    body: """
+                    <p>Hello Team,</p>
+                    <p>The build has failed. Here are the details:</p>
+                    <ul>
+                        <li>Project: ${env.JOB_NAME}</li>
+                        <li>Build Number: ${env.BUILD_NUMBER}</li>
+                        <li>Build URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></li>
+                        <li>Duration: ${currentBuild.durationString}</li>
+                        <li>Built By: ${currentBuild.getBuildCauses()}</li>
+                    </ul>
+                    <p>Please review the build logs to diagnose the issue.</p>
+                    <p>Regards,<br>Jenkins</p>
+                    """,
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                    subject: "FAILURE: Build ${env.BUILD_NUMBER} - ${env.JOB_NAME}",
+                    mimeType: 'text/html'
+                )
             }
         }
-        failure {
-          always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-          }
-        }
-    }
 }
