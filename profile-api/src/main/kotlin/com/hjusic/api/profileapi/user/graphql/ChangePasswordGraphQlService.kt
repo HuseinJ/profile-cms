@@ -16,7 +16,7 @@ class ChangePasswordGraphQlService(
     @DgsMutation
     @Secured
     fun changePassword(@InputArgument("newPassword") newPassword: String, @InputArgument("oldPassword") oldPassword: String): Boolean{
-        var loggedInUser = userAuthServices?.callingUser()
+        var loggedInUser = userAuthServices.callingUser()
 
         var result = changePassword.changePassword(loggedInUser, oldPassword, newPassword)
 
