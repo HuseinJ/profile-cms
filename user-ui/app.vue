@@ -43,10 +43,12 @@ $default-font: 'RobotoMono', sans-serif; // Use the font-family you defined in @
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $default-font;
+  color: $primaryBright
 }
 
 p {
   font-family: $default-font;
+  color: $primaryBright
 }
 
 span {

@@ -33,7 +33,7 @@ export default defineComponent({
 
 a{
   display: block;
-  color: inherit;
+  color: $primaryBright;
 }
 .git-tag{
   height: $baseHeight;
