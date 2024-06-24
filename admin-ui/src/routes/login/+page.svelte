@@ -1,15 +1,11 @@
 <script lang="ts">
-	import { setLoggedInUser } from '../../store/auth/store';
-	import { goto } from '$app/navigation';
     import { signIn } from '../../store/auth/util/signIn';
 
 	let name = '';
 	let password = '';
-
-	
 </script>
 
-<div class="flex items-center justify-center min-h-screen">
+<div class="flex items-center justify-center min-h-screen w-full">
 	<div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
 		<label class="block mb-4">
 			<span class="text-gray-700">name</span>

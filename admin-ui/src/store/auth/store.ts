@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { LoggedInUser } from './LoggesInUser';
+import { LoggedInUser } from './LoggedInUser';
 
 const LOGGED_IN_USER = "loggedInUser"
 

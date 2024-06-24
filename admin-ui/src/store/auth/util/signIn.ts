@@ -1,6 +1,6 @@
 import { useGraphql } from "../../../utils/useGraphQl";
-import { User } from "../User";
-import { LoggedInUser } from "../LoggesInUser";
+import { User } from "../../users/User";
+import { LoggedInUser } from "../LoggedInUser";
 import { setLoggedInUser} from "../store";
 import { goto } from "$app/navigation";
 
