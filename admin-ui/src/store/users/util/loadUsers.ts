@@ -14,7 +14,10 @@ const loadUsersMutation = `
 `;
 
 export const loadUsers = async () =>  {
-    console.log("oipen")
+    if(get(users).length != 0){
+        return;
+    }    
+    
     let usersRequestData = await useGraphql(loadUsersMutation, {}, get(loggedInUser))
 
     if(usersRequestData.errors) {
