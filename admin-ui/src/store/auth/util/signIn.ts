@@ -22,7 +22,7 @@ export const signIn = async (name: String, password: String) =>  {
     let signInRequestData = await useGraphql(signInQuery, {
         name,
         password
-    })
+    }, undefined)
 
     if(signInRequestData.errors) {
         console.log("error!! trigger error state")

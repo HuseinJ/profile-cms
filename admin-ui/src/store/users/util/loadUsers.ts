@@ -2,6 +2,7 @@ import { useGraphql } from "../../../utils/useGraphQl";
 import { loggedInUser } from "../../auth/store";
 import { get } from 'svelte/store';
 import { users } from "../store";
+import { User } from "../User";
 
 const loadUsersMutation = `
 	query{
@@ -20,7 +21,7 @@ export const loadUsers = async () =>  {
         console.log("error!! trigger error state")
     }
 
-    console.log(usersRequestData)
-
-    users.set([])
+    users.set(
+        usersRequestData.data.users.map((user:any) => new User(user.name, user.email))
+    )
 }

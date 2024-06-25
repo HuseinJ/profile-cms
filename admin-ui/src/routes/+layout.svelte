@@ -42,7 +42,10 @@
 	</AppRail>
 	{/if}
 	
-	<slot class="flex-1" />
+	<div class="flex-1 p-8 w-full">
+		<slot />
+	</div>
+	
 </div>
 
 

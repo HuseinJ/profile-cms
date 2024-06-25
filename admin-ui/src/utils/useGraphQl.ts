@@ -1,31 +1,57 @@
 
 import type { LoggedInUser } from "../store/auth/LoggedInUser";
+import { goto } from "$app/navigation";
+import { logoutUser } from "../store/auth/store";
 
-export const useGraphql = async (query: String, variables = {}, loggedInUser: LoggedInUser|undefined) => {
+type GraphQLResponse<T> = {
+    data?: T;
+    errors?: any[];
+};
 
-    var headers = {
+export const useGraphql = async <T>(
+    query: string,
+    variables: Record<string, any> = {},
+    loggedInUser?: LoggedInUser
+): Promise<GraphQLResponse<T>> => {
+
+    var headers: Record<string, string> = {
         'Content-Type': 'application/json',
         'Authorization': ""
-    }
+    };
 
-    if(loggedInUser) {
+    if (loggedInUser) {
         headers = {
             ...headers,
             'Authorization': buildAuthenticationHeader(loggedInUser)
         }
     }
 
-    let response = await fetch('https://cms.hjusic.com/graphql', {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-            query,
-            variables
-        })
-    });
+    try {
+        let response = await fetch('https://cms.hjusic.com/graphql', {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+                query,
+                variables
+            })
+        });
 
-    return await response.json();
-}
+        if (!response.ok) {
+            if (response.status === 401) {
+                console.error('Unauthorized: You need to log in again.');
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        let data: GraphQLResponse<T> = await response.json();
+        return data;
+
+    } catch (error) {
+        logoutUser()
+        goto("/login")
+        throw error
+    }
+};
 
 const buildAuthenticationHeader = (loggedInUser: LoggedInUser) => {
     return `${loggedInUser.authType} ${loggedInUser.jwtToken}`
