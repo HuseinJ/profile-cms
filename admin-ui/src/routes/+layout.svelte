@@ -34,6 +34,9 @@
 		<AppRailAnchor href="/users" selected={$page.url.pathname === '/users'}>
 			<Icon class="p-4 size-full text-inherit" icon="material-symbols-light:user-attributes-rounded" />
 		</AppRailAnchor>
+		<AppRailAnchor href="/pages" selected={$page.url.pathname === '/pages'}>
+			<Icon class="p-4 size-full text-inherit" icon="icon-park-outline:page" />
+		</AppRailAnchor>
 		<!-- --- -->
 		<svelte:fragment slot="trail">
 			<AppRailAnchor href="https://github.com/HuseinJ/profile-cms" target="_blank" title="Git">

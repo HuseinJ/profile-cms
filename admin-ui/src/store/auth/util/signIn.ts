@@ -1,4 +1,4 @@
-import { useGraphql } from "../../../utils/useGraphQl";
+import { useGraphql } from "../../utils/useGraphQl";
 import { User } from "../../users/User";
 import { LoggedInUser } from "../LoggedInUser";
 import { setLoggedInUser} from "../store";

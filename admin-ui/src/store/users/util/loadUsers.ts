@@ -1,10 +1,10 @@
-import { useGraphql } from "../../../utils/useGraphQl";
+import { useGraphql } from "../../utils/useGraphQl";
 import { loggedInUser } from "../../auth/store";
 import { get } from 'svelte/store';
 import { users } from "../store";
 import { User } from "../User";
 
-const loadUsersMutation = `
+const loadUsersQuery = `
 	query{
         users {
             name
@@ -18,7 +18,7 @@ export const loadUsers = async () =>  {
         return;
     }    
     
-    let usersRequestData = await useGraphql(loadUsersMutation, {}, get(loggedInUser))
+    let usersRequestData = await useGraphql(loadUsersQuery, {}, get(loggedInUser))
 
     if(usersRequestData.errors) {
         console.log("error!! trigger error state")

@@ -1,7 +1,7 @@
 
-import type { LoggedInUser } from "../store/auth/LoggedInUser";
+import type { LoggedInUser } from "../auth/LoggedInUser";
 import { goto } from "$app/navigation";
-import { logoutUser } from "../store/auth/store";
+import { logoutUser } from "../auth/store";
 
 type GraphQLResponse<T> = {
     data?: T;

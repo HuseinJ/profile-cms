@@ -9,10 +9,8 @@ import Icon from '@iconify/svelte';
 onMount(() => {
     loadUsers()
 });
-
-
-
 </script>
+
 <div class="w-full bg-current rounded">
     <dl class="list-dl">
         {#if $users.length > 0}
