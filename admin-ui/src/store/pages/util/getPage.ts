@@ -26,6 +26,24 @@ const loadPagesQuery = `
     }
 `;
 
+const loadPageQuery = `
+	query($uuid: String){
+        page(uuid: $uuid) {
+            id
+            name
+            pageComponents {
+                id
+                pageid
+                name
+                componentData {
+                    key
+                    value
+                }
+            }
+        }
+    }
+`;
+
 export const loadAllPages = async () =>  {
     if(get(pages).length != 0){
         return;
@@ -43,11 +61,35 @@ export const loadAllPages = async () =>  {
         var pageComponents = page.pageComponents.map((pageComponent: PageComponent) => {
             var componentData = pageComponent.componentData.map(
                 (componentDataSet: ComponentData) => new ComponentData(componentDataSet.key, componentDataSet.value))
-            return new PageComponent (pageComponent.id, pageComponent.name, pageComponent.componentData, pageComponent.pageid)
+            return new PageComponent (pageComponent.id, pageComponent.name, componentData, pageComponent.pageid)
         })
 
         return new Page(page.id, page.name, pageComponents)
     })
 
     pages.set(mappedPages)
+}
+
+export const loadPage = async (uuid: string): Promise<Page> =>  {
+    
+    let pageRequestData = await useGraphql(loadPageQuery, {'uuid': uuid}, get(loggedInUser))
+
+    if(pageRequestData.errors) {
+        console.log("error!! trigger error state")
+    }
+
+    var mappedPageComponent = pageRequestData.data.page.pageComponents.map((pageComponent: PageComponent) => {
+        var componentData = pageComponent.componentData.map(
+            (componentDataSet: ComponentData) => new ComponentData(componentDataSet.key, componentDataSet.value, false))
+        return new PageComponent (pageComponent.id, pageComponent.name, componentData, pageComponent.pageid)
+    })
+
+    var mappedPage = new Page(
+        pageRequestData.data.page.id,
+        pageRequestData.data.page.name,
+        mappedPageComponent
+    )
+
+    return mappedPage
+
 }

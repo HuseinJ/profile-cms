@@ -1,8 +1,8 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { AppRail, AppRailTile, AppRailAnchor } from '@skeletonlabs/skeleton';
+	import { AppRail, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
-	import { loggedInUser } from '../store/auth/store';
+	import { loggedInUser, logoutUser } from '../store/auth/store';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import Icon from '@iconify/svelte';
@@ -24,7 +24,7 @@
 
 <div class="flex h-dvh">
 	{#if showAppBar}
-	<AppRail class="flex-shrink-0" height="h-dvh">
+	<AppRail class="fixed flex-shrink-0" height="h-dvh">
 		<svelte:fragment slot="lead">
 			<AppRailAnchor href="/" selected={$page.url.pathname === '/'}>
 				<Icon class="p-4 size-full text-inherit" icon="material-symbols-light:home" />
@@ -40,12 +40,18 @@
 		<!-- --- -->
 		<svelte:fragment slot="trail">
 			<AppRailAnchor href="https://github.com/HuseinJ/profile-cms" target="_blank" title="Git">
-				<Icon class="p-4 size-full" icon="logos:github-icon" /></AppRailAnchor>
+				<Icon class="p-4 size-full" icon="logos:github-icon" />
+			</AppRailAnchor>
+			<div on:click={logoutUser}>
+				<AppRailAnchor>
+					<Icon class="p-4 size-full" icon="material-symbols:logout" />
+				  </AppRailAnchor>
+			</div>
 		</svelte:fragment>
 	</AppRail>
 	{/if}
 	
-	<div class="flex-1 p-8 w-full">
+	<div class="flex-1 p-8 ml-20">
 		<slot />
 	</div>
 	

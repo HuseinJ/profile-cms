@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { LoggedInUser } from './LoggedInUser';
+import { goto } from '$app/navigation';
 
 const LOGGED_IN_USER = "loggedInUser"
 
@@ -14,6 +15,7 @@ export const setLoggedInUser = (user: LoggedInUser) => {
 export const logoutUser = () => {
     localStorage.removeItem(LOGGED_IN_USER)
     loggedInUser.set(undefined)
+    goto("/login")
 }
 
 // Load the user from localStorage when the store is initialized

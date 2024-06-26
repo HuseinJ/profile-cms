@@ -11,11 +11,11 @@ onMount(() => {
 });
 </script>
 
-<div class="w-full bg-current rounded">
+<div class="card w-full bg-initial rounded">
     <dl class="list-dl">
         {#if $users.length > 0}
             {#each $users as user}
-            <div class="hover:bg-black text-black hover:text-white">
+            <div class="hover:bg-black hover:text-white">
                 <span class="w-20 badge bg-primary-500">
                     <Icon class="size-full text-inherit" icon="mdi:user" />
                 </span>
