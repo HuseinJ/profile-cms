@@ -6,6 +6,7 @@
     import { Page } from '../../../store/pages/Page';
     import { ComponentData } from '../../../store/pages/ComponentData';
 	import type { PageComponent } from '../../../store/pages/PageComponent';
+	import { setPageComponentData } from '../../../store/pages/util/setPageComponentData';
 
     let loadedPage: Page | undefined;
     let id: string | undefined;
@@ -22,15 +23,14 @@
         });
     });
 
-    // Function to toggle the edited state of a ComponentData item
     function toggleEdited(cdata: ComponentData) {
         cdata.isEdited = true;
     }
 
-    // Function to save changes for a ComponentData item
     function saveChanges(pageComponent: PageComponent) {
-        // Perform save operation (e.g., call an API to update the data)
-        console.log("Saving changes for:", pageComponent);
+        if (setPageComponentData(pageComponent)) {
+            pageComponent.componentData.forEach(cdata => cdata.isEdited = false)
+        }
     }
 
     function deleteKeyValuePair(pageComponentIndex: number, index: number) {
@@ -43,6 +43,10 @@
 
                 // Update loadedPage to reflect the change
                 loadedPage.pageComponents[pageComponentIndex].componentData = [...pageComponent.componentData];
+            }
+
+            if (setPageComponentData(pageComponent)) {
+            pageComponent.componentData.forEach(cdata => cdata.isEdited = false)
             }
         }
     }
@@ -59,6 +63,7 @@
     function hasEditedComponentData(pageComponent: any): boolean {
         return pageComponent.componentData.some((cdata: ComponentData) => cdata.isEdited);
     }
+
 </script>
   
 {#if loadedPage}
@@ -93,7 +98,7 @@
       
             <div class="mt-4">
                 <button class="btn-add bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" on:click={() => addKeyValuePair(pindex)}>Add Key-Value Pair</button>
-                {#if hasEditedComponentData(pageComponent)}
+                {#if  hasEditedComponentData(pageComponent)}
                     <button class="btn-save bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" on:click={() => saveChanges(pageComponent)}>Save</button>
                 {/if}
             </div>
