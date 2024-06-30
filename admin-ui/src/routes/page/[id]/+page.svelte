@@ -8,9 +8,12 @@
 	import type { PageComponent } from '../../../store/pages/PageComponent';
 	import { setPageComponentData } from '../../../store/pages/util/setPageComponentData';
 	import { removePageComponent } from '../../../store/pages/util/removePageComponent';
+	import { createPageComponent } from '../../../store/pages/util/createPageComponent';
+	import { PageComponentName } from '../../../store/pages/PageComponentName';
 
     let loadedPage: Page | undefined;
     let id: string | undefined;
+    let selectedComponentType: PageComponentName = PageComponentName.PARAGRAPH;
   
     onMount(() => {
         const fetchPageData = async () => {
@@ -23,6 +26,13 @@
             console.error("Failed to load the page:", error);
         });
     });
+
+    function getEnumValues() {
+        return Object.values(PageComponentName).map(value => ({
+            value,
+            label: value.charAt(0) + value.slice(1).toLowerCase()
+        }));
+    }
 
     function toggleEdited(cdata: ComponentData) {
         cdata.isEdited = true;
@@ -71,6 +81,14 @@
         return pageComponent.componentData.some((cdata: ComponentData) => cdata.isEdited);
     }
 
+    async function addPageComponent(selectedType: PageComponentName) {
+        if (loadedPage) {
+            const component = await createPageComponent(selectedComponentType, id!)
+            loadedPage.pageComponents.push(component)
+            loadedPage = { ...loadedPage };
+        }
+    }
+
 </script>
   
 {#if loadedPage}
@@ -116,6 +134,19 @@
         </div>
     </div>
 {/each}
+
+<div class="card bg-initial rounded mt-4 p-4">
+    <h1>Add Component:</h1>
+    <label class="label">
+        <span>Select</span>
+        <select class="select" bind:value={selectedComponentType}>
+            {#each getEnumValues() as { value, label }}
+                <option value={value}>{label}</option>
+            {/each}
+        </select>
+    </label>
+    <button class="btn-save bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" on:click={() => addPageComponent(selectedComponentType)}>Add</button>
+</div>
 
 {:else}
     <p>Loading...</p>

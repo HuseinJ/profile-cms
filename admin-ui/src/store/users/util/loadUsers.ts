@@ -22,6 +22,7 @@ export const loadUsers = async () =>  {
 
     if(usersRequestData.errors) {
         console.log("error!! trigger error state")
+        return
     }
 
     users.set(

@@ -2,7 +2,6 @@ import { useGraphql } from "../../utils/useGraphQl";
 import { PageComponent } from "../PageComponent";
 import { loggedInUser } from "../../auth/store";
 import { get } from 'svelte/store';
-import { page } from "$app/stores";
 
 const removePageComponentMutation = `
 	mutation($pageId: String, $pageComponentId: String){
@@ -28,7 +27,5 @@ export const removePageComponent = async (pageComponent: PageComponent): Promise
         console.log("error!! trigger error state")
         return false;
     }
-
-    console.log(response)
     return true
 }

@@ -44,8 +44,8 @@ const loadPageQuery = `
     }
 `;
 
-export const loadAllPages = async () =>  {
-    if(get(pages).length != 0){
+export const loadAllPages = async (force = false) =>  {
+    if(!force && get(pages).length != 0){
         return;
     }    
     
@@ -60,7 +60,7 @@ export const loadAllPages = async () =>  {
     var mappedPages = pagesRequestData.data!.pages.map( (page: Page) => {
         var pageComponents = page.pageComponents.map((pageComponent: PageComponent) => {
             var componentData = pageComponent.componentData.map(
-                (componentDataSet: ComponentData) => new ComponentData(componentDataSet.key, componentDataSet.value))
+                (componentDataSet: ComponentData) => new ComponentData(componentDataSet.key, componentDataSet.value, false))
             return new PageComponent (pageComponent.id, pageComponent.name, componentData, pageComponent.pageid)
         })
 
