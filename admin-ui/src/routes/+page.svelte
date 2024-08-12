@@ -1,7 +1,19 @@
 <script lang="ts">
+	import { changePassword } from "../store/users/util/changePassword";
+
     let oldPassword: string;
     let newPassword: string;
     let newPasswortRepeated: string;
+
+    async function triggerChangePassword() {
+        console.log(oldPassword, newPassword)
+        if(newPassword === newPasswortRepeated){
+            await changePassword(oldPassword, newPassword)
+            return
+        }
+        alert("passwords do not match")
+        
+    }
 </script>
 
 <div>
@@ -19,5 +31,13 @@
             <label class="block text-sm font-bold mb-1">New Password Repeated</label>
             <input class="input w-full px-4 py-2 border rounded-lg" type="text" placeholder="Enter key" bind:value={newPasswortRepeated} on:input={() => {}} />
         </div>
+        <button 
+			type="button" 
+			class="btn variant-filled-primary w-full py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600"
+			on:click={triggerChangePassword}
+		>
+			<span>(icon)</span>
+			<span>Login</span>
+		</button>
     </div>
 </div>
