@@ -5,7 +5,6 @@
     import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 	import { createNewPage } from '../../store/pages/util/createNewPage';
-	import { get } from 'svelte/store';
     import { deletePage as deletePageApi } from '../../store/pages/util/deletePage';
     import { assignHomePage as assignHomePageApi } from '../../store/pages/util/assignHomePage';
 

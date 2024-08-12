@@ -2,6 +2,7 @@
 import { onMount } from 'svelte';
 import { loadUsers } from '../../store/users/util/loadUsers';
 import { users } from '../../store/users/store';
+import { goto } from '$app/navigation';
 import Icon from '@iconify/svelte';
 
 
